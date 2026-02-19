@@ -1,0 +1,172 @@
+.who {
+    position: relative;
+    padding: 120px 0;
+    color: #1b1b1b;
+    overflow: hidden;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom center;
+        z-index: 0;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 80px auto;
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__title {
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-family: var(--font-second);
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+        color: #1b1b1b;
+    }
+
+    &__description {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #252525;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__card {
+        position: relative;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px;
+        cursor: pointer;
+        overflow: hidden;
+        background: #121821;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        
+        opacity: 0;
+        transform: translateY(80px);
+        transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+        h3 {
+            position: relative;
+            z-index: 2;
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.4s ease;
+            color: #ffffff;
+        }
+
+        &:hover h3 {
+            transform: translateY(-10px);
+        }
+
+        .who__overlay {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        &:hover .who__overlay {
+            opacity: 0.35;
+            transform: scale(1);
+        }
+
+        // Icon in lower right corner, large and faded initially
+        .who__icon {
+        position: absolute;
+            bottom: -80px; // push outside so only part is visible
+            right: -80px; // push outside corner
+            width: 220px; // control actual icon size
+            height: 220px;
+            opacity: 0.08; // subtle modern feel
+            color: #ffffff;
+            transition: transform 0.5s ease, opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        &:hover .who__icon {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+    }
+
+    .mission .who__overlay {
+        background-image: url('/assets/images/5.jpg');
+    }
+
+    .reliability .who__overlay {
+        background-image: url('/assets/images/ril_p3.JPG');
+    }
+
+    .precision .who__overlay {
+        background-image: url('/assets/images/ril_p11.jpg');
+    }
+
+    &.active {
+        .who__header {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .who__card {
+            opacity: 1;
+            transform: translateY(0);
+
+            &:nth-child(2) {
+                transition-delay: 0.15s;
+            }
+
+            &:nth-child(3) {
+                transition-delay: 0.3s;
+            }
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .who__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .who__card {
+        height: 280px;
+
+        .who__icon {
+            font-size: 80px;
+            bottom: -10px;
+            right: -10px;
+        }
+    }
+}

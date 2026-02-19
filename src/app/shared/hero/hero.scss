@@ -1,0 +1,88 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+
+    &-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        will-change: transform;
+        z-index: 0;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+    }
+
+    &-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 0 2rem;
+    }
+}
+
+.hero-deco {
+    position: absolute;
+    width: clamp(80px, 12vw, 250px);
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.hero-deco-1 {
+    bottom: 2%;
+    right: 2%;
+}
+
+.hero-blur-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+
+    .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 50px;
+
+        .headline {
+            margin-bottom: 60px;
+        }
+    }
+    
+
+    app-blur-text {
+        font-size: clamp(2rem, 8vw, 7rem);
+        line-height: 1;
+    }
+
+    .bracket {
+        height: clamp(100px, 20vw, 300px);
+        width: auto;
+        object-fit: contain;
+        transform: translateY(-75px);
+    }
+
+    .bracket-right {
+        transform: translateY(-75px) scaleX(-1);
+    }
+}

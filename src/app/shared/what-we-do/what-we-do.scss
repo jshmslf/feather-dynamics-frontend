@@ -1,0 +1,181 @@
+.what-wrapper {
+    width: 100%;
+    background: var(--color-black);
+
+    opacity: 0;
+    transform: translateY(80px);
+    transition:
+        opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================= */
+/* HEADER                    */
+/* ========================= */
+
+.what-header {
+    padding: 80px 24px 40px;
+    text-align: center;
+    color: #ffffff;
+
+    &__title {
+        font-size: 2rem;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        font-weight: 400;
+        font-family: var(--font-second);
+    }
+
+    &__subtitle {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        font-weight: 400;
+    }
+}
+
+/* ========================= */
+/* SECTION                   */
+/* ========================= */
+
+.what {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.4s ease-in-out;
+    overflow: hidden;
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(5, 10, 18, 0.75);
+    }
+
+    &__grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    &__card {
+        position: relative;
+        min-height: 260px;
+        padding: 40px 24px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+
+        opacity: 0;
+        transform: translateY(60px);
+        transition:
+            opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* Stagger animation when wrapper becomes active */
+    .what-wrapper.active &__card:nth-child(1) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
+    }
+
+    .what-wrapper.active &__card:nth-child(2) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+    }
+
+    .what-wrapper.active &__card:nth-child(3) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.6s;
+    }
+
+    /* ================= */
+    /* HOVER LAYER      */
+    /* ================= */
+
+    &__hover-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 180, 255, 0);
+        transition: background 0.3s ease;
+        z-index: 1;
+    }
+
+    &__card:hover .what__hover-overlay {
+        background: rgba(0, 180, 255, 0.06);
+    }
+
+    &__base,
+    &__hover {
+        position: absolute;
+        inset: 0;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 2;
+        color: #fff;
+        transition: opacity 0.3s ease;
+    }
+
+    &__hover {
+        justify-content: flex-end;
+        opacity: 0;
+    }
+
+    &__card:hover .what__base {
+        opacity: 0;
+    }
+
+    &__card:hover .what__hover {
+        opacity: 1;
+    }
+}
+
+/* ========================= */
+/* DESKTOP                   */
+/* ========================= */
+
+@media (min-width: 992px) {
+    .what-header {
+        padding: 120px 40px 60px;
+
+        &__title {
+            font-size: 4rem;
+        }
+
+        &__subtitle {
+            font-size: 1.1rem;
+        }
+    }
+
+    .what {
+        &__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        &__card {
+            min-height: 600px;
+            border-bottom: none;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+}

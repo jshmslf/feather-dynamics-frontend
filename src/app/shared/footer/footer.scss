@@ -1,0 +1,148 @@
+.footer {
+    width: 100%;
+    background: var(--color-black);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    .title {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        opacity: 0.9;
+
+        padding-bottom: 10px;
+
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 28px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    /* ========================= */
+    /* MAIN ROW                  */
+    /* ========================= */
+
+    &__container {
+        max-width: 1380px; // ✅ constrain content
+        margin: 0 auto; // ✅ center horizontally
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding: 60px 24px;
+    }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &--logo img {
+            width: 160px;
+            max-width: 100%;
+        }
+
+        &--info p {
+            margin: 0;
+        }
+
+        &--links {
+            gap: 10px;
+        }
+    }
+
+    &__usa {
+        margin-top: 8px;
+        width: 120px;
+        opacity: 0.9;
+    }
+
+    /* ========================= */
+    /* BOTTOM BAR                */
+    /* ========================= */
+
+    &__bottom {
+        width: 100%;
+    }
+
+        &__bottom-inner {
+            max-width: 1380px; // match container width
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 0.85rem;
+    
+            border-top: 1px solid rgba(255, 255, 255, 0.1); // ✅ now constrained
+        }
+
+    &__legal {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+/* ========================= */
+/* DESKTOP                   */
+/* ========================= */
+
+@media (min-width: 992px) {
+
+    .footer {
+
+        &__container {
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 100px 60px;
+            gap: 80px; // consistent horizontal rhythm
+        }
+
+        &__group {
+            flex: unset; // remove equal flex
+
+            &--logo {
+                flex: 0 0 220px; // fixed visual anchor
+            }
+
+            &--info {
+                flex: 0 0 280px;
+            }
+
+            &--links {
+                flex: 0 0 220px;
+            }
+        }
+
+        /* Align USA badge better with info */
+        &__usa {
+            margin-top: 16px;
+        }
+
+        &__bottom-inner {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 60px;
+        }
+    }
+}

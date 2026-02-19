@@ -1,0 +1,115 @@
+$gray: #1a1a1a;
+$white: #ffffff;
+
+.blog {
+    position: relative;
+    background: #ffffff;
+    padding: 5rem 1.5rem;
+    overflow: hidden;
+}
+
+/* Inner container */
+.blog__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Section title (ONLY this uses var(--font-second)) */
+.blog__header {
+    margin-bottom: 3rem;
+}
+
+.blog__title {
+    font-family: var(--font-second);
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+/* Coming soon area */
+.blog__coming-small {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #666666;
+}
+
+.blog__coming-title {
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* Bottom right rotated decoration */
+.blog__deco {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 120px;
+    height: auto;
+
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* Keep content above decoration */
+.blog__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.loading-strip {
+    margin: 0 auto;
+    width: 50%;
+    height: 4px;
+    background: $gray;
+    position: relative;
+    overflow: hidden;
+
+    .strip-inner {
+        position: absolute;
+        height: 100%;
+        width: 30%;
+        background: $white;
+        animation: slide 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: -30%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Desktop refinement */
+@media (min-width: 1200px) {
+
+    .blog {
+        padding: 7rem 4rem;
+    }
+
+    .blog__title {
+        font-size: 3rem;
+    }
+
+    .blog__coming-title {
+        font-size: 3rem;
+    }
+
+    .blog__deco {
+        width: 220px;
+    }
+}

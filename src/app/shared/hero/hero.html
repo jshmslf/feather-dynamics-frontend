@@ -1,0 +1,40 @@
+<section class="hero">
+    <video #videoRef class="hero-video" autoplay muted loop playsinline>
+        <source src="/assets/videos/fd-hero-vid.mp4" />
+    </video>
+
+    <div class="overlay"></div>
+    
+    <app-reveal [blur]="true" [delay]="2"  class="hero-deco hero-deco-1">
+        <img src="/assets/decos/video-deco-4.png" alt="decorative element">
+    </app-reveal>
+
+    <div class="hero-content">
+        <div class="hero-blur-wrapper">
+            <app-reveal
+                [blur]="true"
+                [delay]="2"
+                direction="horizontal"
+                [reverse]="true"
+            >
+                <img src="/assets/decos/deco-bracket.png" alt="left brackets" class="bracket bracket-left">
+            </app-reveal>
+            <div class="text-wrapper">
+                <div class="headline">
+                    <app-blur-text text="INTELLIGENT MACHINES" [animateBy]="'letters'" [direction]="'bottom'" [delay]="100"
+                        [stepDuration]="0.65" class="blur-text"></app-blur-text>
+    
+                    <app-blur-text text="ARE NOW" [animateBy]="'letters'" [direction]="'bottom'" [delay]="300"
+                        [stepDuration]="0.55" class="blur-text"></app-blur-text>
+                </div>
+
+                <app-reveal [blur]="true" [delay]="1.5" [threshold]="0.2">
+                    <span class="subtitle text-xl">Engineering next-generation IUVs with superior precision, and agility.</span>
+                </app-reveal>
+            </div>
+            <app-reveal [blur]="true" [delay]="2" direction="horizontal" >
+                <img src="/assets/decos/deco-bracket.png" alt="right brackets" class="bracket bracket-right">
+            </app-reveal>
+        </div>
+    </div>
+</section>

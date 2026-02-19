@@ -1,0 +1,11 @@
+.blur-text {
+    font-weight: 400; // no bold
+    line-height: 1.2;
+    color: #ffffff;
+
+    span {
+        display: inline-block;
+        will-change: transform, filter, opacity;
+        opacity: 0; // <-- hide initially
+    }
+}

@@ -1,0 +1,83 @@
+.cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 24px;
+    background-image: url('/assets/images/landscape-pov.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg,rgba(5, 10, 18, 0) 15%, rgba(5, 10, 18, 1) 66%);
+        z-index: 0;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__subtitle {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        opacity: 0.8;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    &__button {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #00b4ff;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        align-self: center;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+/* ========================= */
+/* DESKTOP                   */
+/* ========================= */
+@media (min-width: 992px) {
+    .cta {
+        padding: 100px 60px;
+
+        &__subtitle {
+            font-size: 1.3rem;
+        }
+
+        &__title {
+            font-size: 3rem;
+        }
+
+        &__button {
+            font-size: 1.1rem;
+            padding: 16px 36px;
+        }
+    }
+}

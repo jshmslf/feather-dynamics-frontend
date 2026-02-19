@@ -1,0 +1,23 @@
+<div class="partners">
+    <img src="/assets/decos/aerial-deco-1.png" alt="" class="partners__deco" aria-hidden="true" />
+
+    <app-reveal [blur]="true">
+        <div class="partners__header">
+            <h2 class="partners__title">Our Partners</h2>
+        </div>
+    </app-reveal>
+        
+    <app-reveal [blur]="true" [direction]="'horizontal'" [delay]="0.5">
+        <app-logo-loop 
+            [logos]="logos"
+            [speed]="36" 
+            direction="left" 
+            [logoHeight]="150"
+            [gap]="160"
+            [fadeOut]="false"
+            [pauseOnHover]="false" 
+            [grayscale]="true">
+        </app-logo-loop>
+    </app-reveal>
+    
+</div>

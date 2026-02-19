@@ -1,0 +1,58 @@
+.partners {
+    position: relative; // anchor for absolute deco
+    padding: 4rem 1.5rem;
+    background: var(--color-black);
+    overflow: hidden;
+    background: var(--color-white);
+}
+
+/* Corner image */
+.partners__deco {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg);
+
+    width: 150px; // mobile base
+    height: auto;
+
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* Make sure content stays above deco */
+.partners__header,
+app-reveal {
+    position: relative;
+    z-index: 1;
+}
+
+/* Title */
+.partners__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.partners__title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    font-family: var(--font-second);
+    color: var(--color-black);
+}
+
+/* Desktop adjustments */
+@media (min-width: 1200px) {
+    .partners {
+        padding: 8rem;
+    }
+
+    .partners__deco {
+        width: 250px;
+    }
+
+    .partners__title {
+        font-size: 3rem;
+    }
+}

@@ -1,0 +1,6 @@
+<p class="blur-text" [ngClass]="customClass">
+    <ng-container *ngFor="let segment of spans; let i = index">
+        <span>{{ segment === ' ' ? '\u00A0' : segment }}</span>
+        <ng-container *ngIf="animateBy === 'words' && i < spans.length - 1">&nbsp;</ng-container>
+    </ng-container>
+</p>

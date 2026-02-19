@@ -1,0 +1,56 @@
+<section class="what-wrapper" #whatSection>
+
+    <!-- Section Header -->
+    <div class="what-header">
+        <app-reveal [blur]="true">
+            <h2 class="what-header__title">
+                What We Do
+            </h2>
+        </app-reveal>
+
+        <app-reveal [blur]="true" [threshold]="0.2">
+
+            <p class="what-header__subtitle">
+                Advanced Systems Engineered for Mission Success
+            </p>
+        </app-reveal>
+    </div>
+
+    <!-- Interactive Section -->
+    <section class="what" [style.background-image]="'url(' + items[activeIndex()].image + ')'">
+
+        <div class="what__overlay"></div>
+
+        
+        <div class="what__grid">
+                <div class="what__card" *ngFor="let item of items; let i = index" (mouseenter)="activeIndex.set(i)"
+                    (focus)="activeIndex.set(i)">
+
+                    <div class="what__hover-overlay"></div>
+
+                    <!-- Base Layer -->
+                    <div class="what__base">
+                        <span class="what__number">
+                            {{ item.number }}
+                        </span>
+
+                        <h3 class="what__title">
+                            {{ item.title }}
+                        </h3>
+                    </div>
+
+                    <!-- Hover Layer -->
+                    <div class="what__hover">
+                        <span class="what__number">
+                            {{ item.number }}
+                        </span>
+
+                        <h3 class="what__title">
+                            {{ item.title }}
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+</section>

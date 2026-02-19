@@ -1,0 +1,29 @@
+<section class="blog">
+    <img src="/assets/decos/aerial-deco-1.png" alt="" class="blog__deco" aria-hidden="true" />
+
+    <div class="blog__inner">
+
+        <app-reveal [blur]="true">
+            <header class="blog__header">
+                <h2 class="blog__title">News</h2>
+            </header>
+        </app-reveal>
+
+        <app-reveal [blur]="true">
+            <div class="blog__coming">
+                <p class="blog__coming-small">Announcements & News</p>
+                <h3 class="blog__coming-title">Coming Soon</h3>
+                
+                <app-reveal
+                [blur]="true" [delay]="0.3"
+                >
+                <div class="loading-strip">
+                    <div class="strip-inner"></div>
+                </div>
+            </app-reveal>
+        </div>
+    </app-reveal>
+
+    </div>
+
+</section>

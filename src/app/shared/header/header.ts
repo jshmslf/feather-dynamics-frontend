@@ -1,7 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { 
+  CommonModule, 
+  isPlatformBrowser 
+} from '@angular/common';
+import { 
+  Component, 
+  HostListener, 
+  Inject, 
+  PLATFORM_ID 
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,33 +16,45 @@ import { filter } from 'rxjs';
   styleUrl: './header.scss',
 })
 export class Header {
+
   isSticky = false;
-  isWhiteHeader = false;
-  
-  whiteHeaderRoutes = ['/who-we-are', '/policies', '/', '/what-we-do', '/news'];
+  isHidden = false;
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        let route = this.activatedRoute;
+  private isBrowser: boolean;
+  private lastScrollY = 0;
+  private heroHeight = 0;
 
-        // Traverse to the deepest child route
-        while (route.firstChild) {
-          route = route.firstChild;
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+
+    if (this.isBrowser) {
+      setTimeout(() => {
+        const hero = document.querySelector('.hero') as HTMLElement;
+        if (hero) {
+          this.heroHeight = hero.offsetHeight;
         }
-
-        const whiteHeader = route.snapshot.data['whiteHeader'];
-        this.isWhiteHeader = !!whiteHeader;
       });
+    }
   }
-  
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isSticky = window.scrollY > 50;
+    if (!this.isBrowser) return;
+
+    const currentScroll = window.scrollY;
+
+    this.isSticky = currentScroll > this.heroHeight - 100;
+
+    if (this.isSticky) {
+      if (currentScroll > this.lastScrollY) {
+        this.isHidden = false;
+      } else {
+        this.isHidden = true;
+      }
+    } else {
+      this.isHidden = false;
+    }
+
+    this.lastScrollY = currentScroll;
   }
 }

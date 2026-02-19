@@ -1,4 +1,4 @@
-<header class="header" [ngClass]="{ 'sticky-on': isSticky, 'white-header': isWhiteHeader }">
+<header class="header"  [ngClass]="{'sticky-on': isSticky, 'hidden': isHidden}">
     <div class="global-container header-inner">
         <div class="logo">
             <a href="/">
@@ -11,6 +11,7 @@
             <a href="/news" class="underline-animation">News</a>
             <a href="/who-we-are" class="underline-animation">Who We Are</a>
             <a href="/what-we-do" class="underline-animation">What We Do</a>
+            <a href="/contact-us" class="underline-animation">Contact Us</a>
         </nav>
     </div>
 </header>

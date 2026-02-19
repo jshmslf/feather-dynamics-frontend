@@ -80,9 +80,60 @@
         width: auto;
         object-fit: contain;
         transform: translateY(-75px);
+        animation: floatBracketLeft 6s ease-in-out infinite;
+        will-change: transform;
     }
 
     .bracket-right {
         transform: translateY(-75px) scaleX(-1);
+        animation: floatBracketRight 6s ease-in-out infinite;
+    }
+}
+
+.hero-deco,
+.bracket {
+    animation: floatIdle 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes floatBracketLeft {
+    0% {
+        transform: translateY(-75px);
+    }
+
+    50% {
+        transform: translateY(-83px);
+    }
+
+    100% {
+        transform: translateY(-75px);
+    }
+}
+
+@keyframes floatBracketRight {
+    0% {
+        transform: translateY(-75px) scaleX(-1);
+    }
+
+    50% {
+        transform: translateY(-83px) scaleX(-1);
+    }
+
+    100% {
+        transform: translateY(-75px) scaleX(-1);
+    }
+}
+
+@keyframes floatDeco {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

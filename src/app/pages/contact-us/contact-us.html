@@ -1,0 +1,96 @@
+<div class="contact-us-section">
+<app-page-header [title]="'Contact Us'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+
+
+<section class="contact-us">
+    <div class="container">
+        <div class="row">
+            
+            <!-- Group 1: Info -->
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p class="lead">Have questions? Get in touch!</p>
+                
+                <div class="contact-item">
+                    <i-lucide [img]="map_pin"></i-lucide>
+                    <span>Monterey, California, USA</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i-lucide [img]="mail"></i-lucide>
+                    <span>info@featherdynamics.com</span>
+                </div>
+            </div>
+            
+            <!-- Group 2: Form -->
+            <div class="contact-form">
+                <form>
+                    
+                    <!-- Row 1 -->
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i-lucide [img]="user"></i-lucide>
+                            <input type="text" placeholder="Your Name" required />
+                            <span class="border-anim"></span>
+                        </div>
+                        <div class="input-group">
+                            <i-lucide [img]="mail"></i-lucide>
+                            <input type="email" placeholder="Email Address" required />
+                            <span class="border-anim"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i-lucide [img]="phone"></i-lucide>
+                            <input type="text" placeholder="Phone" />
+                            <span class="border-anim"></span>
+                        </div>
+                        <div class="input-group">
+                            <i-lucide [img]="info"></i-lucide>
+                            <input type="text" placeholder="Subject" />
+                            <span class="border-anim"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 3: Message -->
+                    <div class="form-row">
+                        <div class="input-group full-width">
+                            <i-lucide [img]="penline"></i-lucide>
+                            <textarea placeholder="How can we help you?" rows="5"></textarea>
+                            <span class="border-anim"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Row 4: Checkbox -->
+                    <div class="form-row checkbox-row">
+                        <label>
+                            <input type="checkbox" required />
+                            I agree that my data is 
+                            <a href="/policy">
+                                collected and stored.
+                            </a>
+                        </label>
+                    </div>
+                    
+                    <!-- Row 5: Send Button -->
+                    <div class="form-row">
+                        <button type="submit"> Send
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+<app-reveal>
+    <app-logo-loop [logos]="logos" [speed]="50" [pauseOnHover]="false" [direction]="'left'" [logoHeight]="150"
+    [gap]="80">
+</app-logo-loop>
+</app-reveal>
+
+
+</div>

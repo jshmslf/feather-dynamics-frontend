@@ -1,4 +1,4 @@
-import { Component, ElementRef, PLATFORM_ID, ViewChild, AfterViewInit, Inject, OnDestroy } from '@angular/core';
+import { Component, ElementRef, PLATFORM_ID, ViewChild, AfterViewInit, Inject, OnDestroy, QueryList, HostListener, ViewChildren } from '@angular/core';
 import { BlurText } from "../blur-text/blur-text";
 import { isPlatformBrowser } from '@angular/common';
 import { RevealComponent } from "../reveal/reveal";
@@ -21,7 +21,6 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
-
     window.addEventListener('scroll', this.handleScroll, { passive: true });
   }
 
@@ -30,6 +29,7 @@ export class Hero implements AfterViewInit, OnDestroy {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  // Parallax
   handleScroll = () => {
     if (!this.ticking) {
       requestAnimationFrame(() => {

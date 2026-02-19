@@ -1,0 +1,213 @@
+:host {
+    display: block;
+    background: var(--color-white);
+}
+
+
+app-logo-loop {
+    ::ng-deep .logoloop__item {
+        color: var(--color-black);
+        font-family: var(--font-second);
+    }
+}
+
+.contact-us-section {
+    overflow: hidden;
+}
+
+
+.contact-us {
+    overflow-x: hidden;
+    padding: 4rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1 1 300px;
+            padding: 1rem;
+        }
+
+        /* Group 1: Info */
+        .contact-info {
+            h2 {
+                font-size: clamp(2rem, 4vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+
+            .lead {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+
+                i-lucide {
+                    width: 20px;
+                    height: 20px;
+                    color: var(--color-black);
+                    flex-shrink: 0;
+                }
+            }
+        }
+
+        /* Group 2: Form */
+        .contact-form {
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+
+                .form-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+
+                    .input-group {
+                        display: flex;
+                        align-self: flex-start;
+                        position: relative;
+                        flex: 1 1 200px;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 15px;
+                        position: relative;
+
+                        i-lucide {
+                            width: 20px;
+                            height: 20px;
+                            color: var(--color-black);
+                            flex-shrink: 0;
+                        }
+
+                        input,
+                        textarea {
+                            flex: 1;
+                            border: none;
+                            padding: 0.5rem 0;
+                            font-size: 1rem;
+                            background: transparent;
+                            color: var(--color-black);
+                            position: relative;
+                            z-index: 1;
+
+                            &:focus {
+                                outline: none;
+                            }
+
+                            &:focus+.border-anim,
+                            &:not(:placeholder-shown)+.border-anim {
+                                opacity: 1;
+                            }
+
+                        }
+                        &:hover .border-anim {
+                            opacity: 1;
+                        }
+
+                        .border-anim {
+                            content: '';
+                            position: absolute;
+                            bottom: -5px;
+                            left: 0;
+                            width: 100%;
+                            height: 1px;
+                            background: var(--color-black);
+                            opacity: 0.2; 
+                            transform: scaleX(1);
+                            transform-origin: left;
+                            transition: opacity 0.3s ease;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+                        }
+
+                        &.full-width {
+                            width: 100%;
+                        }
+                    }
+
+                    &.checkbox-row {
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 0.5rem;
+
+                        label {
+                            font-size: 0.95rem;
+
+                            a {
+                                color: var(--color-black);
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    padding: 0.75rem 2rem;
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    font-size: 1.2rem;
+                    background: var(--color-black);
+                    color: var(--color-white);
+                    border: none;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+
+                    &:hover {
+                        background: #333;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Make textarea vertically resizable */
+textarea {
+    resize: none;
+}
+
+input, textarea {
+    font-family: var(--font-header);
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .contact-us {
+        .container {
+            flex-direction: column;
+
+            .contact-info,
+            .contact-form {
+                padding: 0.5rem;
+            }
+
+            .contact-form {
+                .form-row {
+                    flex-direction: column;
+
+                    .input-group {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -152,14 +152,14 @@
 
 @media (min-width: 992px) {
     .what-header {
-        padding: 120px 40px 60px;
+        padding: 160px 40px 60px;
 
         &__title {
-            font-size: 4rem;
+            font-size: 2.5rem;
         }
 
         &__subtitle {
-            font-size: 1.1rem;
+            font-size: var(--text);
         }
     }
 

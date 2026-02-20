@@ -6,10 +6,11 @@ import { Cta } from "../../shared/cta/cta";
 import { Partners } from "../../shared/partners/partners";
 import { Tag } from "../../shared/tag/tag";
 import { Blog } from "../../shared/blog/blog";
+import { AboutUs } from "../../shared/about-us/about-us";
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog],
+  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog, AboutUs],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

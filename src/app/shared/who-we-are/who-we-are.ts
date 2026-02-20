@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { LucideAngularModule, Target, Shield, Cpu } from 'lucide-angular';
+import { LucideAngularModule, Target, Shield, Cpu, ArrowRight } from 'lucide-angular';
 import { RevealComponent } from "../reveal/reveal";
 
 @Component({
@@ -16,6 +16,7 @@ export class WhoWeAre implements AfterViewInit {
   readonly Target = Target;
   readonly Shield = Shield;
   readonly Cpu = Cpu;
+  readonly ArrowRight = ArrowRight;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 

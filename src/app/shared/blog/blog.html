@@ -9,21 +9,45 @@
             </header>
         </app-reveal>
 
-        <app-reveal [blur]="true">
-            <div class="blog__coming">
-                <p class="blog__coming-small">Announcements & News</p>
-                <h3 class="blog__coming-title">Coming Soon</h3>
-                
-                <app-reveal
-                [blur]="true" [delay]="0.3"
-                >
-                <div class="loading-strip">
-                    <div class="strip-inner"></div>
-                </div>
-            </app-reveal>
+        <div class="blog__viewport" #viewport>
+
+            <div class="blog__grid" [class.center-single]="news.length === 1">
+
+                <a class="blog-item" *ngFor="let item of news; let i = index" [routerLink]="['/news', item.slug]">
+
+                    <div class="blog-item__image">
+                        <img [src]="item.image" [alt]="item.title" />
+                    </div>
+
+                    <div class="blog-item__content">
+                        <p class="blog-item__date">
+                            {{ item.publishedAt | date:'longDate' }}
+                        </p>
+
+                        <h3 class="blog-item__title">
+                            {{ item.title }}
+                        </h3>
+
+                        <p class="blog-item__excerpt">
+                            {{ item.excerpt }}
+                        </p>
+
+                        <span class="blog-item__link">
+                            Read More →
+                        </span>
+                    </div>
+
+                </a>
+
+            </div>
+
         </div>
-    </app-reveal>
+
+        <!-- Pagination Dots -->
+        <div class="blog__dots" *ngIf="news.length > 3">
+            <span *ngFor="let item of news; let i = index" class="dot">
+            </span>
+        </div>
 
     </div>
-
 </section>

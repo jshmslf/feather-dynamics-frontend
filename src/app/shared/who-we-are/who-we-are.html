@@ -1,41 +1,39 @@
 <section class="who" #whoSection>
-    <!-- Background decoration -->
     <img class="who__bg" src="/assets/decos/video-deco-back-1.png" alt="Background decoration" />
 
     <div class="who__container">
-        <div class="who__header">
-            <app-reveal [blur]="true">
-                <h2 class="who__title">Who We Are</h2>
-            </app-reveal>
-            <app-reveal [blur]="true" [threshold]="0.2">
-                <p class="who__description">
-                    Feather Dynamics has been innovating unmanned vehicle technology for nearly three decades, serving both
-                    commercial and defense applications.
-                </p>
-            </app-reveal>
-        </div>
 
-        <div class="who__grid">
-            <!-- Mission card -->
-            <div class="who__card mission">
-                <div class="who__overlay"></div>
-                <i-lucide [img]="Target" class="who__icon" size="220"></i-lucide>
-                <h3>Mission-Driven Design</h3>
+        <div class="who__group who__group--left">
+            <div class="who__top">
+                <app-reveal [blur]="true">
+                    <span class="who__label text-lg">Who We Are</span>
+                    <h2 class="who__title">Feather<br />Dynamics</h2>
+                </app-reveal>
             </div>
 
-            <!-- Reliability card -->
-            <div class="who__card reliability">
-                <div class="who__overlay"></div>
-                <i-lucide [img]="Shield" class="who__icon" size="220"></i-lucide>
-                <h3>Operational Reliability</h3>
-            </div>
+            <div class="who__bottom">
+                <app-reveal [blur]="true" [threshold]="0.2">
+                    <p class="who__description text">
+                        Feather Dynamics has been innovating unmanned vehicle technology for nearly three decades,
+                        serving both commercial and defense applications. With a long-standing history of advancing
+                        autonomous systems, the company has consistently contributed to shaping the future of
+                        next-generation autonomous vehicles through design excellence, technical innovation, and
+                        mission-driven development.
+                    </p>
+                </app-reveal>
+                <app-reveal [blur]="true" [threshold]="0.3">
+                    <button class="who__btn">
+                        <span>Learn More</span>
+                        <i-lucide [img]="ArrowRight" size="16"></i-lucide>
+                    </button>
+                </app-reveal>
 
-            <!-- Precision card -->
-            <div class="who__card precision">
-                <div class="who__overlay"></div>
-                <i-lucide [img]="Cpu" class="who__icon" size="220"></i-lucide>
-                <h3>Precision Engineering</h3>
             </div>
         </div>
+
+            <div class="who__group who__group--right">
+                <img src="/assets/images/unnamed.png" alt="">
+            </div>
+
     </div>
 </section>

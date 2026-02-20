@@ -1,0 +1,91 @@
+:host {
+    display: block;
+}
+
+.about-us {
+    background: #000;
+    background-image: url('/assets/decos/aerial-deco-back-2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    padding: 9rem 1.5rem;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    /* mobile first */
+}
+
+/* Groups */
+.group {
+    width: 100%;
+}
+
+/* LEFT GROUP */
+.group-left {
+    img {
+        width: auto;
+        height: 650px;
+        display: block;
+        filter: grayscale(100%);
+    }
+}
+
+/* RIGHT GROUP */
+.group-right {
+    margin-top: 2rem;
+
+    .label {
+        font-size: 0.85rem;
+        letter-spacing: 0.2rem;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+    }
+
+    p {
+        line-height: 1.6;
+        opacity: 0.8;
+        max-width: 520px;
+        margin-bottom: 2rem;
+    }
+
+    img {
+        width: auto;
+        height: 350px;
+        display: block;
+        filter: grayscale(100%);
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .container {
+        flex-direction: row;
+        /* 2 columns */
+    }
+
+    .group-left,
+    .group-right {
+        width: 50%;
+    }
+
+    .group-right {
+        margin-top: 0;
+        padding-left: 4rem;
+        /* spacing without using gap */
+    }
+}

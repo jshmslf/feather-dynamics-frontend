@@ -37,24 +37,43 @@ export class Header {
     }
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (!this.isBrowser) return;
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  if (!this.isBrowser) return;
 
-    const currentScroll = window.scrollY;
+  const currentScroll = window.scrollY;
 
-    this.isSticky = currentScroll > this.heroHeight - 100;
-
-    if (this.isSticky) {
-      if (currentScroll > this.lastScrollY) {
-        this.isHidden = false;
-      } else {
-        this.isHidden = true;
-      }
-    } else {
-      this.isHidden = false;
-    }
-
-    this.lastScrollY = currentScroll;
+  // 1️⃣ At very top → show MAIN header
+  if (currentScroll === 0) {
+    this.isSticky = false;
+    this.isHidden = false; // ✅ important fix
+    this.lastScrollY = 0;
+    return;
   }
+
+  // 2️⃣ Sticky only after hero
+  const shouldBeSticky = currentScroll > this.heroHeight - 100;
+
+  // 3️⃣ If NOT sticky → always show header
+  if (!shouldBeSticky) {
+    this.isSticky = false;
+    this.isHidden = false;
+    this.lastScrollY = currentScroll;
+    return;
+  }
+
+  // 4️⃣ Sticky mode
+  this.isSticky = true;
+
+  // scroll DOWN → hide
+  if (currentScroll > this.lastScrollY) {
+    this.isHidden = true;
+  }
+  // scroll UP → show
+  else {
+    this.isHidden = false;
+  }
+
+  this.lastScrollY = currentScroll;
+}
 }

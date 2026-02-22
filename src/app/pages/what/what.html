@@ -1,1 +1,79 @@
-<p>what works!</p>
+<app-page-header [title]="'What We Do'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+
+<section class="what-section">
+
+    <!-- Section Header -->
+    <div class="section-header">
+        <div class="header-rule"></div>
+        <div class="header-meta">
+            <span class="overline">What We Do</span>
+            <span class="count">4 Capabilities</span>
+        </div>
+        <h2 class="section-title">
+            <span class="title-line">Engineering the</span>
+            <span class="title-line accent">Future of Flight</span>
+        </h2>
+        <p class="section-sub">
+            From autonomous defense systems to next-generation R&amp;D, Feather Dynamics operates across four
+            interconnected capability domains — each built on patented technology, AI-driven intelligence, and a
+            commitment to performance in the most demanding environments on Earth.
+        </p>
+    </div>
+
+    <!-- Platform Grid -->
+    <div class="platforms-container">
+
+        <div *ngFor="let platform of platforms; let i = index" class="platform-card" [class.active]="isActive(i)"
+            #platformCard (click)="setActive(i)">
+
+            <!-- Image Panel (offset) -->
+            <div class="card-image-wrapper">
+                <div class="card-image-frame">
+                    <img [src]="platform.image" [alt]="platform.title" class="card-image" loading="lazy" />
+                    <div class="image-overlay"></div>
+                    <span class="image-label">{{ platform.category }}</span>
+                </div>
+                <div class="image-accent-bar"></div>
+            </div>
+
+            <!-- Content Panel -->
+            <div class="card-content">
+
+                <!-- Card Number -->
+                <div class="card-number">{{ platform.index }}</div>
+
+                <!-- Card Top Row -->
+                <div class="card-header">
+                    <span class="card-category">{{ platform.category }}</span>
+                    <span class="card-tag">{{ platform.tag }}</span>
+                </div>
+
+                <!-- Card Title -->
+                <h3 class="card-title">{{ platform.title }}</h3>
+
+                <!-- Divider -->
+                <div class="card-divider">
+                    <div class="divider-line"></div>
+                    <span class="expand-icon">{{ isActive(i) ? '−' : '+' }}</span>
+                </div>
+
+                <!-- Expandable Body -->
+                <div class="card-body" [class.expanded]="isActive(i)">
+                    <p class="card-text">{{ platform.body }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Accent -->
+    <div class="section-footer">
+        <div class="footer-line"></div>
+        <span class="footer-note">All platforms manufactured in the United States of America</span>
+        <div class="footer-line"></div>
+    </div>
+
+</section>

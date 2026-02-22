@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+export type NewsCategory = 'announcement' | 'news';
+
 export interface NewsItem {
     id: number;
     title: string;
@@ -8,6 +10,7 @@ export interface NewsItem {
     content: string;
     image: string;
     publishedAt: Date;
+    category: NewsCategory;
 }
 
 @Injectable({
@@ -23,7 +26,8 @@ export class NewsService {
             excerpt: 'Exploring next-generation aerial intelligence systems.',
             content: 'Full article content here...',
             image: '/assets/news/news-1.png',
-            publishedAt: new Date('2026-02-19')
+            publishedAt: new Date('2026-02-19'),
+            category: 'news'
         },
         {
             id: 2,
@@ -32,7 +36,8 @@ export class NewsService {
             excerpt: 'Exploring next-generation aerial intelligence systems.',
             content: 'Full article content here...',
             image: '/assets/images/3.jpg',
-            publishedAt: new Date('2026-02-15')
+            publishedAt: new Date('2026-02-15'),
+            category: 'announcement'
         },
         {
             id: 2,
@@ -41,31 +46,32 @@ export class NewsService {
             excerpt: 'Exploring next-generation aerial intelligence systems.',
             content: 'Full article content here...',
             image: '/assets/images/ril_p3.JPG',
-            publishedAt: new Date('2026-02-01')
+            publishedAt: new Date('2026-02-01'),
+            category: 'announcement'
         },
     ];
 
-    constructor() {}
+    constructor() { }
 
-  /** Get all news sorted by latest */
     getAll(): NewsItem[] {
         return [...this.news].sort(
             (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime()
         );
     }
 
-  /** Get single news by slug */
     getBySlug(slug: string): NewsItem | undefined {
         return this.news.find(n => n.slug === slug);
     }
 
-  /** Get latest news (default 3 items) */
     getLatest(limit: number = 3): NewsItem[] {
     return this.getAll().slice(0, limit);
     }
 
-  /** Get featured latest (force 4 items for homepage section) */
     getLatestFour(): NewsItem[] {
         return this.getLatest(4);
+    }
+
+    getByCategory(category: NewsCategory): NewsItem[] {
+        return this.getAll().filter(n => n.category === category);
     }
 }

@@ -1,1 +1,36 @@
-<p>who works!</p>
+<app-page-header [title]="'Who We Are'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+
+<section class="bento">
+    <div class="bento__container">
+
+        <div class="bento__item" *ngFor="let image of images; let i = index" [attr.data-index]="i">
+
+            <img [src]="image.src" [alt]="image.title || 'UAV Image'" loading="lazy" />
+
+            <div class="bento__overlay"></div>
+
+            <div class="bento__content" *ngIf="image.title">
+                <span class="bento__title">
+                    {{ image.title }}
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="who-desc">
+    <app-scroll-reveal
+        text="Feather Dynamics has been advancing unmanned systems for more than two decades, evolving from early UAV platforms and advanced payload integration to the development of transformative, next-generation technologies. Building on deep experience in both commercial and defense programs, the company now pioneers patented capabilities that extend across land, air, sea, space, and cyber domains—enabling a new class of intelligent, multi-domain systems designed for future operational challenges."
+        [enableBlur]="true"
+        [baseOpacity]="0.15"
+        [baseRotation]="2"
+        [maxWidth]="'1400px'"
+        containerClassName="who-reveal"
+        textClassName="who-reveal__text"
+        >
+    </app-scroll-reveal>
+</div>
+
+<app-timeline></app-timeline>

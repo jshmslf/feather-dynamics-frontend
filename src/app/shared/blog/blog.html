@@ -9,45 +9,49 @@
             </header>
         </app-reveal>
 
-        <div class="blog__viewport" #viewport>
-
-            <div class="blog__grid" [class.center-single]="news.length === 1">
-
-                <a class="blog-item" *ngFor="let item of news; let i = index" [routerLink]="['/news', item.slug]">
-
-                    <div class="blog-item__image">
-                        <img [src]="item.image" [alt]="item.title" />
-                    </div>
-
-                    <div class="blog-item__content">
-                        <p class="blog-item__date">
-                            {{ item.publishedAt | date:'longDate' }}
-                        </p>
-
-                        <h3 class="blog-item__title">
-                            {{ item.title }}
-                        </h3>
-
-                        <p class="blog-item__excerpt">
-                            {{ item.excerpt }}
-                        </p>
-
-                        <span class="blog-item__link">
-                            Read More →
+        <app-reveal [blur]="true">
+            <div class="blog__viewport" #viewport>
+                <div class="blog__grid" [class.center-single]="news.length === 1">
+                    <a class="blog-item" *ngFor="let item of news; let i = index" [routerLink]="['/news', item.slug]" [class.no-pointer]="isDraggingActive" draggable="false">
+                        <div class="blog-item__image">
+                            <img [src]="item.image" [alt]="item.title" />
+                        </div>
+                        <div class="blog-item__content">
+                            <div class="blog-item__meta">
+                                <p class="blog-item__date">
+                                    {{ item.publishedAt | date:'longDate' }}
+                                </p>
+                                
+                                <span class="blog-item__category">
+                                    {{item.category}}
+                                </span>
+                            </div>
+                            <h3 class="blog-item__title">
+                                {{ item.title }}
+                            </h3>
+                            <p class="blog-item__excerpt">
+                                {{ item.excerpt }}
+                            </p>
+                            <span class="blog-item__link">
+                                Read More 
+                                <span class="arrow">→</span>
                         </span>
                     </div>
-
                 </a>
-
             </div>
-
         </div>
 
         <!-- Pagination Dots -->
-        <div class="blog__dots" *ngIf="news.length > 3">
-            <span *ngFor="let item of news; let i = index" class="dot">
+        <div class="blog__dots" *ngIf="pageCount > 1">
+            <span 
+                *ngFor="let _ of pages; let i = index" 
+                class="dot"
+                [class.active]="i === currentPage"
+                (click)="goToPage(i)"
+                >
             </span>
         </div>
+    </app-reveal>
 
     </div>
 </section>

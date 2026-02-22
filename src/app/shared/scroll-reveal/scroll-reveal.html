@@ -1,0 +1,12 @@
+<h2 #container class="scroll-reveal {{ containerClassName }}" [ngStyle]="{
+    'max-width': maxWidth,
+    'margin-left': align === 'center' ? 'auto' : null,
+    'margin-right': align === 'center' ? 'auto' : null
+  }">
+    <p class="scroll-reveal-text {{ textClassName }}">
+        <ng-container *ngFor="let word of words">
+            <span *ngIf="!word.trim()" [innerHTML]="word"></span>
+            <span *ngIf="word.trim()" class="word">{{ word }}</span>
+        </ng-container>
+    </p>
+</h2>

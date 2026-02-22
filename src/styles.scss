@@ -4,7 +4,7 @@
     --color-white: #ffffff;
     --color-black: #050a12;
     --color-gray: #BABFC3;
-    --color-primary: #528CFF;
+    --color-accent: #528CFF;
     --color-secondary: #030039;
     --color-red: rgb(176, 97, 0);
 
@@ -16,6 +16,10 @@
     --text: 1.25rem;
     --text-xl: 2rem;
     --text-2xl: 4rem;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .text {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export type NewsCategory = 'announcement' | 'news';
+export type NewsCategory = 'announcement' | 'article';
 
 export interface NewsItem {
     id: number;
@@ -22,16 +22,16 @@ export class NewsService {
         {
             id: 1,
             title: 'Feather Dynamics joins DARPA Lift 2026',
-            slug: 'advancements-in-uav-surveillance',
+            slug: 'feather-dynamics-joins-darpa-lift-2026',
             excerpt: 'Exploring next-generation aerial intelligence systems.',
-            content: 'Full article content here...',
+            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',
             image: '/assets/news/news-1.png',
             publishedAt: new Date('2026-02-19'),
-            category: 'news'
+            category: 'article'
         },
         {
             id: 2,
-            title: 'Advancements in UAV Surveillance',
+            title: 'Advancements in UAV Surveillance 1',
             slug: 'advancements-in-uav-surveillance',
             excerpt: 'Exploring next-generation aerial intelligence systems.',
             content: 'Full article content here...',
@@ -40,9 +40,9 @@ export class NewsService {
             category: 'announcement'
         },
         {
-            id: 2,
+            id: 3,
             title: 'Advancements in UAV Surveillance',
-            slug: 'advancements-in-uav-surveillance',
+            slug: 'advancements-in-uav-surveillance-2',
             excerpt: 'Exploring next-generation aerial intelligence systems.',
             content: 'Full article content here...',
             image: '/assets/images/ril_p3.JPG',

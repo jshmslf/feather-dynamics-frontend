@@ -1,19 +1,19 @@
-<app-page-header [title]="'What We Do'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+<app-page-header [title]="'What We Do'" [bgImage]="'/assets/images/mobility.png'"></app-page-header>
 
 <section class="what-section">
 
     <!-- Section Header -->
     <div class="section-header">
-        <div class="header-rule"></div>
-        <div class="header-meta">
+        <!-- <div class="header-rule" #headerRule></div> -->
+        <!-- <div class="header-meta" #headerMeta>
             <span class="overline">What We Do</span>
             <span class="count">4 Capabilities</span>
-        </div>
-        <h2 class="section-title">
+        </div> -->
+        <h2 class="section-title" #sectionTitle>
             <span class="title-line">Engineering the</span>
             <span class="title-line accent">Future of Flight</span>
         </h2>
-        <p class="section-sub">
+        <p class="section-sub" #sectionSub>
             From autonomous defense systems to next-generation R&amp;D, Feather Dynamics operates across four
             interconnected capability domains — each built on patented technology, AI-driven intelligence, and a
             commitment to performance in the most demanding environments on Earth.
@@ -60,7 +60,6 @@
                 <!-- Expandable Body -->
                 <div class="card-body" [class.expanded]="isActive(i)">
                     <p class="card-text">{{ platform.body }}</p>
-
                 </div>
 
             </div>
@@ -70,9 +69,9 @@
     </div>
 
     <!-- Bottom Accent -->
-    <div class="section-footer">
+    <div class="section-footer" #sectionFooter>
         <div class="footer-line"></div>
-        <span class="footer-note">All platforms manufactured in the United States of America</span>
+        <span class="footer-note">Feather Dynamics</span>
         <div class="footer-line"></div>
     </div>
 

@@ -1,82 +1,67 @@
-<app-page-header
-    [title]="'News'"
-    [bgImage]="'/assets/images/5.jpg'"
-></app-page-header>
+<app-page-header [title]="'News'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
 
 <section class="news-page">
     <div class="news-page__inner">
 
         <!-- LEFT: News List -->
         <div class="news-list">
-            <article class="news-card" *ngFor="let item of news">
+            <a class="news-card" *ngFor="let item of filteredNews" [routerLink]="['/news', item.category, item.slug]"
+                #newsCard>
+
                 <div class="news-card__image">
                     <img [src]="item.image" [alt]="item.title" />
                 </div>
 
                 <div class="news-card__content">
-                    <span class="news-card__category">
-                        {{ item.category }}
-                    </span>
-
-                    <h2 class="news-card__title">
-                        {{ item.title }}
-                    </h2>
-
-                    <p class="news-card__excerpt">
-                        {{ item.excerpt }}
-                    </p>
-
+                    <span class="news-card__category">{{ item.category }}</span>
+                    <h2 class="news-card__title">{{ item.title }}</h2>
+                    <p class="news-card__excerpt">{{ item.excerpt }}</p>
                     <time class="news-card__date">
                         {{ item.publishedAt | date:'longDate' }}
                     </time>
                 </div>
-            </article>
+            </a>
         </div>
 
         <!-- RIGHT: Navigator -->
-        <aside class="news-sidebar">
+        <aside class="news-sidebar" #newsSidebar>
             <div class="news-sidebar__inner">
 
                 <!-- Search -->
                 <div class="sidebar-block">
-                    <input type="text" placeholder="Search news" class="sidebar-search" />
+                    <input type="text" placeholder="Search news" class="sidebar-search" [value]="searchTerm"
+                        (input)="onSearch($any($event.target).value)" />
                 </div>
 
                 <!-- Categories -->
                 <div class="sidebar-block">
                     <h3 class="sidebar-title">Category</h3>
                     <ul class="sidebar-list">
-                        <li>News</li>
-                        <li>Announcement</li>
+                        <li *ngFor="let cat of categories" [class.active]="activeCategory === cat"
+                            (click)="filterByCategory(cat)">
+                            {{ cat | titlecase }}
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Recent -->
                 <div class="sidebar-block">
                     <h3 class="sidebar-title">Recent Posts</h3>
-
                     <ul class="sidebar-recent">
                         <li class="recent-item" *ngFor="let item of recentNews">
-                            <!-- Image group -->
-                            <div class="recent-item__image">
-                                <img [src]="item.image" [alt]="item.title" />
-                            </div>
-
-                            <!-- Info group -->
-                            <div class="recent-item__content">
-                                <div class="recent-item__meta">
-                                    <span class="recent-item__category">
-                                        {{ item.category }}
-                                    </span>
-                                    <span class="recent-item__date">
-                                        {{ item.publishedAt | date:'mediumDate' }}
-                                    </span>
+                            <a class="recent-item__link" [routerLink]="['/news', item.category, item.slug]">
+                                <div class="recent-item__image">
+                                    <img [src]="item.image" [alt]="item.title" />
                                 </div>
-
-                                <p class="recent-item__title">
-                                    {{ item.title }}
-                                </p>
-                            </div>
+                                <div class="recent-item__content">
+                                    <div class="recent-item__meta">
+                                        <span class="recent-item__category">{{ item.category }}</span>
+                                        <span class="recent-item__date">{{ item.publishedAt | date:'mediumDate'
+                                            }}</span>
+                                    </div>
+                                    <p class="recent-item__title">{{ item.title }}</p>
+                                </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -85,9 +70,7 @@
                 <div class="sidebar-block">
                     <h3 class="sidebar-title">Tags</h3>
                     <div class="sidebar-tags">
-                        <span class="tag">UAV</span>
-                        <span class="tag">Defense</span>
-                        <span class="tag">AI</span>
+                        <span class="tag" *ngFor="let tag of tags">{{ tag }}</span>
                     </div>
                 </div>
 

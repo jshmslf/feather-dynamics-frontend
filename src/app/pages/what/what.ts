@@ -6,7 +6,9 @@ import {
   Inject,
   ElementRef,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  ViewChild,
+  AfterViewInit
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PageHeader } from '../../shared/page-header/page-header';
@@ -27,9 +29,16 @@ interface Platform {
   templateUrl: './what.html',
   styleUrls: ['./what.scss']
 })
-export class What implements OnInit, OnDestroy {
+export class What implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChildren('platformCard') cards!: QueryList<ElementRef>;
+
+  // Header element refs for intro animations
+  @ViewChild('headerRule') headerRuleRef!: ElementRef;
+  @ViewChild('headerMeta') headerMetaRef!: ElementRef;
+  @ViewChild('sectionTitle') sectionTitleRef!: ElementRef;
+  @ViewChild('sectionSub') sectionSubRef!: ElementRef;
+  @ViewChild('sectionFooter') sectionFooterRef!: ElementRef;
 
   isBrowser: boolean;
   activeIndex: number = -1;
@@ -40,7 +49,7 @@ export class What implements OnInit, OnDestroy {
       index: '01',
       category: 'Aerial Systems',
       title: 'Defence & Security Platforms',
-      tag: 'Made in USA · Patented Technology',
+      tag: 'Patented Technology',
       image: '/assets/images/uavmodel.jpg',
       body: `Feather Dynamics' Defense & Security Platforms comprise a family of advanced aerial UAVs engineered to support the evolving operational needs of the United States Department of War and its allied partners. Made in the USA, these systems are built on patented technologies and developed under strict standards, delivering durability, survivability, and reliability in contested and austere environments. Each platform features a modular airframe architecture, enabling rapid configuration for intelligence, surveillance, reconnaissance and tactical support missions. AI-enabled autonomy enhances intelligent flight performance, target tracking, and mission execution, while advanced secure communications and onboard processing deliver superior situational awareness in real time.`
     },
@@ -76,9 +85,11 @@ export class What implements OnInit, OnDestroy {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
     if (this.isBrowser) {
-      this.initScrollObserver();
+      setTimeout(() => this.initScrollObserver(), 100);
     }
   }
 
@@ -89,19 +100,33 @@ export class What implements OnInit, OnDestroy {
   }
 
   private initScrollObserver(): void {
-    setTimeout(() => {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      this.cards?.forEach(card => {
-        this.observer.observe(card.nativeElement);
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
       });
-    }, 100);
+    }, { threshold: 0.1 });
+
+    // Observe platform cards
+    this.cards?.forEach(card => {
+      this.observer.observe(card.nativeElement);
+    });
+
+    // Observe header elements
+    const headerTargets = [
+      this.headerRuleRef,
+      this.headerMetaRef,
+      this.sectionTitleRef,
+      this.sectionSubRef,
+      this.sectionFooterRef
+    ];
+
+    headerTargets.forEach(ref => {
+      if (ref?.nativeElement) {
+        this.observer.observe(ref.nativeElement);
+      }
+    });
   }
 
   setActive(index: number): void {

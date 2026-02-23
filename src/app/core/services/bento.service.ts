@@ -25,7 +25,7 @@ export class BentoService {
             },
             {
                 src: '/assets/images/ril_p1.jpg',
-                title: '3-Axis EO-IR Dirigible',
+                title: '3-Axis EO-IR Dirigible',    
             },
             {
                 src: '/assets/images/4.jpg',
@@ -70,10 +70,6 @@ export class BentoService {
             {
                 src: '/assets/images/ril_p6.JPG',
                 title: 'Gen-4 EO/IR Gimbal & Control Panel',
-            },
-            {
-                src: '/assets/images/mobility.png',
-                title: ''
             },
             {
                 src: '/assets/images/ril_photo1.jpg',

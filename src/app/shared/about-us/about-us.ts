@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RevealComponent } from "../reveal/reveal";
 
 @Component({
   selector: 'app-about-us',
-  imports: [],
+  imports: [RevealComponent],
   templateUrl: './about-us.html',
   styleUrl: './about-us.scss',
 })

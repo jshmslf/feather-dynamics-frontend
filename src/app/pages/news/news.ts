@@ -1,42 +1,73 @@
-import { Component, inject } from '@angular/core';
-import { PageHeader } from "../../shared/page-header/page-header";
-import { CommonModule } from '@angular/common';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  PLATFORM_ID,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  inject
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { PageHeader } from '../../shared/page-header/page-header';
 import { NewsItem, NewsService } from '../../core/services/news.service';
 
 @Component({
   selector: 'app-news',
-  imports: [PageHeader, CommonModule],
+  standalone: true,
+  imports: [PageHeader, CommonModule, RouterModule],
   templateUrl: './news.html',
   styleUrl: './news.scss',
 })
-export class News {
+export class News implements AfterViewInit {
 
   private newsService = inject(NewsService);
 
-  /** Full dataset */
-  news: NewsItem[] = [];
+  @ViewChildren('newsCard') newsCards!: QueryList<ElementRef>;
+  @ViewChild('newsSidebar') newsSidebar!: ElementRef;
 
-  /** Filtered list (used by UI) */
+  news: NewsItem[] = [];
   filteredNews: NewsItem[] = [];
 
-  /** Sidebar data */
   categories: ('news' | 'announcement')[] = ['news', 'announcement'];
   recentNews: NewsItem[] = [];
   tags: string[] = ['UAV', 'Defense', 'AI', 'Aerial'];
 
-  /** Search */
   searchTerm = '';
   activeCategory: 'news' | 'announcement' | null = null;
 
-  constructor() {
-    this.news = this.newsService.getAll();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.news         = this.newsService.getAll();
     this.filteredNews = [...this.news];
-    this.recentNews = this.news.slice(0, 5);
+    this.recentNews   = this.news.slice(0, 5);
   }
 
-  /* =====================
-     FILTERS
-  ===================== */
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    setTimeout(() => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+
+      // Observe each card with staggered delay via CSS nth-child
+      this.newsCards?.forEach(card => {
+        observer.observe(card.nativeElement);
+      });
+
+      // Observe sidebar
+      if (this.newsSidebar?.nativeElement) {
+        observer.observe(this.newsSidebar.nativeElement);
+      }
+    }, 100);
+  }
 
   onSearch(value: string): void {
     this.searchTerm = value.toLowerCase();
@@ -44,8 +75,7 @@ export class News {
   }
 
   filterByCategory(category: 'news' | 'announcement'): void {
-    this.activeCategory =
-      this.activeCategory === category ? null : category;
+    this.activeCategory = this.activeCategory === category ? null : category;
     this.applyFilters();
   }
 

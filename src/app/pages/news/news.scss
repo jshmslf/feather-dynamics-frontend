@@ -3,6 +3,9 @@ $gray: #666;
 $light: #f4f4f4;
 $accent: #eaeaea;
 
+$ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
 .news-page {
     padding: 4rem 1.5rem;
     background: #fff;
@@ -26,14 +29,58 @@ $accent: #eaeaea;
     gap: 3rem;
 }
 
+// ── Card: base hidden state ──
 .news-card {
     display: grid;
     grid-template-columns: 1fr;
+    text-decoration: none;
+    color: inherit;
+
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.6s $ease-smooth,
+        transform 0.6s $ease-expo;
+
+    // Stagger each card via nth-child
+    &:nth-child(1) {
+        transition-delay: 0s;
+    }
+
+    &:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    &:nth-child(3) {
+        transition-delay: 0.18s;
+    }
+
+    &:nth-child(4) {
+        transition-delay: 0.24s;
+    }
+
+    &:nth-child(n+5) {
+        transition-delay: 0.28s;
+    }
+
+    &.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.news-card__image img {
-    width: 100%;
-    display: block;
+.news-card__image {
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        display: block;
+        transition: transform 0.65s $ease-expo;
+    }
+}
+
+.news-card:hover .news-card__image img {
+    transform: scale(1.04);
 }
 
 .news-card__content {
@@ -79,6 +126,18 @@ $accent: #eaeaea;
 
 .news-sidebar {
     position: relative;
+
+    // ── Sidebar: slide in from right ──
+    opacity: 0;
+    transform: translateX(24px);
+    transition:
+        opacity 0.65s $ease-smooth 0.15s,
+        transform 0.65s $ease-expo 0.15s;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .news-sidebar__inner {
@@ -108,6 +167,7 @@ $accent: #eaeaea;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 1rem;
     font-family: var(--font-header);
+    background: transparent;
 
     &:focus {
         outline: none;
@@ -126,6 +186,13 @@ $accent: #eaeaea;
         font-size: 0.9rem;
         color: $gray;
         cursor: pointer;
+        transition: color 0.2s, padding-left 0.25s $ease-smooth;
+
+        &.active {
+            color: $black;
+            padding-left: 8px;
+            border-left: 1px solid $black;
+        }
     }
 }
 
@@ -141,6 +208,8 @@ $accent: #eaeaea;
     text-transform: uppercase;
     background: $accent;
     padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .sidebar-icon img {
@@ -162,10 +231,21 @@ $accent: #eaeaea;
 }
 
 .recent-item {
+    display: block;
+}
+
+.recent-item__link {
     display: grid;
     grid-template-columns: 64px 1fr;
     gap: 0.8rem;
-    align-items: stretch;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .recent-item__image {
@@ -173,14 +253,15 @@ $accent: #eaeaea;
     height: 64px;
     background: #eaeaea;
     overflow: hidden;
-}
+    flex-shrink: 0;
 
-.recent-item__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(100%);
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%);
+    }
 }
 
 .recent-item__content {
@@ -209,6 +290,7 @@ $accent: #eaeaea;
     font-size: 0.85rem;
     line-height: 1.4;
     color: $black;
+    margin: 0;
 }
 
 /* =====================

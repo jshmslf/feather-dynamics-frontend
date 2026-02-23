@@ -1,16 +1,17 @@
 <section class="who" #whoSection>
     <img class="who__bg" src="/assets/decos/video-deco-back-1.png" alt="Background decoration" />
+    <app-reveal>
 
-    <div class="who__container">
-
-        <div class="who__group who__group--left">
-            <div class="who__top">
+        <div class="who__container">
+            
+            <div class="who__group who__group--left">
+                <div class="who__top">
                 <app-reveal [blur]="true">
                     <span class="who__label text-lg">Who We Are</span>
                     <h2 class="who__title">Feather<br />Dynamics</h2>
                 </app-reveal>
             </div>
-
+            
             <div class="who__bottom">
                 <app-reveal [blur]="true" [threshold]="0.2">
                     <p class="who__description text">
@@ -21,19 +22,21 @@
                         mission-driven development.
                     </p>
                 </app-reveal>
-                <app-reveal [blur]="true" [threshold]="0.3">
-                    <button class="who__btn">
-                        <span>Learn More</span>
-                        <i-lucide [img]="ArrowRight" size="16"></i-lucide>
-                    </button>
+                <app-reveal [blur]="true">
+                    <div class="btn_wrapper">
+                        <a class="who__btn" href="/who-we-are">
+                            <span>Learn More</span>
+                        </a>
+                    </div>
                 </app-reveal>
-
+                
             </div>
         </div>
-
-            <div class="who__group who__group--right">
-                <img src="/assets/images/unnamed.png" alt="">
-            </div>
-
+        
+        <div class="who__group who__group--right" #whoImageRef>
+            <img src="/assets/images/unnamed.png" alt="">
+        </div>
+        
     </div>
+</app-reveal>
 </section>

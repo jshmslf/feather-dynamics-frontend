@@ -1,96 +1,163 @@
 <div class="contact-us-section">
-<app-page-header [title]="'Contact Us'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+    <app-page-header [title]="'Contact Us'" [bgImage]="'/assets/images/6.jpg'"></app-page-header>
 
+    <section class="contact-us">
 
-<section class="contact-us">
-    <div class="container">
-        <div class="row">
-            
-            <!-- Group 1: Info -->
-            <div class="contact-info">
-                <h2>Contact Us</h2>
-                <p class="lead">Have questions? Get in touch!</p>
-                
-                <div class="contact-item">
-                    <i-lucide [img]="map_pin"></i-lucide>
-                    <span>Monterey, California, USA</span>
+        <!-- Background deco -->
+        <!-- <div class="bg-deco" aria-hidden="true">
+            <img src="/assets/decos/video-deco-back-1.png" alt="" class="bg-deco-img" />
+        </div> -->
+
+        <div class="contact-grid">
+
+            <!-- ── Info Panel ── -->
+            <div class="info-panel" #infoPanel>
+               
+
+                <h2 class="info-title" #infoTitle>
+                    <span class="title-line">Let's</span>
+                    <span class="title-line accent">Connect.</span>
+                </h2>
+
+                <p class="info-lead" #infoLead>
+                    Have questions about our platforms or capabilities? Reach out — our team responds within one
+                    business day.
+                </p>
+
+                <div class="info-items" #infoItems>
+                    <div class="info-item">
+                        <div class="item-icon">
+                            <i-lucide [img]="map_pin"></i-lucide>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-label">Location</span>
+                            <span class="item-value">Monterey, California, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="item-icon">
+                            <i-lucide [img]="mail"></i-lucide>
+                        </div>
+                        <div class="item-content">
+                            <span class="item-label">Email</span>
+                            <span class="item-value">info&#64;featherdynamics.com</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="contact-item">
-                    <i-lucide [img]="mail"></i-lucide>
-                    <span>info@featherdynamics.com</span>
-                </div>
+
+                <!-- Decorative index -->
+                <div class="info-deco-num" aria-hidden="true">FD</div>
             </div>
-            
-            <!-- Group 2: Form -->
-            <div class="contact-form">
-                <form>
-                    
+
+            <!-- ── Form Panel ── -->
+            <div class="form-panel" #formPanel>
+                <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+
                     <!-- Row 1 -->
                     <div class="form-row">
-                        <div class="input-group">
-                            <i-lucide [img]="user"></i-lucide>
-                            <input type="text" placeholder="Your Name" required />
-                            <span class="border-anim"></span>
+                        <div class="field-group" [class.has-value]="nameValue">
+                            <label class="field-label">Name</label>
+                            <div class="field-inner">
+                                <i-lucide [img]="user" class="field-icon"></i-lucide>
+                                <input type="text" name="name" [(ngModel)]="formData.name"
+                                    (input)="nameValue = formData.name" placeholder="Your Name" required />
+                            </div>
+                            <div class="field-line"></div>
                         </div>
-                        <div class="input-group">
-                            <i-lucide [img]="mail"></i-lucide>
-                            <input type="email" placeholder="Email Address" required />
-                            <span class="border-anim"></span>
+
+                        <div class="field-group" [class.has-value]="emailValue">
+                            <label class="field-label">Email</label>
+                            <div class="field-inner">
+                                <i-lucide [img]="mail" class="field-icon"></i-lucide>
+                                <input type="email" name="email" [(ngModel)]="formData.email"
+                                    (input)="emailValue = formData.email" placeholder="Email Address" required />
+                            </div>
+                            <div class="field-line"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Row 2 -->
                     <div class="form-row">
-                        <div class="input-group">
-                            <i-lucide [img]="phone"></i-lucide>
-                            <input type="text" placeholder="Phone" />
-                            <span class="border-anim"></span>
+                        <div class="field-group" [class.has-value]="phoneValue">
+                            <label class="field-label">Phone</label>
+                            <div class="field-inner">
+                                <i-lucide [img]="phone" class="field-icon"></i-lucide>
+                                <input type="tel" name="phone" [(ngModel)]="formData.phone"
+                                    (input)="phoneValue = formData.phone" placeholder="Phone Number" />
+                            </div>
+                            <div class="field-line"></div>
                         </div>
-                        <div class="input-group">
-                            <i-lucide [img]="info"></i-lucide>
-                            <input type="text" placeholder="Subject" />
-                            <span class="border-anim"></span>
+
+                        <div class="field-group" [class.has-value]="subjectValue">
+                            <label class="field-label">Subject</label>
+                            <div class="field-inner">
+                                <i-lucide [img]="info" class="field-icon"></i-lucide>
+                                <input type="text" name="subject" [(ngModel)]="formData.subject"
+                                    (input)="subjectValue = formData.subject" placeholder="Subject" />
+                            </div>
+                            <div class="field-line"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Row 3: Message -->
                     <div class="form-row">
-                        <div class="input-group full-width">
-                            <i-lucide [img]="penline"></i-lucide>
-                            <textarea placeholder="How can we help you?" rows="5"></textarea>
-                            <span class="border-anim"></span>
+                        <div class="field-group full-width" [class.has-value]="messageValue">
+                            <label class="field-label">Message</label>
+                            <div class="field-inner align-top">
+                                <i-lucide [img]="penline" class="field-icon icon-top"></i-lucide>
+                                <textarea name="message" [(ngModel)]="formData.message"
+                                    (input)="messageValue = formData.message" placeholder="How can we help you?"
+                                    rows="5"></textarea>
+                            </div>
+                            <div class="field-line"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Row 4: Checkbox -->
                     <div class="form-row checkbox-row">
-                        <label>
-                            <input type="checkbox" required />
-                            I agree that my data is 
-                            <a href="/policy">
-                                collected and stored.
-                            </a>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="consent" [(ngModel)]="formData.consent" required />
+                            <span class="checkbox-box"></span>
+                            <span class="checkbox-text">
+                                I agree that my data is
+                                <a href="/policy">collected and stored.</a>
+                            </span>
                         </label>
                     </div>
-                    
-                    <!-- Row 5: Send Button -->
-                    <div class="form-row">
-                        <button type="submit"> Send
+
+                    <!-- Row 5: Submit -->
+                    <div class="form-row submit-row">
+                        <button type="submit" class="submit-btn" [class.loading]="isLoading">
+                            <span class="btn-text">{{ isLoading ? 'Sending…' : 'Send Message' }}</span>
+                            <i-lucide [img]="send" class="btn-icon"></i-lucide>
                         </button>
                     </div>
-                    
+
                 </form>
             </div>
 
         </div>
+    </section>
+
+    <app-reveal>
+        <app-logo-loop [logos]="logos" [speed]="50" [pauseOnHover]="false" [direction]="'left'" [logoHeight]="150"
+            [gap]="80">
+        </app-logo-loop>
+    </app-reveal>
+</div>
+
+<!-- ── Popup Overlay ── -->
+<div class="popup-overlay" [class.visible]="popupVisible" (click)="closePopup()" aria-live="polite">
+    <div class="popup-card" [class.success]="popupType === 'success'" [class.error]="popupType === 'error'"
+        (click)="$event.stopPropagation()">
+        <div class="popup-icon-wrap">
+            <i-lucide *ngIf="popupType === 'success'" [img]="checkCircle" class="popup-icon"></i-lucide>
+            <i-lucide *ngIf="popupType === 'error'" [img]="xCircle" class="popup-icon"></i-lucide>
+        </div>
+        <div class="popup-rule"></div>
+        <h3 class="popup-title">{{ popupType === 'success' ? 'Message Sent' : 'Submission Failed' }}</h3>
+        <p class="popup-body">{{ popupMessage }}</p>
+        <button class="popup-close" (click)="closePopup()">Dismiss</button>
     </div>
-</section>
-<app-reveal>
-    <app-logo-loop [logos]="logos" [speed]="50" [pauseOnHover]="false" [direction]="'left'" [logoHeight]="150"
-    [gap]="80">
-</app-logo-loop>
-</app-reveal>
-
-
 </div>

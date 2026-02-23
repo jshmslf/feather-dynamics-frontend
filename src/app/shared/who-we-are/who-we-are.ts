@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { LucideAngularModule, Target, Shield, Cpu, ArrowRight } from 'lucide-angular';
 import { RevealComponent } from "../reveal/reveal";
 
@@ -12,7 +12,8 @@ import { RevealComponent } from "../reveal/reveal";
 })
 export class WhoWeAre implements AfterViewInit {
   @ViewChild('whoSection') whoSection!: ElementRef;
-  
+  @ViewChild('whoImageRef') whoImageGroup!: ElementRef;
+
   readonly Target = Target;
   readonly Shield = Shield;
   readonly Cpu = Cpu;
@@ -26,11 +27,15 @@ export class WhoWeAre implements AfterViewInit {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('active', 'in-view');
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0  });
 
     observer.observe(this.whoSection.nativeElement);
+
+    if (this.whoImageGroup?.nativeElement) {
+      observer.observe(this.whoImageGroup.nativeElement);
+    }
   }
 }

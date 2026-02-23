@@ -10,9 +10,9 @@
         </app-reveal>
 
         <app-reveal [blur]="true">
-            <div class="blog__viewport" #viewport>
+            <div class="blog__viewport" #viewport [class.is-draggable]="pageCount > 1">
                 <div class="blog__grid" [class.center-single]="news.length === 1">
-                    <a class="blog-item" *ngFor="let item of news; let i = index" [routerLink]="['/news', item.slug]" [class.no-pointer]="isDraggingActive" draggable="false">
+                    <a class="blog-item" *ngFor="let item of news; let i = index" [routerLink]="['/news', item.category, item.slug]" [class.no-pointer]="isDraggingActive" draggable="false">
                         <div class="blog-item__image">
                             <img [src]="item.image" [alt]="item.title" />
                         </div>

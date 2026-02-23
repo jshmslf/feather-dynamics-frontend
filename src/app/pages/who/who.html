@@ -1,7 +1,7 @@
-<app-page-header [title]="'Who We Are'" [bgImage]="'/assets/images/5.jpg'"></app-page-header>
+<app-page-header [title]="'Who We Are'" [bgImage]="'/assets/images/ril_p4.jpg'"></app-page-header>
 
 <section class="bento">
-    <div class="bento__container">
+    <div class="bento__container" #bentoContainer>
 
         <div class="bento__item" *ngFor="let image of images; let i = index" [attr.data-index]="i">
 
@@ -10,9 +10,7 @@
             <div class="bento__overlay"></div>
 
             <div class="bento__content" *ngIf="image.title">
-                <span class="bento__title">
-                    {{ image.title }}
-                </span>
+                <span class="bento__title">{{ image.title }}</span>
             </div>
 
         </div>

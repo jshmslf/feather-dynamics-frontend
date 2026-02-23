@@ -1,739 +1,560 @@
-// ─── Google Fonts Import ─────────────────────────────────────────
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400&display=swap');
-
-// ─── Design Tokens ───────────────────────────────────────────────
-$c-bg: #ffffff;
-$c-surface: #f7f8fa;
-$c-surface-2: #eef1f5;
-
-$c-border: rgba(0, 0, 0, 0.08);
-$c-border-hover: rgba(0, 0, 0, 0.16);
-
-$c-text: #0f172a;
-$c-text-dim: #475569;
-$c-text-muted: #94a3b8;
-
-$c-accent: var(--color-accent);
-$c-accent-cold: #4e8fcc;
-$c-rule: rgba(184, 155, 94, 0.35);
-$accordion-collapsed-height: 96px;
-
 $font-display: 'Bebas Neue', 'Impact', sans-serif;
 $font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
 $font-mono: 'DM Mono', 'Courier New', monospace;
 
+$c-bg: #ffffff;
+$c-surface: #f7f8fa;
+$c-surface-2: #eef1f5;
+$c-border: rgba(0, 0, 0, 0.08);
+$c-border-hover: rgba(0, 0, 0, 0.16);
+$c-text: #0f172a;
+$c-text-dim: #475569;
+$c-text-muted: #94a3b8;
+$c-accent: var(--color-accent);
+$c-accent-cold: #4e8fcc;
+$accordion-collapsed-height: 96px;
+
 $ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
-// ─── Base ────────────────────────────────────────────────────────
 .what-section {
-    background: $c-bg;
-    min-height: 100vh;
-    padding: 80px 20px;
+  background: $c-bg;
+  min-height: 100vh;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+  font-family: $font-body;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  >* {
     position: relative;
-    overflow: hidden;
-    font-family: $font-body;
-
-    &::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.6;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image:
-            linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-        background-size: 80px 80px;
-        pointer-events: none;
-    }
-
-    >* {
-        position: relative;
-        z-index: 1;
-    }
+    z-index: 1;
+  }
 }
 
-// ─── Section Header ───────────────────────────────────────────────
 .section-header {
-    max-width: 1400px;
-    margin: 0 auto 64px;
-    padding: 0 4px;
-}
-
-.header-rule {
-    width: 48px;
-    height: 1px;
-    background: $c-accent;
-    margin-bottom: 24px;
-}
-
-.header-meta {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 28px;
-}
-
-.overline {
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: $c-accent;
-}
-
-.count {
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: $c-text-muted;
-    padding: 3px 10px;
-    border: 1px solid $c-border;
+  max-width: 1400px;
+  margin: 0 auto 64px;
+  padding: 0 4px;
 }
 
 .section-title {
-    font-family: $font-display;
-    font-size: clamp(52px, 9vw, 120px);
-    font-weight: 400;
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    color: $c-text;
-    margin: 0 0 32px;
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
+  font-family: $font-display;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: $c-text;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s $ease-smooth 0.18s, transform 0.65s $ease-expo 0.18s;
 
-    .title-line {
-        display: block;
-    }
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .accent {
-        color: $c-accent;
-        // Bebas Neue has no italic, use a slight skew for effect
-        display: inline-block;
-        transform: skewX(-2deg);
-    }
+  .title-line {
+    display: block;
+  }
+
+  .accent {
+    color: $c-accent;
+    display: inline-block;
+    transform: skewX(-2deg);
+  }
 }
 
 .section-sub {
-    max-width: 640px;
-    font-size: 13px;
-    line-height: 1.85;
-    color: $c-text-dim;
-    font-weight: 300;
-    margin: 0;
+  max-width: 640px;
+  font-size: var(--text);
+  line-height: 1.85;
+  color: $c-text-dim;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s $ease-smooth 0.28s, transform 0.6s $ease-expo 0.28s;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-// ─── Platforms Container ──────────────────────────────────────────
 .platforms-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-// ─── Platform Card ────────────────────────────────────────────────
 .platform-card {
-    position: relative;
-    border-top: 1px solid $c-border;
-    cursor: pointer;
-    transition: background 0.35s $ease-smooth;
-
-    // Left accent bar
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: $c-accent;
-        transform: scaleY(0);
-        transform-origin: bottom;
-        transition: transform 0.45s $ease-expo;
-        z-index: 2;
-    }
-
-    // Scroll reveal
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s $ease-expo,
+  position: relative;
+  border-top: 1px solid $c-border;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s $ease-expo,
     transform 0.65s $ease-expo,
     background 0.35s $ease-smooth;
 
-    &.in-view {
-        opacity: 1;
-        transform: translateY(0);
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $c-accent;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.45s $ease-expo;
+    z-index: 2;
+  }
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:nth-child(1) {
+    transition-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    transition-delay: 0.08s;
+  }
+
+  &:nth-child(3) {
+    transition-delay: 0.16s;
+  }
+
+  &:nth-child(4) {
+    transition-delay: 0.24s;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $c-border;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.018);
+
+    &::before {
+      transform: scaleY(1);
     }
 
-    &:nth-child(1) {
-        transition-delay: 0s;
+    .card-number {
+      color: $c-accent;
     }
 
-    &:nth-child(2) {
-        transition-delay: 0.08s;
+    .divider-line {
+      background: $c-border-hover;
     }
 
-    &:nth-child(3) {
-        transition-delay: 0.16s;
+    .card-image {
+      transform: scale(1.04);
     }
 
-    &:nth-child(4) {
-        transition-delay: 0.24s;
+    .image-accent-bar {
+      width: 40px;
+    }
+  }
+
+  &.active {
+    background: $c-surface-2;
+
+    &::before {
+      transform: scaleY(1);
     }
 
-    &:last-child {
-        border-bottom: 1px solid $c-border;
+    .card-number {
+      color: $c-accent;
     }
 
-    &:hover {
-        background: rgba(255, 255, 255, 0.018);
-
-        &::before {
-            transform: scaleY(1);
-        }
-
-        .card-number {
-            color: $c-accent;
-        }
-
-        .divider-line {
-            background: $c-border-hover;
-        }
-
-        .card-image {
-            transform: scale(1.04);
-        }
-
-        .image-accent-bar {
-            width: 40px;
-        }
+    .expand-icon {
+      color: $c-accent;
     }
 
-    &.active {
-        background: $c-surface-2;
-
-        &::before {
-            transform: scaleY(1);
-        }
-
-        .card-number {
-            color: $c-accent;
-        }
-
-        .expand-icon {
-            color: $c-accent;
-        }
-
-        .card-image {
-            transform: scale(1.02);
-        }
-
-        .card-image-frame {
-            border-color: rgba($c-accent, 0.3);
-        }
+    .card-image {
+      transform: scale(1.02);
     }
+
+    .card-image-frame {
+      border-color: rgba(184, 155, 94, 0.3);
+    }
+  }
 }
 
-// ─── Mobile Layout: stacked ───────────────────────────────────────
-// Image on top, content below
 .card-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: visible; // allow accent bar to overflow
-    flex-shrink: 0;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: visible;
+  flex-shrink: 0;
 }
 
 .card-image-frame {
-    position: relative;
-    width: calc(100% - 24px);
-    height: 100%;
-    overflow: hidden;
-    border: 1px solid $c-border;
-    transition: border-color 0.3s;
+  position: relative;
+  width: calc(100% - 24px);
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid $c-border;
+  transition: border-color 0.3s;
 }
 
 .card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.65s $ease-expo;
-    filter: grayscale(20%) brightness(0.75);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s $ease-expo;
+  filter: grayscale(20%) brightness(0.75);
 }
 
 .image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom,
-            transparent 40%,
-            rgba($c-bg, 0.85) 100%);
-    pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba($c-bg, 0.85) 100%);
+  pointer-events: none;
 }
 
 .image-label {
-    position: absolute;
-    bottom: 10px;
-    left: 12px;
-    font-family: $font-mono;
-    font-size: 8px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: $c-accent;
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-family: $font-mono;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $c-accent;
 }
 
-// Offset accent bar — hangs off the right edge of the image frame
 .image-accent-bar {
-    position: absolute;
-    right: 0;
-    bottom: 20px;
-    width: 24px;
-    height: 2px;
-    background: $c-accent;
-    transition: width 0.4s $ease-expo;
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  width: 24px;
+  height: 2px;
+  background: $c-accent;
+  transition: width 0.4s $ease-expo;
 }
 
-// ─── Card Content ─────────────────────────────────────────────────
 .card-content {
-    padding: 28px 20px 32px;
+  padding: 28px 20px 32px;
 }
 
-// ─── Card Number ──────────────────────────────────────────────────
 .card-number {
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: $c-text-muted;
-    margin-bottom: 14px;
-    transition: color 0.3s;
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: $c-text-muted;
+  margin-bottom: 14px;
+  transition: color 0.3s;
 }
 
-// ─── Card Header Row ──────────────────────────────────────────────
 .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .card-category {
-    font-family: $font-mono;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: $c-accent-cold;
+  font-family: $font-mono;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $c-accent-cold;
 }
 
 .card-tag {
-    font-family: $font-mono;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    color: $c-text-muted;
-    padding: 2px 8px;
-    border: 1px solid $c-border;
-    white-space: nowrap;
+  font-family: $font-mono;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: $c-text-muted;
+  padding: 2px 8px;
+  border: 1px solid $c-border;
+  white-space: nowrap;
 }
 
-// ─── Card Title ───────────────────────────────────────────────────
 .card-title {
-    font-family: $font-display;
-    font-size: clamp(28px, 5vw, 52px);
-    font-weight: 400;
-    color: $c-text;
-    margin: 0 0 20px;
-    line-height: 1.0;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    max-width: 720px;
+  font-family: $font-display;
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: $c-text;
+  margin: 0 0 20px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  max-width: 720px;
 }
 
-// ─── Divider ─────────────────────────────────────────────────────
 .card-divider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .divider-line {
-    flex: 1;
-    height: 1px;
-    background: $c-border;
-    transition: background 0.3s;
+  flex: 1;
+  height: 1px;
+  background: $c-border;
+  transition: background 0.3s;
 }
 
 .expand-icon {
-    font-family: $font-mono;
-    font-size: 18px;
-    color: $c-text-muted;
-    line-height: 1;
-    transition: color 0.3s, transform 0.3s $ease-expo;
-    min-width: 20px;
-    text-align: center;
-    user-select: none;
+  font-family: $font-mono;
+  font-size: var(--text);
+  color: $c-text-muted;
+  line-height: 1;
+  transition: color 0.3s, transform 0.3s $ease-expo;
+  min-width: 20px;
+  text-align: center;
+  user-select: none;
 }
 
-// ─── Card Body (expandable) ───────────────────────────────────────
 .card-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.55s $ease-expo, opacity 0.4s $ease-smooth;
-    opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.55s $ease-expo, opacity 0.4s $ease-smooth;
+  opacity: 0;
 
-    &.expanded {
-        max-height: 600px;
-        opacity: 1;
-    }
+  &.expanded {
+    max-height: 600px;
+    opacity: 1;
+  }
 }
 
 .card-text {
-    font-size: var(--text);
-    line-height: 1.85;
-    color: $c-text-dim;
-    font-weight: 300;
-    margin: 0;
-    margin: 24px 0 28px;
-    max-width: 800px;
+  font-size: var(--text);
+  line-height: 1.85;
+  color: $c-text-dim;
+  font-weight: 300;
+  margin: 24px 0 28px;
+  max-width: 800px;
 }
 
 .card-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: $c-accent;
-    padding-bottom: 2px;
-    border-bottom: 1px solid rgba(200, 169, 110, 0.3);
-    transition: gap 0.25s $ease-smooth, border-color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $font-mono;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $c-accent;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.3);
+  transition: gap 0.25s $ease-smooth, border-color 0.25s;
 
-    &:hover {
-        gap: 16px;
-        border-color: $c-accent;
-    }
+  &:hover {
+    gap: 16px;
+    border-color: $c-accent;
+  }
 
-    svg {
-        transition: transform 0.25s $ease-smooth;
-    }
+  svg {
+    transition: transform 0.25s $ease-smooth;
+  }
 
-    &:hover svg {
-        transform: translateX(4px);
-    }
+  &:hover svg {
+    transform: translateX(4px);
+  }
 }
 
-// ─── Section Footer ───────────────────────────────────────────────
 .section-footer {
-    max-width: 1400px;
-    margin: 64px auto 0;
-    display: flex;
-    align-items: center;
-    gap: 24px;
+  max-width: 1400px;
+  margin: 64px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s $ease-smooth, transform 0.55s $ease-expo;
+
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .footer-line {
-    flex: 1;
-    height: 1px;
-    background: $c-border;
+  flex: 1;
+  height: 1px;
+  background: $c-border;
 }
 
 .footer-note {
-    font-family: $font-mono;
-    font-size: 9px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: $c-text-muted;
-    white-space: nowrap;
+  font-family: $font-mono;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $c-text-muted;
+  white-space: nowrap;
 }
 
-// ─── Tablet ───────────────────────────────────────────────────────
 @media (min-width: 640px) {
-    .what-section {
-        padding: 100px 40px;
-    }
+  .what-section {
+    padding: 100px 40px;
+  }
 
-    .card-image-wrapper {
-        height: 240px;
-    }
+  .card-image-wrapper {
+    height: 240px;
+  }
 
-    .card-content {
-        padding: 32px 36px 40px;
-    }
-}
-
-// ─── Desktop ──────────────────────────────────────────────────────
-@media (min-width: 1024px) {
-    .what-section {
-        padding: 120px 64px;
-    }
-
-    .section-header {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto auto;
-        align-items: start;
-        column-gap: 80px;
-        margin-bottom: 80px;
-    }
-
-    .header-rule {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .header-meta {
-        grid-column: 1;
-        grid-row: 2;
-        margin-bottom: 20px;
-    }
-
-    .section-title {
-        grid-column: 1;
-        grid-row: 3;
-        margin-bottom: 0;
-    }
-
-    .section-sub {
-        grid-column: 2;
-        grid-row: 2 / 4;
-        align-self: end;
-        padding-top: 12px;
-        max-width: none;
-        font-size: 14px;
-    }
-
-    // ─── Desktop Card: side-by-side with offset image ──────────────
-    .platform-card {
-        display: grid;
-        // columns: number | image-panel | content
-        grid-template-columns: 64px 320px 1fr;
-        grid-template-rows: auto;
-        align-items: start;
-        min-height: 180px;
-        padding: 0;
-        overflow: hidden;
-
-        // &.active {
-        //     // keep active state, no override needed
-        // }
-
-        &::before {
-            left: 0;
-        }
-    }
-
-    // Image wrapper occupies column 2
-    // Offset: extends slightly UP into the card above (negative top margin)
-    .card-image-wrapper {
-        grid-column: 2;
-        grid-row: 1;
-        width: 100%;
-        height: 100%;
-        min-height: 200px;
-        position: relative;
-        padding: 28px 0 28px 0;
-        display: flex;
-        align-items: stretch;
-        overflow: visible;
-    }
-
-    .card-image-frame {
-        width: calc(100% - 20px);
-        height: 100%;
-        min-height: 160px;
-        // Negative top offset to bleed out of row
-        margin-top: -16px;
-        margin-bottom: -16px;
-    }
-
-    // Accent bar goes to the right of the frame, horizontally
-    .image-accent-bar {
-        position: absolute;
-        right: 16px;
-        bottom: auto;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 2px;
-        height: 24px;
-        transition: height 0.4s $ease-expo;
-    }
-
-    .platform-card:hover .image-accent-bar,
-    .platform-card.active .image-accent-bar {
-        height: 48px;
-        width: 2px;
-    }
-
-    // Content occupies column 3
-    .card-content {
-        grid-column: 3;
-        grid-row: 1;
-        padding: 40px 48px 40px 40px;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto auto;
-    }
-
-    // Number stays in column 1
-    // We need to restructure: put number in col 1 via grid
-    .platform-card {
-        
-        // Override to include number column
-        .card-number {
-            grid-column: 1;
-            grid-row: 1;
-            padding: 44px 0 0 20px;
-            margin-bottom: 0;
-            align-self: start;
-        }
-    }
-
-    // Reset card-content to not have number (number is sibling not child)
-    // card-content becomes col 3
-    .card-content {
-        .card-number {
-            display: none; // hidden in content on desktop, shown via grid sibling
-        }
-    }
-
-    // Separate number div outside card-content — but in our template the
-    // number IS inside card-content. So instead we'll keep number inside
-    // card-content and just use a 2-col approach for the desktop card:
-    // col 1: image-wrapper
-    // col 2: content (with number inside)
-
-    // Re-override with simpler 2-col approach for maintainability
-    .platform-card {
-        grid-template-columns: 300px 1fr;
-
-        .card-number {
-            display: block; // re-enable
-        }
-    }
-
-    .card-image-wrapper {
-        grid-column: 1;
-    }
-
-    .card-content {
-        grid-column: 2;
-        padding: 40px 48px 40px 48px;
-        display: block;
-    }
+  .card-content {
+    padding: 32px 36px 40px;
+  }
 }
 
 @media (min-width: 1024px) {
+  .what-section {
+    padding: 120px 64px;
+  }
 
-    // ── Card: fixed collapsed height, expands when active ──────────
-    .platform-card {
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        grid-template-rows: 1fr;
-        align-items: stretch; // ← stretch so both cols fill height
-        height: 200px; // ← fixed collapsed height
-        overflow: hidden; // ← clips image bleed AND body overflow
-        transition: height 0.55s $ease-expo,
-            background 0.35s $ease-smooth,
-            opacity 0.65s $ease-expo,
-            transform 0.65s $ease-expo;
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    margin-bottom: 80px;
+  }
 
-        &.active {
-            height: auto; // ← expand to content when active
-            min-height: 200px;
-        }
+  .section-title {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
 
-        &::before {
-            left: 0;
-        }
+  .section-sub {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: end;
+    padding-top: 12px;
+    max-width: none;
+  }
+
+  .platform-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    align-items: stretch;
+    height: 200px;
+    overflow: hidden;
+    transition:
+      height 0.55s $ease-expo,
+      background 0.35s $ease-smooth,
+      opacity 0.65s $ease-expo,
+      transform 0.65s $ease-expo;
+
+    &.active {
+      height: auto;
+      min-height: 200px;
     }
 
-    // ── Image Wrapper: fills full card height ──────────────────────
-    .card-image-wrapper {
-        grid-column: 1;
-        grid-row: 1;
-        width: 100%;
-        height: 100%; // ← fills the fixed card height
-        min-height: unset; // ← remove old min-height
-        position: relative;
-        padding: 16px 0 16px 0;
-        display: flex;
-        align-items: stretch;
-        overflow: hidden; // ← clips image regardless of aspect ratio
+    &::before {
+      left: 0;
     }
+  }
 
-    .card-image-frame {
-        width: calc(100% - 20px);
-        height: 100%; // ← fills wrapper height
-        min-height: unset; // ← remove old min-height
-        margin-top: 0; // ← remove negative margins
-        margin-bottom: 0;
-        overflow: hidden;
-    }
+  .card-image-wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    min-height: unset;
+    position: relative;
+    padding: 16px 0;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
 
-    // ── Content: centers vertically in fixed height ────────────────
-    .card-content {
-        grid-column: 2;
-        grid-row: 1;
-        padding: 28px 48px 28px 48px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; // ← vertically center when collapsed
-        align-self: stretch;
-    }
+  .card-image-frame {
+    width: calc(100% - 20px);
+    height: 100%;
+    min-height: unset;
+    margin: 0;
+    overflow: hidden;
+  }
 
-    // ── Accent bar: vertical on desktop ───────────────────────────
-    .image-accent-bar {
-        position: absolute;
-        right: 16px;
-        bottom: auto;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 2px;
-        height: 24px;
-        transition: height 0.4s $ease-expo;
-    }
+  .card-content {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 28px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: stretch;
+  }
 
-    .platform-card:hover .image-accent-bar,
-    .platform-card.active .image-accent-bar {
-        height: 48px;
-        width: 2px;
-    }
+  .image-accent-bar {
+    position: absolute;
+    right: 16px;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 24px;
+    transition: height 0.4s $ease-expo;
+  }
 
-    // ── Card number ───────────────────────────────────────────────
-    .platform-card .card-number {
-        display: block;
-        margin-bottom: 10px;
-    }
+  .platform-card:hover .image-accent-bar,
+  .platform-card.active .image-accent-bar {
+    height: 48px;
+    width: 2px;
+  }
+
+  .platform-card .card-number {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 @media (min-width: 1440px) {
-    .what-section {
-        padding: 140px 80px;
-    }
+  .what-section {
+    padding: 140px 80px;
+  }
 
-    .platform-card {
-        grid-template-columns: 500px 1fr;
-        height: 300px; // ← slightly taller on wide screens
+  .platform-card {
+    grid-template-columns: 500px 1fr;
+    height: 300px;
 
-        &.active {
-            height: auto;
-            min-height: 220px;
-        }
+    &.active {
+      height: auto;
+      min-height: 220px;
     }
+  }
 
-    .card-content {
-        padding: 52px 64px;
-    }
+  .card-content {
+    padding: 52px 64px;
+  }
 }

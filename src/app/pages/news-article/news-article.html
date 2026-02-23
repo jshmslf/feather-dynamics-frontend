@@ -1,0 +1,58 @@
+<div class="article" #articleRoot>
+
+    <!-- ── Hero ─────────────────────────────────────── -->
+    <div class="article__hero">
+        <img [src]="article?.image" [alt]="article?.title" class="article__hero-img" #heroImg />
+        <div class="article__hero-veil"></div>
+    </div>
+
+    <!-- ── Offset Title Block ────────────────────────── -->
+    <div class="article__title-block" #titleBlock>
+        <div class="article__meta-strip">
+            <span class="article__category">{{ article?.category }}</span>
+            <span class="article__meta-sep">—</span>
+            <time class="article__date">{{ article?.publishedAt | date:'MMMM d, yyyy' }}</time>
+        </div>
+        <h1 class="article__title">{{ article?.title }}</h1>
+    </div>
+
+    <!-- ── Body ─────────────────────────────────────── -->
+    <div class="article__body">
+
+        <!-- Sidebar -->
+        <aside class="article__sidebar" #sidebar>
+            <div class="article__sidebar-rule"></div>
+
+            <nav class="article__toc" *ngIf="headings.length">
+                <span class="article__toc-label">Contents</span>
+                <a *ngFor="let h of headings; let i = index" class="article__toc-link"
+                    [class.active]="activeHeading === i" (click)="scrollToHeading(i)">
+                    {{ h }}
+                </a>
+            </nav>
+
+            <a routerLink="/news" class="article__back">
+                <span class="article__back-arrow">←</span>
+                All News
+            </a>
+        </aside>
+
+        <!-- Prose -->
+        <main class="article__prose" #prose>
+            <p class="article__excerpt">{{ article?.excerpt }}</p>
+            <div class="article__content" [innerHTML]="article?.content"></div>
+        </main>
+
+    </div>
+
+    <!-- ── Footer ───────────────────────────────────── -->
+    <footer class="article__footer" #articleFooter>
+        <div class="article__footer-rule"></div>
+        <div class="article__footer-row">
+            <span class="article__footer-tag">{{ article?.category | uppercase }} · FEATHER DYNAMICS</span>
+            <a routerLink="/news" class="article__footer-back">← Back to News</a>
+        </div>
+    </footer>
+
+    <app-cta></app-cta>
+</div>

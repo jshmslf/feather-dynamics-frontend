@@ -38,11 +38,13 @@ export class Blog implements AfterViewInit {
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.initDrag();
-    this.updateCurrentPage();
+    if (this.pageCount > 1) {
+      this.initDrag();
+      this.updateCurrentPage();
+    }
   }
 
-    goToPage(index: number): void {
+  goToPage(index: number): void {
     if (!this.viewport) return;
 
     const width = this.viewport.nativeElement.clientWidth;

@@ -42,13 +42,21 @@ $gray: #666666;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    cursor: grab;
+    cursor: default;
 
     scrollbar-width: none;
     -ms-overflow-style: none;
 
     &:active {
         cursor: grabbing;
+    }
+
+    &.is-draggable {
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
     }
 }
 

@@ -1,0 +1,34 @@
+<div class="news-bar" [class.news-bar--visible]="visible" [class.news-bar--hidden]="!visible" *ngIf="item">
+
+    <!-- Gradient background layers -->
+    <div class="news-bar__gradient" aria-hidden="true"></div>
+    <div class="news-bar__noise" aria-hidden="true"></div>
+
+    <div class="news-bar__inner">
+
+        <!-- Left: label + content -->
+        <div class="news-bar__left">
+            <span class="news-bar__tag">{{ item.category }}</span>
+            <div class="news-bar__text">
+                <span class="news-bar__date">{{ item.publishedAt | date:'MMM d, yyyy' }}</span>
+                <span class="news-bar__sep" aria-hidden="true">—</span>
+                <span class="news-bar__title">{{ item.title }}</span>
+            </div>
+        </div>
+
+        <!-- Right: CTA + close -->
+        <div class="news-bar__actions">
+            <a class="news-bar__cta" [routerLink]="['/news', item.category, item.slug]" (click)="dismiss()">
+                <span class="news-bar__cta-text">Read Article</span>
+                <span class="news-bar__cta-arrow">→</span>
+            </a>
+
+            <button class="news-bar__close" (click)="dismiss()" aria-label="Dismiss notification">
+                <span class="news-bar__close-line"></span>
+                <span class="news-bar__close-line"></span>
+            </button>
+        </div>
+
+    </div>
+
+</div>

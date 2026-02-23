@@ -1,8 +1,8 @@
-
 .who {
     position: relative;
     padding: 4rem 1.5rem;
     overflow: visible;
+    z-index: 2;
 
     &__bg {
         position: absolute;
@@ -14,7 +14,6 @@
         z-index: 0;
     }
 
-    // ── CONTAINER ──────────────────────────
     &__container {
         position: relative;
         z-index: 1;
@@ -32,7 +31,6 @@
         }
     }
 
-    // ── GROUP 1 — LEFT ─────────────────────
     &__group--left {
         display: flex;
         flex-direction: column;
@@ -66,16 +64,6 @@
         flex-direction: column;
         gap: 3rem;
         align-self: flex-end;
-
-        .pic-1 {
-            align-self: flex-end;
-
-            img {
-                width: auto;
-                height: 280px;
-                filter: grayscale(100%);
-            }
-        }
     }
 
     &__description {
@@ -109,21 +97,20 @@
             background: rgba(122, 122, 122, 0.06);
             border-color: rgba(122, 122, 122, 0.5);
         }
-
-        i-lucide {
-            opacity: 0.6;
-        }
     }
-
-    // ── GROUP 2 — RIGHT ────────────────────
 }
+
+// ── RIGHT GROUP ────────────────────────────────────────────────────
+// Kept OUTSIDE the .who BEM block so it is NOT a descendant of
+// .who__container. On desktop it escapes to .who (the section)
+// as its containing block via position: absolute.
 .who__group--right {
     flex: 1;
     position: relative;
     min-height: 300px;
 
-    // ── Scroll reveal: slide in from right ──
-    opacity: 1;
+    // Base hidden state for animation
+    opacity: 0;
     transform: translateX(48px);
     transition:
         opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
@@ -135,11 +122,14 @@
     }
 
     @media (min-width: 1024px) {
+        // Break out of the flex flow and anchor to .who (section)
+        // .who has position: relative — this is the containing block
         position: absolute;
         right: 0;
-        top: 1rem;
-        bottom: -10rem;
-        width: 55%;
+        top: 0; // flush with section top
+        bottom: -10rem; // bleeds into the next section
+        width: 52%;
+        z-index: 2; // sits above sibling sections
     }
 
     img {

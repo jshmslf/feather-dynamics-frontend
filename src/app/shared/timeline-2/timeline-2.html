@@ -1,0 +1,44 @@
+<section class="timeline2" #timelineSection>
+
+    <!-- Vertical spine -->
+    <div class="timeline2__spine" #spine>
+        <div class="timeline2__spine-track"></div>
+        <div class="timeline2__spine-fill" #spineFill></div>
+    </div>
+
+    <!-- Items -->
+    <div class="timeline2__items">
+        <div *ngFor="let item of items; let i = index" class="timeline2__item"
+            [class.timeline2__item--odd]="i % 2 === 0" [class.timeline2__item--even]="i % 2 !== 0" #timelineItem>
+
+            <!-- Image side -->
+            <div class="timeline2__image-col">
+                <div class="timeline2__image-wrap">
+                    <img [src]="item.image" [alt]="item.title" class="timeline2__image" loading="lazy" />
+                    <div class="timeline2__image-veil"></div>
+                    <!-- Date badge overlapping image -->
+                    <div class="timeline2__date-badge">{{ item.date }}</div>
+                </div>
+            </div>
+
+            <!-- Node on the spine -->
+            <div class="timeline2__node-col">
+                <div class="timeline2__node">
+                    <div class="timeline2__node-dot"></div>
+                    <div class="timeline2__node-ring"></div>
+                </div>
+            </div>
+
+            <!-- Content side -->
+            <div class="timeline2__content-col">
+                <div class="timeline2__content">
+                    <div class="timeline2__content-rule"></div>
+                    <h3 class="timeline2__title">{{ item.title }}</h3>
+                    <p class="timeline2__body">{{ item.content }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

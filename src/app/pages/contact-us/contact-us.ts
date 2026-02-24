@@ -88,8 +88,7 @@ export class ContactUs implements OnInit, AfterViewInit, OnDestroy {
 
   // Logo loop
   logos: LogoItem[] = [
-    { label: 'YOUR MISSION.' },
-    { label: 'OUR MISSION.' },
+    { label: 'YOUR VISION IS OUR MISSION.' },
   ];
 
   isBrowser: boolean;

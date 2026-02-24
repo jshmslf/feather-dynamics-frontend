@@ -10,7 +10,6 @@ import { RevealComponent } from "../reveal/reveal";
 })
 export class Tag {
     logos: LogoItem[] = [
-      {label: "YOUR MISSION."},
-      {label: "OUR MISSION."},
+      {label: "YOUR VISION IS OUR MISSION."},
     ]
 }

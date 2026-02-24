@@ -47,15 +47,30 @@
     position: relative;
     width: 100%;
     min-height: 600px;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.4s ease-in-out;
+    // background-size: cover;
+    // background-position: center;
+    // transition: background-image 0.4s ease-in-out;
     overflow: hidden;
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 0;
+
+        &.active {
+            opacity: 1;
+        }
+    }
 
     &__overlay {
         position: absolute;
         inset: 0;
         background: rgba(5, 10, 18, 0.75);
+        z-index: 1;
     }
 
     &__grid {
@@ -116,7 +131,7 @@
     }
 
     &__card:hover .what__hover-overlay {
-        background: rgba(0, 180, 255, 0.06);
+        background: rgba(0, 179, 255, 0.25);
     }
 
     &__base,

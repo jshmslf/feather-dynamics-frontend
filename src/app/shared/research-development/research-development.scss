@@ -1,0 +1,203 @@
+
+:host {
+    display: block;
+}
+
+.rd-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    // background: var(--color-black);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+        background: #000;
+            background-image: url('/assets/decos/aerial-deco-back-2.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+}
+
+// ─── Image panel (right side, bleeds to edge) ───────────────────────────────
+.rd-image-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    background:
+        linear-gradient(135deg, rgba(5, 10, 18, 0.6) 0%, transparent 60%),
+        url('/assets/images/Capture18.PNG') center / cover no-repeat;
+    filter: grayscale(100%);
+
+    @media (max-width: 900px) {
+        width: 100%;
+        height: 45%;
+        top: auto;
+        bottom: 0;
+        filter: grayscale(100%) brightness(0.4);
+    }
+}
+
+.rd-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            var(--color-black) 0%,
+            rgba(5, 10, 18, 0.5) 40%,
+            transparent 100%);
+
+    @media (max-width: 900px) {
+        background: linear-gradient(to bottom,
+                var(--color-black) 0%,
+                rgba(5, 10, 18, 0.3) 50%,
+                transparent 100%);
+    }
+}
+
+// Grid lines decoration
+.rd-grid-lines {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    pointer-events: none;
+    opacity: 0.06;
+
+    span {
+        border-right: 1px solid var(--color-white);
+    }
+}
+
+// ─── Content panel — overlaps image ─────────────────────────────────────────
+.rd-content-panel {
+    position: relative;
+    z-index: 2;
+    width: 55%;
+    max-width: 640px;
+    padding: 5rem 3rem 5rem 6vw;
+
+    // Diagonal cut on the right edge
+    clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 100%, 0 100%);
+
+    @media (max-width: 1100px) {
+        width: 65%;
+        padding: 4rem 3rem 4rem 4vw;
+    }
+
+    @media (max-width: 900px) {
+        width: 100%;
+        padding: 3rem 1.5rem 10rem;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 0px) 100%, 0 100%);
+    }
+}
+
+.rd-eyebrow {
+    font-family: var(--font-header);
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.rd-heading {
+    font-family: var(--font-second);
+    font-size: clamp(3rem, 6vw, var(--text-2xl));
+    line-height: 0.95;
+    margin: 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    &__line {
+        display: block;
+        color: var(--color-white);
+        letter-spacing: 0.04em;
+
+        &--accent {
+            color: var(--color-accent);
+
+        }
+    }
+}
+
+.rd-divider {
+    width: 3rem;
+    height: 2px;
+    background: var(--color-accent);
+    margin-bottom: 1.75rem;
+}
+
+.rd-description {
+    font-family: var(--font-header);
+    font-size: var(--text);
+    color: var(--color-gray);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+}
+
+// ─── Stats row ───────────────────────────────────────────────────────────────
+.rd-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.75rem;
+    flex-wrap: wrap;
+}
+
+.rd-stat {
+    &__value {
+        font-family: var(--font-second);
+        font-size: var(--text-2xl);
+        color: var(--color-white);
+        line-height: 1;
+        letter-spacing: 0.02em;
+
+        // Red accent bar below value
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--color-accent);
+            margin-top: 0.3rem;
+        }
+    }
+
+    &__label {
+        font-family: var(--font-header);
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        color: var(--color-gray);
+        margin-top: 0.5rem;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+}
+
+// ─── Floating tag ────────────────────────────────────────────────────────────
+.rd-tag {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+
+    span {
+        font-family: var(--font-header);
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+        color: rgba(255, 255, 255, 0.2);
+        font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+        display: none;
+    }
+}

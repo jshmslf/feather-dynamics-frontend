@@ -1,6 +1,10 @@
 .what-wrapper {
     width: 100%;
     background: var(--color-black);
+    background-image: url('/assets/decos/aerial-deco-back-2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     opacity: 0;
     transform: translateY(80px);
@@ -69,7 +73,7 @@
     &__overlay {
         position: absolute;
         inset: 0;
-        background: rgba(5, 10, 18, 0.75);
+        background: rgba(5, 10, 18, 0.55);
         z-index: 1;
     }
 
@@ -131,7 +135,7 @@
     }
 
     &__card:hover .what__hover-overlay {
-        background: rgba(0, 179, 255, 0.25);
+        background: rgba(177, 18, 39, 0.75);
     }
 
     &__base,

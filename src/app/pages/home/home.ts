@@ -7,10 +7,11 @@ import { Partners } from "../../shared/partners/partners";
 import { Tag } from "../../shared/tag/tag";
 import { Blog } from "../../shared/blog/blog";
 import { AboutUs } from "../../shared/about-us/about-us";
+import { ResearchDevelopmentComponent } from "../../shared/research-development/research-development";
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog, AboutUs],
+  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog, AboutUs, ResearchDevelopmentComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -1,0 +1,71 @@
+:host {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+}
+
+/* Base hidden state */
+.scroll-top {
+    width: 3.25rem;
+    height: 3.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-second);
+    font-size: var(--text);
+    font-weight: 400;
+
+    background: var(--color-accent);
+    color: var(--color-white);
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    /* Hidden state */
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        background 0.3s ease;
+}
+
+/* Visible state */
+.scroll-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+    .scroll-top:hover {
+        transform: translateY(-6px);
+        background: var(--color-secondary);
+    }
+}
+
+.scroll-top:active {
+    transform: translateY(-2px);
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+    :host {
+        bottom: 2rem;
+        right: 2rem;
+    }
+
+    .scroll-top {
+        width: 3.75rem;
+        height: 3.75rem;
+        font-size: var(--text-xl);
+    }
+}

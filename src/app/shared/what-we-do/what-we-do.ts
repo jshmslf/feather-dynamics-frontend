@@ -41,7 +41,7 @@ export class WhatWeDo implements AfterViewInit {
     {
       number: '03',
       title: 'Payloads & Integrated',
-      image: '/assets/images/ril_p8.JPG'
+      image: '/assets/images/armory_1.png'
     }
   ];
 

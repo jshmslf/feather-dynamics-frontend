@@ -1,0 +1,42 @@
+<article class="legal">
+    <!-- HEADER -->
+    <header class="legal__header">
+        <div class="legal__header-inner">
+            <div class="legal__label">Legal Document</div>
+
+            <h1 class="legal__title">{{ meta.title }}</h1>
+
+            <p class="legal__subtitle">{{ meta.subtitle }}</p>
+
+            <div class="legal__meta">
+                <div class="legal__meta-item">
+                    <span class="legal__meta-label">Effective Date</span>
+                    <span class="legal__meta-value">{{ meta.effectiveDate }}</span>
+                </div>
+                <div class="legal__meta-divider" aria-hidden="true"></div>
+                <div class="legal__meta-item">
+                    <span class="legal__meta-label">Site Covered</span>
+                    <span class="legal__meta-value">{{ meta.siteCovered }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative offset block -->
+        <div class="legal__header-deco" aria-hidden="true">
+            <span class="legal__header-deco-text">{{ meta.title }}</span>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="legal__content-wrapper">
+        <aside class="legal__sidebar" aria-hidden="true">
+            <div class="legal__sidebar-line"></div>
+        </aside>
+
+        <main class="legal__body">
+            @if (isBrowser) {
+            <markdown [src]="meta.markdownSrc" class="legal__markdown"></markdown>
+            }
+        </main>
+    </div>
+</article>

@@ -29,26 +29,6 @@ export class NewsService {
             publishedAt: new Date('2026-02-19'),
             category: 'article'
         },
-        {
-            id: 2,
-            title: 'Advancements in UAV Surveillance 1',
-            slug: 'advancements-in-uav-surveillance',
-            excerpt: 'Exploring next-generation aerial intelligence systems.',
-            content: 'Full article content here...',
-            image: '/assets/images/3.jpg',
-            publishedAt: new Date('2026-02-15'),
-            category: 'announcement'
-        },
-        {
-            id: 3,
-            title: 'Advancements in UAV Surveillance',
-            slug: 'advancements-in-uav-surveillance-2',
-            excerpt: 'Exploring next-generation aerial intelligence systems.',
-            content: 'Full article content here...',
-            image: '/assets/images/ril_p3.JPG',
-            publishedAt: new Date('2026-02-01'),
-            category: 'announcement'
-        },
     ];
 
     constructor() { }

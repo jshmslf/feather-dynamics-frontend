@@ -36,12 +36,17 @@ export class WhatWeDo implements AfterViewInit {
     {
       number: '02',
       title: 'Transport & Mobility',
-      image: '/assets/images/231.png'
+      image: '/assets/images/cargo_uav.png'
     },
     {
       number: '03',
       title: 'Payloads & Integrated',
-      image: '/assets/images/armory_1.png'
+      image: '/assets/images/uav_5.jpg'
+    },
+    {
+      number: '04',
+      title: 'Research & Development',
+      image: '/assets/images/cam.jpg'
     }
   ];
 

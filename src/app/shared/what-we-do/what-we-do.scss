@@ -51,9 +51,6 @@
     position: relative;
     width: 100%;
     min-height: 600px;
-    // background-size: cover;
-    // background-position: center;
-    // transition: background-image 0.4s ease-in-out;
     overflow: hidden;
 
     &__bg {
@@ -122,6 +119,12 @@
         transition-delay: 0.6s;
     }
 
+    .what-wrapper.active &__card:nth-child(4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.8s;
+    }
+
     /* ================= */
     /* HOVER LAYER      */
     /* ================= */
@@ -184,7 +187,7 @@
 
     .what {
         &__grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
 
         &__card {

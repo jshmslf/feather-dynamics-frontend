@@ -40,7 +40,8 @@
         <!-- Prose -->
         <main class="article__prose" #prose>
             <p class="article__excerpt">{{ article?.excerpt }}</p>
-            <div class="article__content" [innerHTML]="article?.content"></div>
+            <!-- <div class="article__content" [innerHTML]="article?.content"></div> -->
+            <markdown [data]="article?.content" class="article__content"/>
         </main>
 
     </div>

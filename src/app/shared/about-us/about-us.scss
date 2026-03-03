@@ -31,10 +31,10 @@
 /* LEFT GROUP */
 .group-left {
     img {
-        width: auto;
-        height: 650px;
+        width: 100%; // ← fill container width on mobile
+        height: 400px; // ← shorter on mobile
+        object-fit: cover; // ← crop nicely instead of overflow
         display: block;
-        // filter: grayscale(100%);
     }
 }
 
@@ -50,7 +50,7 @@
     }
 
     h2 {
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-size: clamp(1.6rem, 5vw, 2.5rem); // ← slightly smaller floor on mobile
         line-height: 1.2;
         margin-bottom: 1.5rem;
         font-weight: 400;
@@ -59,23 +59,22 @@
     p {
         line-height: 1.6;
         opacity: 0.8;
-        max-width: 520px;
+        max-width: 100%; // ← remove 520px cap on mobile, let it breathe
         margin-bottom: 2rem;
     }
 
     img {
-        width: auto;
-        height: 350px;
+        width: 100%; // ← fill container
+        height: 250px; // ← shorter on mobile
+        object-fit: cover;
         display: block;
-        // filter: grayscale(100%);
     }
 }
 
-/* Desktop */
 @media (min-width: 992px) {
     .container {
         flex-direction: row;
-        /* 2 columns */
+        align-items: flex-start; // ← align tops, not stretch
     }
 
     .group-left,
@@ -83,9 +82,21 @@
         width: 50%;
     }
 
+    .group-left img {
+        width: 100%;
+        height: 650px; // ← restore tall height on desktop
+    }
+
     .group-right {
         margin-top: 0;
         padding-left: 4rem;
-        /* spacing without using gap */
+
+        p {
+            max-width: 520px; // ← restore cap on desktop
+        }
+
+        img {
+            height: 350px; // ← restore on desktop
+        }
     }
 }

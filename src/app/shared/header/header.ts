@@ -1,12 +1,12 @@
-import { 
-  CommonModule, 
-  isPlatformBrowser 
+import {
+  CommonModule,
+  isPlatformBrowser
 } from '@angular/common';
-import { 
-  Component, 
-  HostListener, 
-  Inject, 
-  PLATFORM_ID 
+import {
+  Component,
+  HostListener,
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
 
 @Component({
@@ -19,10 +19,14 @@ export class Header {
 
   isSticky = false;
   isHidden = false;
+  isMenuOpen = false;
 
   private isBrowser: boolean;
   private lastScrollY = 0;
   private heroHeight = 0;
+
+  /** desktop breakpoint */
+  private readonly DESKTOP_WIDTH = 992;
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -37,43 +41,50 @@ export class Header {
     }
   }
 
-@HostListener('window:scroll', [])
-onWindowScroll() {
-  if (!this.isBrowser) return;
-
-  const currentScroll = window.scrollY;
-
-  // 1️⃣ At very top → show MAIN header
-  if (currentScroll === 0) {
-    this.isSticky = false;
-    this.isHidden = false; // ✅ important fix
-    this.lastScrollY = 0;
-    return;
+  private isDesktop(): boolean {
+    return this.isBrowser && window.innerWidth >= this.DESKTOP_WIDTH;
   }
 
-  // 2️⃣ Sticky only after hero
-  const shouldBeSticky = currentScroll > this.heroHeight - 100;
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if (!this.isBrowser) return;
 
-  // 3️⃣ If NOT sticky → always show header
-  if (!shouldBeSticky) {
-    this.isSticky = false;
-    this.isHidden = false;
+    /** ❌ Disable sticky entirely on mobile */
+    if (!this.isDesktop()) {
+      this.isSticky = false;
+      this.isHidden = false;
+      this.lastScrollY = window.scrollY;
+      return;
+    }
+
+    const currentScroll = window.scrollY;
+
+    if (currentScroll === 0) {
+      this.isSticky = false;
+      this.isHidden = false;
+      this.lastScrollY = 0;
+      return;
+    }
+
+    const shouldBeSticky = currentScroll > this.heroHeight - 100;
+
+    if (!shouldBeSticky) {
+      this.isSticky = false;
+      this.isHidden = false;
+      this.lastScrollY = currentScroll;
+      return;
+    }
+
+    this.isSticky = true;
+    this.isHidden = currentScroll > this.lastScrollY;
     this.lastScrollY = currentScroll;
-    return;
   }
 
-  // 4️⃣ Sticky mode
-  this.isSticky = true;
-
-  // scroll DOWN → hide
-  if (currentScroll > this.lastScrollY) {
-    this.isHidden = true;
-  }
-  // scroll UP → show
-  else {
-    this.isHidden = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
-  this.lastScrollY = currentScroll;
-}
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 }

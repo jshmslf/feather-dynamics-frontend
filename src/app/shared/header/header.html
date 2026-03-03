@@ -1,17 +1,28 @@
-<header class="header"  [ngClass]="{'sticky-on': isSticky, 'hidden': isHidden}">
+<header class="header" [ngClass]="{
+        'sticky-on': isSticky,
+        'hidden': isHidden,
+        'menu-open': isMenuOpen
+    }">
     <div class="global-container header-inner">
+        <!-- Logo -->
         <div class="logo">
             <a href="/">
-                <img class="logo-black" src="/assets/logo-text-black.png" alt="Feather Dynamics">
-                <img class="logo-white" src="/assets/logo-text-white.png" alt="Feather Dynamics">
+                <img class="logo-black" src="/assets/logo-text-black.png" alt="Feather Dynamics" />
+                <img class="logo-white" src="/assets/logo-text-white.png" alt="Feather Dynamics" />
             </a>
         </div>
 
+        <!-- Burger -->
+        <button class="burger" aria-label="Toggle navigation" (click)="toggleMenu()">
+            <i class="fa-solid" [ngClass]="isMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+        </button>
+
+        <!-- Navigation -->
         <nav class="nav">
-            <a href="/news" class="underline-animation">News</a>
-            <a href="/who-we-are" class="underline-animation">Who We Are</a>
-            <a href="/what-we-do" class="underline-animation">What We Do</a>
-            <a href="/contact-us" class="underline-animation">Contact Us</a>
+            <a href="/news" (click)="closeMenu()">News</a>
+            <a href="/who-we-are" (click)="closeMenu()">Who We Are</a>
+            <a href="/what-we-do" (click)="closeMenu()">What We Do</a>
+            <a href="/contact-us" (click)="closeMenu()">Contact Us</a>
         </nav>
     </div>
 </header>

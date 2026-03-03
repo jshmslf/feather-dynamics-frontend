@@ -11,11 +11,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, DatePipe, isPlatformBrowser } from '@angular/common';
 import { NewsItem, NewsService } from '../../core/services/news.service';
 import { Cta } from "../../shared/cta/cta";
+import { MarkdownComponent } from "ngx-markdown";
 
 @Component({
   selector: 'app-news-article',
   standalone: true,
-  imports: [CommonModule, RouterModule, DatePipe, Cta],
+  imports: [CommonModule, RouterModule, DatePipe, Cta, MarkdownComponent],
   templateUrl: './news-article.html',
   styleUrl: './news-article.scss'
 })

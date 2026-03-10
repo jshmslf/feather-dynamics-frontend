@@ -5,8 +5,30 @@
 
         <!-- LEFT: News List -->
         <div class="news-list">
-            <a class="news-card" *ngFor="let item of filteredNews" [routerLink]="['/news', item.category, item.slug]"
-                #newsCard>
+
+            <!-- Result count bar -->
+            <div class="news-results" *ngIf="isFiltered">
+                <span class="news-results__count">
+                    {{ resultCount }} result{{ resultCount !== 1 ? 's' : '' }}
+                    <ng-container *ngIf="searchTerm"> for "<strong>{{ searchTerm }}</strong>"</ng-container>
+                    <ng-container *ngIf="activeCategory"> in <strong>{{ activeCategory | titlecase
+                            }}</strong></ng-container>
+                </span>
+                <button class="news-results__clear" (click)="clearSearch(); activeCategory = null; applyFilters()">
+                    Clear filters
+                </button>
+            </div>
+
+            <!-- Empty state — show whenever list is empty -->
+            <div class="news-empty" *ngIf="filteredNews.length === 0">
+                <span>No articles found.</span>
+                <button class="news-results__clear" (click)="clearSearch(); activeCategory = null; applyFilters()">
+                    Clear filters
+                </button>
+            </div>
+
+            <a class="news-card" *ngFor="let item of filteredNews; trackBy: trackBySlug"
+                [routerLink]="['/news', item.category, item.slug]" #newsCard>
 
                 <div class="news-card__image">
                     <img [src]="item.image" [alt]="item.title" />
@@ -29,8 +51,22 @@
 
                 <!-- Search -->
                 <div class="sidebar-block">
-                    <input type="text" placeholder="Search news" class="sidebar-search" [value]="searchTerm"
-                        (input)="onSearch($any($event.target).value)" />
+                    <div class="sidebar-search-wrap">
+                        <svg class="sidebar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.6">
+                            <circle cx="11" cy="11" r="7" />
+                            <line x1="16.5" y1="16.5" x2="22" y2="22" />
+                        </svg>
+                        <input type="text" placeholder="Search articles…" class="sidebar-search" [value]="searchTerm"
+                            (input)="onSearch($any($event.target).value)" />
+                        <button class="sidebar-search-clear" *ngIf="searchTerm" (click)="clearSearch()"
+                            aria-label="Clear search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Categories -->

@@ -12,6 +12,14 @@ export class BentoService {
     getImages(): BentoImage[] {
         return [
             {
+                src: '/assets/images/fd_ceo.jpg',
+                title: 'Put Air Force and Space Day 2018',
+            },
+            {
+                src: '/assets/images/fd_team.jpg',
+                title: 'Space & Missile Systems Center 2019',
+            },
+            {
                 src: '/assets/images/1.jpg',
                 title: 'Ultralight 2-Axis Gimbal',
             },
@@ -33,7 +41,7 @@ export class BentoService {
             },
             {
                 src: '/assets/images/6.jpg',
-                title: 'Monteral CA Lab',
+                title: 'Monterey CA Lab',
             },
             {
                 src: '/assets/images/5.jpg',
@@ -54,10 +62,6 @@ export class BentoService {
             {
                 src: '/assets/images/ril_p5.jpg',
                 title: 'Tethered Aerostat Aerial Imagery',
-            },
-            {
-                src: '/assets/images/ril_p10.JPG',
-                title: 'Proprietary 3-Axis Gimbal Controller',
             },
             {
                 src: '/assets/images/ril_p8.JPG',

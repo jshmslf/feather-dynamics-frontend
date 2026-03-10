@@ -1,36 +1,33 @@
 <section class="about-us">
-    <div class="container">
+  <div class="container">
+    <app-reveal [blur]="true">
+      <!-- Group 1 -->
+      <div class="group group-left">
+        <img src="assets/images/ril_p8.JPG" alt="UAV aerial view" />
+      </div>
+    </app-reveal>
 
-        <app-reveal [blur]="true">
-            
-            <!-- Group 1 -->
-            <div class="group group-left">
-                <img src="assets/images/ril_p8.JPG" alt="UAV aerial view" />
-            </div>
-        </app-reveal>
+    <!-- Group 2 -->
+    <div class="group group-right">
+      <app-reveal [blur]="true">
+        <span class="label">ABOUT US</span>
+      </app-reveal>
 
-        <!-- Group 2 -->
-        <div class="group group-right">
-                <app-reveal [blur]="true">
-                <span class="label">ABOUT US</span>
-            </app-reveal>
-                
-                <app-reveal [blur]="true">
+      <app-reveal [blur]="true">
+        <h2>Legacy of Innovation Powering Modern Unmanned Systems</h2>
+      </app-reveal>
 
-                <h2>Legacy of Innovation Powering Modern Unmanned Systems</h2>
-            </app-reveal>
-
-                <app-reveal [blur]="true">
-
-            <p class="text">
-                With over twenty years of experience, Feather Dynamics has evolved from a UAV specialist into a pioneer of multi-domain unmanned systems. By leveraging patented technologies and extensive expertise in both commercial and defense sectors, they now develop intelligent solutions across land, air, sea, space, and cyber domains.
-            </p>
-            </app-reveal>   
-                <app-reveal [blur]="true">
-
-            <img src="/assets/images/uav_1.png" alt="UAV technology detail" />
-            </app-reveal>
-        </div>
-
+      <app-reveal [blur]="true">
+        <p class="text">
+          With over twenty years of experience, Feather Dynamics has evolved from a UAV specialist
+          into a pioneer of multi-domain unmanned systems. By leveraging patented technologies and
+          extensive expertise in both commercial and defense sectors, they now develop intelligent
+          solutions across land, air, sea, space, and cyber domains.
+        </p>
+      </app-reveal>
+      <app-reveal [blur]="true">
+        <img src="/assets/images/uav_1.png" alt="UAV technology detail" />
+      </app-reveal>
     </div>
+  </div>
 </section>

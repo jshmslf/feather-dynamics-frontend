@@ -20,6 +20,70 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* =====================
+   RESULT COUNT BAR
+===================== */
+
+.news-results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $accent;
+    animation: fadeSlideDown 0.35s $ease-expo both;
+}
+
+.news-results__count {
+    font-size: 0.85rem;
+    color: $gray;
+    letter-spacing: 0.02em;
+
+    strong {
+        color: $black;
+        font-weight: 500;
+    }
+}
+
+.news-results__clear {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    font-family: var(--font-header);
+    color: $gray;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+        color: $black;
+        border-color: $black;
+    }
+}
+
+/* =====================
+   EMPTY STATE
+===================== */
+
+.news-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: $gray;
+    font-size: 0.95rem;
+    animation: fadeSlideDown 0.35s $ease-expo both;
+
+    .news-results__clear {
+        align-self: center;
+    }
+}
+
+/* =====================
    NEWS LIST
 ===================== */
 
@@ -48,19 +112,19 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &:nth-child(2) {
-        transition-delay: 0.1s;
+        transition-delay: 0.08s;
     }
 
     &:nth-child(3) {
-        transition-delay: 0.18s;
+        transition-delay: 0.14s;
     }
 
     &:nth-child(4) {
-        transition-delay: 0.24s;
+        transition-delay: 0.19s;
     }
 
     &:nth-child(n+5) {
-        transition-delay: 0.28s;
+        transition-delay: 0.23s;
     }
 
     &.in-view {
@@ -127,7 +191,6 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 .news-sidebar {
     position: relative;
 
-    // ── Sidebar: slide in from right ──
     opacity: 0;
     transform: translateX(24px);
     transition:
@@ -161,16 +224,75 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 400;
 }
 
+/* ── Enhanced search wrapper ── */
+.sidebar-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    transition: border-color 0.2s;
+
+    &:focus-within {
+        border-color: $black;
+    }
+}
+
+.sidebar-search-icon {
+    width: 15px;
+    height: 15px;
+    color: $gray;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    pointer-events: none;
+    transition: color 0.2s;
+
+    .sidebar-search-wrap:focus-within & {
+        color: $black;
+    }
+}
+
 .sidebar-search {
+    flex: 1;
     padding: 0.8rem 0;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 1rem;
     font-family: var(--font-header);
     background: transparent;
 
     &:focus {
         outline: none;
+    }
+
+    &::placeholder {
+        color: #aaa;
+        transition: color 0.2s;
+    }
+
+    &:focus::placeholder {
+        color: #ccc;
+    }
+}
+
+.sidebar-search-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    color: $gray;
+    flex-shrink: 0;
+    transition: color 0.2s;
+    animation: fadeIn 0.2s $ease-smooth both;
+
+    svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    &:hover {
+        color: $black;
     }
 }
 
@@ -291,6 +413,32 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     line-height: 1.4;
     color: $black;
     margin: 0;
+}
+
+/* =====================
+   KEYFRAMES
+===================== */
+
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* =====================

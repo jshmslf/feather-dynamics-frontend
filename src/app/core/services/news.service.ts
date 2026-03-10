@@ -77,8 +77,6 @@ The DARPA LIFT Challenge allows us to showcase our capabilities alongside other 
 
 We are honored to compete.  
 And we are committed to advancing the future of autonomous air logistics.
-
-**Feather Dynamics - Taking logistics to new heights.**
             `,
             image: '/assets/news/news-1.png',
             publishedAt: new Date('2026-02-19'),

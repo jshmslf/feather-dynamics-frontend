@@ -136,7 +136,7 @@
         object-position: center;
     }
 
-    /* Gradient overlay */
+    /* Gradient overlay always visible */
     .who__overlay {
         position: absolute;
         inset: 0;
@@ -144,34 +144,21 @@
                 rgba(0, 0, 0, 0.65) 0%,
                 rgba(0, 0, 0, 0.35) 30%,
                 rgba(0, 0, 0, 0) 60%);
-        opacity: 0;
-        transition: opacity 0.35s ease;
+        opacity: 1;
         z-index: 1;
     }
 
-    /* Caption */
+    /* Caption always visible */
     .who__caption {
         position: absolute;
         left: 2rem;
         bottom: 2rem;
         color: white;
-        font-size: 2rem;
+        font-size: 1.3rem;
         letter-spacing: 0.05em;
-        font-weight: 500;
-        opacity: 0;
-        transform: translateY(12px);
-        transition: all 0.35s ease;
+        font-weight: 300;
+        opacity: 1;
+        transform: translateY(0);
         z-index: 2;
-    }
-
-    &:hover {
-        .who__overlay {
-            opacity: 1;
-        }
-
-        .who__caption {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 }

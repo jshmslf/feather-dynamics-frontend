@@ -14,15 +14,14 @@
     align-items: center;
     justify-content: center;
 
-    font-family: var(--font-second);
+    font-family: var(--font-secondary);
     font-size: var(--text);
     font-weight: 400;
 
-    background: var(--color-accent);
+    background: var(--accent-background);
+    border: 2px solid var(--color-accent);
     color: var(--color-white);
 
-    border: none;
-    outline: none;
 
     cursor: pointer;
 
@@ -48,7 +47,7 @@
 @media (hover: hover) {
     .scroll-top:hover {
         transform: translateY(-6px);
-        background: var(--color-secondary);
+        background: var(--accent-background);
     }
 }
 

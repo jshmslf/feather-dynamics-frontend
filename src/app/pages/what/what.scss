@@ -1,6 +1,5 @@
-$font-display: 'Bebas Neue', 'Impact', sans-serif;
 $font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
-$font-mono: 'DM Mono', 'Courier New', monospace;
+
 
 $c-bg: #ffffff;
 $c-surface: #f7f8fa;
@@ -59,11 +58,10 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-title {
-  font-family: $font-display;
-  font-size: 5rem;
-  font-weight: 400;
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: 600;
   line-height: 0.92;
-  letter-spacing: 0.02em;
   color: $c-text;
   margin: 0 0 32px;
   display: flex;
@@ -246,17 +244,6 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
-.image-label {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  font-family: $font-mono;
-  font-size: 8px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: $c-accent;
-}
-
 .image-accent-bar {
   position: absolute;
   right: 0;
@@ -272,7 +259,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-number {
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: 10px;
   letter-spacing: 0.15em;
   color: $c-text-muted;
@@ -290,7 +277,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-category {
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -298,7 +285,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-tag {
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: 9px;
   letter-spacing: 0.1em;
   color: $c-text-muted;
@@ -308,13 +295,12 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-title {
-  font-family: $font-display;
-  font-size: var(--text-2xl);
-  font-weight: 400;
+  font-family: var(--font-secondary);
+  font-size: 3rem;
+  font-weight: 500;
   color: $c-text;
   margin: 0 0 20px;
   line-height: 1;
-  letter-spacing: 0.03em;
   text-transform: uppercase;
   max-width: 720px;
 }
@@ -333,7 +319,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .expand-icon {
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: var(--text);
   color: $c-text-muted;
   line-height: 1;
@@ -368,7 +354,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -414,7 +400,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-note {
-  font-family: $font-mono;
+  font-family: var(--font-secondary);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;

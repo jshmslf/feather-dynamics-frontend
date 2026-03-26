@@ -19,10 +19,11 @@
 
         <!-- Navigation -->
         <nav class="nav">
-            <a href="/news" (click)="closeMenu()">News</a>
-            <a href="/who-we-are" (click)="closeMenu()">Who We Are</a>
-            <a href="/what-we-do" (click)="closeMenu()">What We Do</a>
-            <a href="/contact-us" (click)="closeMenu()">Contact Us</a>
+            <a routerLink="/news" routerLinkActive="active" (click)="closeMenu()">NEWS</a>
+            <a routerLink="/who-we-are" routerLinkActive="active" (click)="closeMenu()">WHO WE ARE</a>
+            <a routerLink="/what-we-do" routerLinkActive="active" (click)="closeMenu()">WHAT WE DO</a>
+            <a routerLink="/darpa-lift" routerLinkActive="active" (click)="closeMenu()">DARPA LIFT</a>
+            <a routerLink="/contact-us" routerLinkActive="active" (click)="closeMenu()">CONTACT US</a>
         </nav>
     </div>
 </header>

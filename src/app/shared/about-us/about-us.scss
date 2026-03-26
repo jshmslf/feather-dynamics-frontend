@@ -31,9 +31,9 @@
 /* LEFT GROUP */
 .group-left {
     img {
-        width: 100%; // ← fill container width on mobile
-        height: 400px; // ← shorter on mobile
-        object-fit: cover; // ← crop nicely instead of overflow
+        width: 100%; 
+        height: 400px; 
+        object-fit: cover; 
         display: block;
     }
 }
@@ -43,14 +43,14 @@
     margin-top: 2rem;
 
     .label {
-        font-size: 0.85rem;
+        font-family: var(--font-secondary);
         letter-spacing: 0.2rem;
         display: block;
         margin-bottom: 1rem;
     }
 
     h2 {
-        font-size: clamp(1.6rem, 5vw, 2.5rem); // ← slightly smaller floor on mobile
+        font-size: clamp(1.6rem, 5vw, 2.5rem); 
         line-height: 1.2;
         margin-bottom: 1.5rem;
         font-weight: 400;
@@ -59,13 +59,13 @@
     p {
         line-height: 1.6;
         opacity: 0.8;
-        max-width: 100%; // ← remove 520px cap on mobile, let it breathe
+        max-width: 100%; 
         margin-bottom: 2rem;
     }
 
     img {
-        width: 100%; // ← fill container
-        height: 250px; // ← shorter on mobile
+        width: 100%; 
+        height: 250px; 
         object-fit: cover;
         display: block;
     }
@@ -74,7 +74,7 @@
 @media (min-width: 992px) {
     .container {
         flex-direction: row;
-        align-items: flex-start; // ← align tops, not stretch
+        align-items: flex-start; 
     }
 
     .group-left,
@@ -84,7 +84,7 @@
 
     .group-left img {
         width: 210%;
-        height: 650px; // ← restore tall height on desktop
+        height: 650px; 
     }
 
     .group-right {
@@ -92,11 +92,11 @@
         padding-left: 4rem;
 
         p {
-            max-width: 520px; // ← restore cap on desktop
+            max-width: 520px; 
         }
 
         img {
-            height: 350px; // ← restore on desktop
+            height: 350px; 
         }
     }
 }

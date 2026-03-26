@@ -8,10 +8,11 @@ import { Tag } from "../../shared/tag/tag";
 import { Blog } from "../../shared/blog/blog";
 import { AboutUs } from "../../shared/about-us/about-us";
 import { ResearchDevelopmentComponent } from "../../shared/research-development/research-development";
+import { DarpaBanner } from "../../shared/darpa-banner/darpa-banner";
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog, AboutUs, ResearchDevelopmentComponent],
+  imports: [Hero, WhoWeAre, WhatWeDo, Cta, Partners, Tag, Blog, AboutUs, ResearchDevelopmentComponent, DarpaBanner],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

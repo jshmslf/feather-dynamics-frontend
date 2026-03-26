@@ -32,7 +32,7 @@
         letter-spacing: 2px;
         margin-bottom: 12px;
         font-weight: 400;
-        font-family: var(--font-second);
+        font-family: var(--font-secondary);
     }
 
     &__subtitle {
@@ -138,7 +138,7 @@
     }
 
     &__card:hover .what__hover-overlay {
-        background: rgba(177, 18, 39, 0.75);
+        background: color-mix(in srgb, var(--accent-secondary), transparent 40%);
     }
 
     &__base,
@@ -152,6 +152,10 @@
         z-index: 2;
         color: #fff;
         transition: opacity 0.3s ease;
+    }
+
+    &__title {
+        font-family: var(--font-secondary);
     }
 
     &__hover {

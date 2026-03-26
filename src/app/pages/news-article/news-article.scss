@@ -1,14 +1,6 @@
-
-
-$font-display : 'Bebas Neue',
-'Impact',
-sans-serif;
 $font-body : 'Montserrat',
 'Helvetica Neue',
 sans-serif;
-$font-mono : 'DM Mono',
-'Courier New',
-monospace;
 
 $c-bg : #f5f4f0;
 $c-text : #0f172a;
@@ -115,7 +107,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__category {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 9px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
@@ -125,13 +117,13 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__meta-sep {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 10px;
     color: $c-muted;
 }
 
 .article__date {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 9px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -139,11 +131,10 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__title {
-    font-family: $font-display;
-    font-size: var(--text-2xl);
-    font-weight: 400;
+    font-family: var(--font-secondary);
+    font-size: clamp(2rem, 5vw, 3rem);;
+    font-weight: 500;
     line-height: 0.92;
-    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: $c-text;
     margin: 0;
@@ -222,7 +213,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__toc-label {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 9px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -231,7 +222,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__toc-link {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 10px;
     letter-spacing: 0.08em;
     color: $c-muted;
@@ -261,7 +252,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -320,7 +311,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
     ::ng-deep {
 
         h2 {
-            font-family: $font-display;
+            font-family: var(--font-secondary);
             font-size: var(--text-xl);
             font-weight: 400;
             letter-spacing: 0.04em;
@@ -331,7 +322,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         h3 {
-            font-family: $font-mono;
+            font-family: var(--font-secondary);
             font-size: var(--text);
             font-weight: 400;
             letter-spacing: 0.12em;
@@ -435,14 +426,14 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__footer-tag {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 9px;
     letter-spacing: 0.22em;
     color: $c-muted;
 }
 
 .article__footer-back {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -463,7 +454,7 @@ $ease-smooth : cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .article__share-label {
-    font-family: $font-mono;
+    font-family: var(--font-secondary);
     font-size: 9px;
     letter-spacing: 0.22em;
     text-transform: uppercase;

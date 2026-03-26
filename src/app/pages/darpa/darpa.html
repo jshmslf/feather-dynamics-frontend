@@ -1,0 +1,52 @@
+<app-page-header [title]="'DARPA LIFT'" [bgImage]="'/assets/images/darpa-lift.png'"></app-page-header>
+
+<section class="darpa">
+    <div class="darpa__intro global-container">
+        <p class="darpa__label">[ PROGRAM OVERVIEW ]</p>
+        <h2 class="darpa__heading">
+            Road to the <span class="accent">DARPA LIFT Challenge</span>
+        </h2>
+        <p class="darpa__body">
+            Feather Dynamics is actively competing in the DARPA LIFT Challenge — a national program pushing the
+            boundaries of unmanned aerial systems. Below is a live view of our journey from inception to the
+            challenge event, showing the most recent updates first.
+        </p>
+    </div>
+
+    <div class="darpa__timeline global-container">
+        <div class="tl">
+            <div
+                class="tl__entry"
+                *ngFor="let entry of entries; let i = index"
+                [class]="'tl__entry--' + entry.status"
+                #timelineItem
+            >
+                <div class="tl__index">{{ (i + 1) | number:'2.0-0' }}</div>
+
+                <div class="tl__meta">
+                    <span class="tl__date">{{ entry.date }}</span>
+                    <span class="tl__tag" [class]="'tl__tag--' + entry.status">{{ entry.tag }}</span>
+                </div>
+
+                <div class="tl__divider">
+                    <div class="tl__dot"></div>
+                    <div class="tl__line"></div>
+                </div>
+
+                <div class="tl__content">
+                    <p class="tl__label">{{ entry.label }}</p>
+                    <h3 class="tl__title">{{ entry.title }}</h3>
+                    <p class="tl__desc">{{ entry.description }}</p>
+                    <div class="tl__status">
+                        <span class="tl__status-dot"></span>
+                        <span class="tl__status-text">
+                            {{ entry.status === 'completed' ? 'Completed' : entry.status === 'active' ? 'In Progress' : 'Upcoming' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-cta></app-cta>

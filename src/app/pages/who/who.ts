@@ -12,10 +12,11 @@ import { BentoImage, BentoService } from '../../core/services/bento.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ScrollRevealComponent } from '../../shared/scroll-reveal/scroll-reveal';
 import { Timeline2 } from "../../shared/timeline-2/timeline-2";
+import { Cta } from "../../shared/cta/cta";
 
 @Component({
   selector: 'app-who',
-  imports: [PageHeader, CommonModule, ScrollRevealComponent, Timeline2],
+  imports: [PageHeader, CommonModule, ScrollRevealComponent, Timeline2, Cta],
   templateUrl: './who.html',
   styleUrl: './who.scss',
 })

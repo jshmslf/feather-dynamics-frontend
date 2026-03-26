@@ -1,11 +1,15 @@
 .blur-text {
-    font-weight: 400; // no bold
-    line-height: 1.2;
+    font-weight: 600; 
     color: #ffffff;
+    font-family: var(--font-secondary);
 
     span {
         display: inline-block;
         will-change: transform, filter, opacity;
-        opacity: 0; // <-- hide initially
+        opacity: 0;
+    }
+
+    &.accent span {
+        color: var(--color-accent);
     }
 }

@@ -1,21 +1,45 @@
 .page-header {
     width: 100%;
     min-height: 375px;
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(100%);
     position: relative;
     display: flex;
-    align-items: center; // vertically center
+    align-items: center;
     justify-content: center;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: inherit;
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(100%);
+        z-index: 0;
+    }
 
     .overlay {
         position: absolute;
         inset: 0;
         background: rgba(0, 0, 0, 0.432);
         display: flex;
-        align-items: center; // vertically center content
+        align-items: center;
         justify-content: center;
+        z-index: 1;
+    }
+
+    .title-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.75rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .bracket {
+        color: var(--accent-highlight);
+        font-weight: 500;
+        font-size: clamp(4rem, 9vw, 7rem);
+        margin-bottom: 0.2em;
     }
 
     .content {
@@ -30,6 +54,7 @@
             line-height: 1.2;
             color: white;
             margin-bottom: 0.5rem;
+            letter-spacing: 2px;
         }
 
         .breadcrumbs {

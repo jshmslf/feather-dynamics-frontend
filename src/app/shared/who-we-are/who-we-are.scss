@@ -44,8 +44,8 @@
 
     &__label {
         display: block;
+        font-family: var(--font-secondary);
         letter-spacing: 0.25em;
-        text-transform: uppercase;
         color: var(--color-black);
         margin-bottom: 1rem;
     }
@@ -91,11 +91,12 @@
         letter-spacing: 0.12em;
         text-transform: uppercase;
         cursor: pointer;
-        transition: background 0.25s, border-color 0.25s;
+        transition: background 0.25s, border-color 0.25s, color 0.25s;
 
         &:hover {
-            background: rgba(122, 122, 122, 0.06);
-            border-color: rgba(122, 122, 122, 0.5);
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-white);
         }
     }
 }
@@ -154,6 +155,7 @@
         left: 2rem;
         bottom: 2rem;
         color: white;
+        font-family: var(--font-secondary);
         font-size: 1.3rem;
         letter-spacing: 0.05em;
         font-weight: 300;

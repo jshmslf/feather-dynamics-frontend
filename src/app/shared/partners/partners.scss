@@ -35,17 +35,17 @@ app-reveal {
 }
 
 .partners__title {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
     font-weight: 400;
     letter-spacing: 0.08em;
-    font-family: var(--font-second);
+    font-family: var(--font-secondary);
     color: var(--color-black);
 }
 
 /* Desktop adjustments */
 @media (min-width: 1200px) {
     .partners {
-        padding: 8rem;
+        padding: 3rem 1.5rem 8rem 1.5rem;
     }
 
     .partners__deco {

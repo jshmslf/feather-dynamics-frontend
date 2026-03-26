@@ -4,6 +4,39 @@
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
     letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+
+    // grid lines layer
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 60px 60px;
+        z-index: 0;
+    }
+
+    // radial fade mask — visible at bottom, fades out in a curve toward top
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse 120% 60% at 50% 0%,
+            var(--color-black) 30%,
+            transparent 100%
+        );
+        z-index: 1;
+    }
+
+    // keep all content above the pseudo layers
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
 
     a {
         color: rgba(255, 255, 255, 0.8);

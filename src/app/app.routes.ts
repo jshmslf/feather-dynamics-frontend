@@ -6,6 +6,7 @@ import { What } from './pages/what/what';
 import { ContactUs } from './pages/contact-us/contact-us';
 import { NewsArticle } from './pages/news-article/news-article';
 import { NotFound } from './pages/not-found/not-found';
+import { Darpa } from './pages/darpa/darpa';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: 'who-we-are', component: Who },
     { path: 'what-we-do', component: What },
     { path: 'contact-us', component: ContactUs },
+    { path: 'darpa-lift', component: Darpa },
 
     {
         path: 'privacy-policy',

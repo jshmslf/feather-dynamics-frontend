@@ -1,17 +1,18 @@
 <section class="page-header" [style.background-image]="'url(' + bgImage + ')'">
     <div class="overlay">
-        <div class="content">
+        <div class="title-row">
             <app-reveal [blur]="true">
-                <h1 class="title">{{ title }}</h1>
+                <span class="bracket">[ </span>
             </app-reveal>
+            <div class="content">
+                <app-reveal [blur]="true">
+                    <h1 class="title">{{ title }}</h1>
+                </app-reveal>
+            </div>
 
-            <!-- <app-reveal [blur]="true" [delay]="0.3">
-                <nav class="breadcrumbs" *ngIf="breadcrumbs.length > 0">
-                    <span *ngFor="let crumb of breadcrumbs; let last = last">
-                        {{ crumb }}<span *ngIf="!last">&mdash;</span>
-                    </span>
-                </nav>
-            </app-reveal> -->
+            <app-reveal [blur]="true">
+                <span class="bracket"> ]</span>
+            </app-reveal>
         </div>
     </div>
 </section>

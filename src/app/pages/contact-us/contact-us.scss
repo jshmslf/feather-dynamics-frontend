@@ -1,6 +1,5 @@
 
 // ─── Tokens ──────────────────────────────────────────────────────
-$font-display: 'Bebas Neue', 'Impact', sans-serif;
 $font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
 $font-mono: 'DM Mono', 'Courier New', monospace;
 
@@ -25,7 +24,7 @@ $ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 app-logo-loop {
     ::ng-deep .logoloop__item {
         color: var(--color-black);
-        font-family: var(--font-second);
+        font-family: var(--font-secondary);
     }
 }
 
@@ -82,45 +81,12 @@ app-logo-loop {
     position: relative;
 }
 
-// Eyebrow
-// .info-eyebrow {
-//     display: flex;
-//     align-items: center;
-//     gap: 16px;
-//     margin-bottom: 28px;
-
-//     // Scroll reveal
-//     opacity: 0;
-//     transform: translateY(16px);
-//     transition: opacity 0.55s $ease-smooth, transform 0.55s $ease-expo;
-
-//     &.in-view {
-//         opacity: 1;
-//         transform: translateY(0);
-//     }
-// }
-
-// .eyebrow-rule {
-//     width: 40px;
-//     height: 1px;
-//     background: var(--color-accent);
-// }
-
-// .eyebrow-text {
-//     font-family: $font-mono;
-//     font-size: 10px;
-//     letter-spacing: 0.24em;
-//     text-transform: uppercase;
-//     color: var(--color-accent);
-// }
-
 // Title
 .info-title {
-    font-family: $font-display;
+    font-family: var(--font-secondary);
     font-size: var(--text-2xl);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 0.9;
-    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: $c-text;
     margin: 0 0 28px;
@@ -236,7 +202,7 @@ app-logo-loop {
     position: absolute;
     bottom: -20px;
     left: -12px;
-    font-family: $font-display;
+    font-family: var(--font-secondary);
     font-size: 120px;
     line-height: 1;
     color: rgba(0, 0, 0, 0.03);
@@ -563,7 +529,7 @@ textarea {
 }
 
 .popup-title {
-    font-family: $font-display;
+    font-family: var(--font-secondary);
     font-size: var(--text-xl);
     font-weight: 400;
     letter-spacing: 0.04em;

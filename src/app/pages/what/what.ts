@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PageHeader } from '../../shared/page-header/page-header';
+import { SeoService } from '../../core/services/seo.service';
 
 interface Platform {
   index: string;
@@ -80,12 +81,19 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private seo: SeoService
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.seo.updateSeo({
+      title: 'What We Do | Feather Dynamics',
+      description: 'Explore Feather Dynamics\' capabilities in autonomous vehicle design, defense systems, and commercial UAV development.',
+      keywords: 'unmanned aerial vehicles, UAV, autonomous systems, defense technology, commercial UAV, Feather Dynamics, aerospace engineering, robotics, mission systems, R&D, sensor fusion, AI autonomy, secure communications, UAV payloads, defense platforms, cargo transport drones, surveillance systems, ISR, tactical support, unmanned vehicle technology, next-generation UAV, autonomous flight, mission-critical systems, UAV manufacturers, defense applications, UAV development, autonomous vehicle design'
+    })
+  }
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {

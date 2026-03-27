@@ -8,12 +8,14 @@ import {
   ViewChild,
   ViewChildren,
   inject,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  OnInit
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PageHeader } from '../../shared/page-header/page-header';
 import { NewsCategory, NewsItem, NewsService } from '../../core/services/news.service';
+import { SeoService } from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-news',
@@ -22,7 +24,7 @@ import { NewsCategory, NewsItem, NewsService } from '../../core/services/news.se
   templateUrl: './news.html',
   styleUrl: './news.scss',
 })
-export class News implements AfterViewInit {
+export class News implements AfterViewInit, OnInit {
 
   private newsService = inject(NewsService);
   private cdr = inject(ChangeDetectorRef);
@@ -44,11 +46,19 @@ export class News implements AfterViewInit {
   private observer!: IntersectionObserver;
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private seo: SeoService) {
     this.news         = this.newsService.getAll();
     this.filteredNews = [...this.news];
     this.recentNews   = this.news.slice(0, 5);
     this.resultCount  = this.filteredNews.length;
+  }
+
+  ngOnInit(): void {
+    this.seo.updateSeo({
+      title: 'News | Feathery Dynamics',
+      description: 'Stay updated on the latest breakthroughs from Feather Dynamics. From pioneering autonomous vehicle design to mission-critical defense technology, explore our recent news, project milestones, and three decades of innovation in unmanned systems.',
+      keywords: 'Feather Dynamics news, autonomous technology updates, unmanned systems breakthroughs, UAV industry milestones, defense technology press releases, next-gen autonomous vehicle launches, aerospace innovation news, mission-driven development updates, autonomous system flight tests, AI-driven defense solutions, physical AI integration, loyal wingman technology, edge computing resilience, multi-domain autonomous platforms, robotics engineering news, unmanned vehicle safety standards, strategic defense partnerships, autonomous ISR news, UAS pilot programs, drone-as-a-service (DaaS) expansion, 30 years of autonomous excellence.'
+    })
   }
 
   ngAfterViewInit(): void {

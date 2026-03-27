@@ -7,10 +7,12 @@ import {
   ElementRef,
   PLATFORM_ID,
   inject,
+  OnInit,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PageHeader } from '../../shared/page-header/page-header';
 import { Cta } from '../../shared/cta/cta';
+import { SeoService } from '../../core/services/seo.service';
 
 export interface TimelineEntry {
   date: string;
@@ -27,10 +29,12 @@ export interface TimelineEntry {
   templateUrl: './darpa.html',
   styleUrl: './darpa.scss',
 })
-export class Darpa implements AfterViewInit, OnDestroy {
+export class Darpa implements AfterViewInit, OnDestroy, OnInit {
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
   private observer?: IntersectionObserver;
+
+  constructor(private seo: SeoService) {}
 
   @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef<HTMLElement>>;
 
@@ -60,6 +64,63 @@ export class Darpa implements AfterViewInit, OnDestroy {
       tag: 'Target',
     },
   ];
+
+  ngOnInit(): void {
+    this.seo.updateSeo({
+      title: 'DARPA LIFT Challenge | Feather Dynamics',
+      description: 'Feather Dynamics is developing the next generation of unmanned aerial platforms for the DARPA LIFT Challenge. Learn about our progress and upcoming milestones.',
+      image: 'https://featherdynamics.com/assets/fdmetapic-darpa.png',
+      keywords: 'DARPA LIFT, unmanned aerial platforms, Feather Dynamics, robotics, autonomous systems, UAV, defense technology, next-generation flight, aerospace engineering, CSUMB, mechatronics, unmanned vehicle technology, autonomous vehicle design, defense applications, UAV payload engineering, multi-domain autonomous platforms, autonomous innovation, UAV manufacturers, tactical UAV development, autonomous ISR, autonomous system integration, edge computing for unmanned systems, mission-critical unmanned vehicles, commercial autonomous flight solutions',
+    });
+
+    this.seo.setJsonLd({
+            '@context':         'https://schema.org',
+            '@type':            'WebPage',
+            'name':             'DARPA LiFT | Feather Dynamics',
+            'url':              'https://featherdynamics.com/darpa-lift',
+            'description':      'Feather Dynamics is a participant in the DARPA Lifting Insect-inspired Flight Technology (LiFT) program, developing next-generation autonomous micro aerial vehicle systems for defense applications.',
+            'image':            'https://featherdynamics.com/assets/fdmetapic-darpa.png',
+            'inLanguage':       'en-US',
+            'isPartOf': {
+                '@type':  'WebSite',
+                'name':   'Feather Dynamics',
+                'url':    'https://featherdynamics.com'
+            },
+            'about': {
+                '@type':       'ResearchProject',
+                'name':        'DARPA LiFT Program',
+                'url':         'https://www.darpa.mil',
+                'funder': {
+                    '@type':  'GovernmentOrganization',
+                    'name':   'Defense Advanced Research Projects Agency (DARPA)',
+                    'url':    'https://www.darpa.mil'
+                }
+            },
+            'author': {
+                '@type':  'Organization',
+                'name':   'Feather Dynamics',
+                'url':    'https://featherdynamics.com',
+                'logo':   'https://featherdynamics.com/assets/fdmetapic.jpg'
+            },
+            'breadcrumb': {
+                '@type':           'BreadcrumbList',
+                'itemListElement': [
+                    {
+                        '@type':    'ListItem',
+                        'position': 1,
+                        'name':     'Home',
+                        'item':     'https://featherdynamics.com'
+                    },
+                    {
+                        '@type':    'ListItem',
+                        'position': 2,
+                        'name':     'DARPA LiFT',
+                        'item':     'https://featherdynamics.com/darpa-lift'
+                    }
+                ]
+            }
+        });
+  }
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;

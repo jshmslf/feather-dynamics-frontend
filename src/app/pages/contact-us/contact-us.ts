@@ -27,6 +27,7 @@ import { PageHeader } from '../../shared/page-header/page-header';
 import { LogoItem, LogoLoopComponent } from '../../shared/logo-loop/logo-loop';
 import { RevealComponent } from '../../shared/reveal/reveal';
 import { ContactService } from '../../core/services/contact.service';
+import { SeoService } from '../../core/services/seo.service';
 
 interface FormData {
   name: string;
@@ -101,12 +102,19 @@ export class ContactUs implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private seo: SeoService
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.seo.updateSeo({
+      title: 'Contact Us | Feather Dynamics',
+      description: 'Get in touch with Feather Dynamics for inquiries about our autonomous vehicle solutions, defense technology, or partnership opportunities. Our team is ready to discuss your next-generation UAV projects.',
+      keywords: 'contact Feather Dynamics, UAV inquiry, autonomous vehicle company contact, defense technology partners, unmanned systems consultation, feather dynamics contact form, military drone technology, autonomous cargo delivery, VTOL aircraft development, aerospace innovation contact, feather dynamics support, defense contractor contact, UAV research and development, autonomous flight systems, next-gen unmanned vehicles, feather dynamics partnership, military robotics contact, autonomous vehicle consulting, defense innovation contact, feather dynamics engineering, UAV design collaboration, autonomous system development, feather dynamics technical support, defense technology solutions, feather dynamics sales, UAV technology contact, autonomous vehicle research, feather dynamics customer service, defense systems contact, UAV development partners, feather dynamics engineering contact, autonomous flight technology, feather dynamics innovation, defense technology partners, UAV industry contact, feather dynamics corporate contact, autonomous vehicle development, feather dynamics defense solutions, UAV research contact, feather dynamics aerospace contact'
+    })
+  }
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {

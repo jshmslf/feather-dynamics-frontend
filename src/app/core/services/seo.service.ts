@@ -1,10 +1,15 @@
-import { Injectable } from "@angular/core";
+import { DOCUMENT, Inject, Injectable } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
-    constructor(private meta: Meta, private title: Title, private router: Router) {}
+    constructor(
+        private meta: Meta,
+        private title: Title,
+        private router: Router,
+        @Inject(DOCUMENT) private doc: Document
+    ) { }
 
     updateSeo(config: {
         title: string,
@@ -18,6 +23,7 @@ export class SeoService {
         const url = `https://featherdynamics.com${this.router.url}`;
 
         this.title.setTitle(config.title);
+        this.setCanonical(url);
 
         const tags = [
         { name: 'description', content: config.description },
@@ -29,13 +35,13 @@ export class SeoService {
         { property: 'og:description', content: config.description },
         { property: 'og:url', content: url },
         { property: 'og:type', content: config.type || 'website' },
-        { property: 'og:image', content: config.image || '/assets/default-og.jpg' },
+        { property: 'og:image', content: config.image || 'https://featherdynamics.com/assets/default-og.jpg' },
 
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: config.title },
         { name: 'twitter:description', content: config.description },
-        { name: 'twitter:image', content: config.image || '/assets/default-og.jpg' },
+        { name: 'twitter:image', content: config.image || 'https://featherdynamics.com/assets/default-og.jpg' },
     ];
 
         // Article-specific tags
@@ -53,10 +59,35 @@ export class SeoService {
             this.meta.updateTag({ name: tag.name!, content: tag.content });
             }
         });
-        }
+    }
 
-        // Call on route changes to clean stale tags
-        removeArticleTags() {
+    setJsonLd(data: object) {
+        const existing = this.doc.querySelector('script[type="application/ld+json"]');
+        if (existing) existing.remove();
+
+        const script = this.doc.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(data);
+        this.doc.head.appendChild(script);
+    }
+
+    removeJsonLd() {
+        const el = this.doc.querySelector('script[type="application/ld+json"]');
+        if (el) el.remove();
+    }
+    
+    private setCanonical(url: string) {
+        let link: HTMLLinkElement = this.doc.querySelector("link[rel='canonical']")!;
+        if (!link) {
+            link = this.doc.createElement('link');
+            link.setAttribute('rel', 'canonical');
+            this.doc.head.appendChild(link);
+        }
+        link.setAttribute('href', url);
+    }
+
+    // Call on route changes to clean stale tags
+    removeArticleTags() {
         ['article:published_time', 'article:author'].forEach(p =>
             this.meta.removeTag(`property='${p}'`)
         );

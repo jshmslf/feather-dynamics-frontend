@@ -1,5 +1,5 @@
 export interface TimelineItem {
-  date: string; // e.g. "2021"
+  date: string;
   title?: string;
   content: string;
   image?: string;

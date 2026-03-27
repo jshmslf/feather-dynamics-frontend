@@ -36,7 +36,7 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private newsService: NewsService,
-    private seoService: SeoService,
+    private seo: SeoService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -47,7 +47,7 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
     this.article = this.newsService.getBySlug(slug);
 
     if (this.article) {
-      this.seoService.updateSeo({
+      this.seo.updateSeo({
         title:       `${this.article.title} | Feather Dynamics`,
         description: this.article.excerpt,
         image:       `https://featherdynamics.com${this.article.image}`,
@@ -56,11 +56,38 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
         author:      'Feather Dynamics',
         keywords:    'UAV, autonomous cargo, VTOL, logistics, Feather Dynamics'
       });
+
+      this.seo.setJsonLd({
+        '@context':         'https://schema.org',
+        '@type':            'NewsArticle',
+        'headline':         this.article.title,
+        'description':      this.article.excerpt,
+        'image':            `https://featherdynamics.com${this.article.image}`,
+        'datePublished':    this.article.publishedAt.toISOString(),
+        'author': {
+          '@type': 'Organization',
+          'name':  'Feather Dynamics'
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name':  'Feather Dynamics',
+          'logo': {
+            '@type': 'ImageObject',
+            'url':   'https://featherdynamics.com/assets/logo.png'
+          }
+        },
+        'mainEntityOfPage': {
+          '@type': '@id',
+          '@id':   `https://featherdynamics.com/news/${slug}`
+        }
+      });
     }
+    
   }
 
   ngOnDestroy(): void {
-    this.seoService.removeArticleTags();
+    this.seo.removeArticleTags();
+    this.seo.removeJsonLd();
   }
 
   ngAfterViewInit(): void {

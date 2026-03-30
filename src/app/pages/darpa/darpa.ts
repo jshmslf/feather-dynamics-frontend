@@ -13,6 +13,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PageHeader } from '../../shared/page-header/page-header';
 import { Cta } from '../../shared/cta/cta';
 import { SeoService } from '../../core/services/seo.service';
+import { GtmService } from '../../core/services/gtm.service';
 
 export interface TimelineEntry {
   date: string;
@@ -34,7 +35,10 @@ export class Darpa implements AfterViewInit, OnDestroy, OnInit {
   private isBrowser = isPlatformBrowser(this.platformId);
   private observer?: IntersectionObserver;
 
-  constructor(private seo: SeoService) {}
+  constructor(
+    private seo: SeoService,
+    private gtm: GtmService,
+  ) { }
 
   @ViewChildren('timelineItem') timelineItems!: QueryList<ElementRef<HTMLElement>>;
 
@@ -121,6 +125,13 @@ export class Darpa implements AfterViewInit, OnDestroy, OnInit {
             }
         });
   }
+
+  onLearnMoreClick(): void {
+    this.gtm.trackEvent('cta_label', {
+      cta_label: 'Learn More',
+      page: '/darpa-lift'
+    });
+}
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;

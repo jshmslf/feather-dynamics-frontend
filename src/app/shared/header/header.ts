@@ -21,6 +21,7 @@ export class Header {
   isSticky = false;
   isHidden = false;
   isMenuOpen = false;
+  isNewsOpen = false;
 
   private isBrowser: boolean;
   private lastScrollY = 0;
@@ -40,11 +41,25 @@ export class Header {
     this.lastScrollY = currentScroll;
   }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.nav__item--has-dropdown')) {
+      this.isNewsOpen = false;
+    }
+  }
+
+  toggleNews(event: MouseEvent) {
+    event.preventDefault();
+    this.isNewsOpen = !this.isNewsOpen;
+  }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
   closeMenu() {
     this.isMenuOpen = false;
+    this.isNewsOpen = false;
   }
 }

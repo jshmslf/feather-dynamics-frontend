@@ -92,7 +92,27 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       title: 'What We Do | Feather Dynamics',
       description: 'Explore Feather Dynamics\' capabilities in autonomous vehicle design, defense systems, and commercial UAV development.',
       keywords: 'unmanned aerial vehicles, UAV, autonomous systems, defense technology, commercial UAV, Feather Dynamics, aerospace engineering, robotics, mission systems, R&D, sensor fusion, AI autonomy, secure communications, UAV payloads, defense platforms, cargo transport drones, surveillance systems, ISR, tactical support, unmanned vehicle technology, next-generation UAV, autonomous flight, mission-critical systems, UAV manufacturers, defense applications, UAV development, autonomous vehicle design'
-    })
+    });
+
+    this.seo.generateBreadcrumbs();
+    this.seo.setJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        'name': 'Unmanned Vehicle Technology',
+        'url': 'https://featherdynamics.com/what-we-do',
+        'description': 'Autonomous vehicle design, defense systems, and commercial UAV development.',
+        'provider': {
+            '@type': 'Organization',
+            'name': 'Feather Dynamics',
+            'url': 'https://featherdynamics.com'
+        },
+        'areaServed': 'Worldwide',
+        'serviceType': [
+            'Autonomous UAV Systems',
+            'Defense Technology',
+            'Commercial Unmanned Vehicles'
+        ]
+    });
   }
 
   ngAfterViewInit(): void {

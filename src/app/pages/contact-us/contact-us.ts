@@ -113,7 +113,21 @@ export class ContactUs implements OnInit, AfterViewInit, OnDestroy {
       title: 'Contact Us | Feather Dynamics',
       description: 'Get in touch with Feather Dynamics for inquiries about our autonomous vehicle solutions, defense technology, or partnership opportunities. Our team is ready to discuss your next-generation UAV projects.',
       keywords: 'contact Feather Dynamics, UAV inquiry, autonomous vehicle company contact, defense technology partners, unmanned systems consultation, feather dynamics contact form, military drone technology, autonomous cargo delivery, VTOL aircraft development, aerospace innovation contact, feather dynamics support, defense contractor contact, UAV research and development, autonomous flight systems, next-gen unmanned vehicles, feather dynamics partnership, military robotics contact, autonomous vehicle consulting, defense innovation contact, feather dynamics engineering, UAV design collaboration, autonomous system development, feather dynamics technical support, defense technology solutions, feather dynamics sales, UAV technology contact, autonomous vehicle research, feather dynamics customer service, defense systems contact, UAV development partners, feather dynamics engineering contact, autonomous flight technology, feather dynamics innovation, defense technology partners, UAV industry contact, feather dynamics corporate contact, autonomous vehicle development, feather dynamics defense solutions, UAV research contact, feather dynamics aerospace contact'
-    })
+    });
+
+    this.seo.generateBreadcrumbs();
+    this.seo.setJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        'name': 'Contact Us | Feather Dynamics',
+        'url': 'https://featherdynamics.com/contact-us',
+        'description': 'Get in touch with Feather Dynamics.',
+        'publisher': {
+            '@type': 'Organization',
+            'name': 'Feather Dynamics',
+            'url': 'https://featherdynamics.com'
+        }
+    });
   }
 
   ngAfterViewInit(): void {

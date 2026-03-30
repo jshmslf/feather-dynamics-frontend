@@ -58,7 +58,20 @@ export class News implements AfterViewInit, OnInit {
       title: 'News | Feathery Dynamics',
       description: 'Stay updated on the latest breakthroughs from Feather Dynamics. From pioneering autonomous vehicle design to mission-critical defense technology, explore our recent news, project milestones, and three decades of innovation in unmanned systems.',
       keywords: 'Feather Dynamics news, autonomous technology updates, unmanned systems breakthroughs, UAV industry milestones, defense technology press releases, next-gen autonomous vehicle launches, aerospace innovation news, mission-driven development updates, autonomous system flight tests, AI-driven defense solutions, physical AI integration, loyal wingman technology, edge computing resilience, multi-domain autonomous platforms, robotics engineering news, unmanned vehicle safety standards, strategic defense partnerships, autonomous ISR news, UAS pilot programs, drone-as-a-service (DaaS) expansion, 30 years of autonomous excellence.'
-    })
+    });
+    this.seo.generateBreadcrumbs();
+    this.seo.setJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        'name': 'News | Feather Dynamics',
+        'url': 'https://featherdynamics.com/news',
+        'description': 'Latest news from Feather Dynamics.',
+        'publisher': {
+            '@type': 'Organization',
+            'name': 'Feather Dynamics',
+            'url': 'https://featherdynamics.com'
+        }
+    });
   }
 
   ngAfterViewInit(): void {

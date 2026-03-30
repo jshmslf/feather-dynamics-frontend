@@ -81,6 +81,8 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
           '@id':   `https://featherdynamics.com/news/${slug}`
         }
       });
+      
+    this.seo.generateBreadcrumbs();
     }
     
   }

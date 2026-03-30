@@ -41,16 +41,19 @@ export class Home implements OnInit {
           ]
         },
         {
-          '@type':           'WebSite',    
-          'name':            'Feather Dynamics',
-          'url':             'https://featherdynamics.com',
+          '@type': 'WebSite',
+          'name': 'Feather Dynamics',
+          'url': 'https://featherdynamics.com',
           'potentialAction': {
-              '@type':       'SearchAction',
-              'target':      'https://featherdynamics.com/search?q={search_term_string}',
-              'query-input': 'required name=search_term_string'
+            '@type': 'SearchAction',
+            'target': 'https://featherdynamics.com/search?q={search_term_string}',
+            'query-input': 'required name=search_term_string'
           }
         }
       ],
-    })
+    });
+
+    this.seo.setOrganizationSchema();
+    this.seo.setWebsiteSchema();
   }
 }

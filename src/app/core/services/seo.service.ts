@@ -61,18 +61,19 @@ export class SeoService {
         });
     }
 
-    setJsonLd(data: object) {
-        const existing = this.doc.querySelector('script[type="application/ld+json"]');
+    setJsonLd(data: object, id: string = 'default') {
+        const existing = this.doc.querySelector(`script[type="application/ld+json"][data-id="${id}"]`);
         if (existing) existing.remove();
 
         const script = this.doc.createElement('script');
         script.type = 'application/ld+json';
+        script.setAttribute('data-id', id);
         script.text = JSON.stringify(data);
         this.doc.head.appendChild(script);
     }
 
-    removeJsonLd() {
-        const el = this.doc.querySelector('script[type="application/ld+json"]');
+    removeJsonLd(id: string = 'default') {
+        const el = this.doc.querySelector(`script[type="application/ld+json"][data-id="${id}"]`);
         if (el) el.remove();
     }
     
@@ -91,5 +92,71 @@ export class SeoService {
         ['article:published_time', 'article:author'].forEach(p =>
             this.meta.removeTag(`property='${p}'`)
         );
+    }
+
+    private getPageName(url: string): string {
+        switch (url) {
+            case '/who-we-are': return 'About';
+            case '/what-we-do': return 'Technology';
+            case '/darpa-lift': return 'DARPA Lift';
+            case '/news': return 'News';
+            case '/contact-us': return 'Contact';
+            default: return 'Home';
+        }
+    }
+
+    generateBreadcrumbs() {
+        const url = this.router.url;
+
+        const breadcrumbs: any[] = [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://featherdynamics.com"
+            }
+        ];
+
+        breadcrumbs.push({
+            "@type": "ListItem",
+            "position": 2,
+            "name": this.getPageName(url),
+            "item": `https://featherdynamics.com${url}`
+        });
+
+        this.setJsonLd({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbs
+        }, 'breadcrumb');
+    }
+
+    setOrganizationSchema() {
+        this.setJsonLd({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Feather Dynamics",
+            "url": "https://featherdynamics.com",
+            "logo": "https://featherdynamics.com/assets/fdmetapic.jpg",
+            "description": "Feather Dynamics develops intelligent UAV systems and adaptive flight technologies.",
+            "foundingDate": "2025",
+            "sameAs": [
+                "https://www.linkedin.com/company/feather-dynamics"
+            ],
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "info@featherdynamics.com"
+            }]
+        }, 'organization');
+    }
+
+    setWebsiteSchema() {
+        this.setJsonLd({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Feather Dynamics",
+            "url": "https://featherdynamics.com"
+        }, 'website');
     }
 }

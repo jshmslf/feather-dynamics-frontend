@@ -123,7 +123,9 @@ export class Darpa implements AfterViewInit, OnDestroy, OnInit {
                     }
                 ]
             }
-        });
+    });
+    
+    this.seo.generateBreadcrumbs();
   }
 
   onLearnMoreClick(): void {

@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <!-- Home -->
     <url>
         <loc>https://featherdynamics.com/</loc>
-        <lastmod>2026-02-12</lastmod>
+        <lastmod>2026-03-30</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- News -->
     <url>
-        <loc>https://featherdynamics.com/news</loc>
-        <lastmod>2026-02-12</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://featherdynamics.com/who-we-are</loc>
+        <lastmod>2026-03-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://featherdynamics.com/what-we-do</loc>
+        <lastmod>2026-03-30</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Who We Are -->
-    <url>
-        <loc>https://featherdynamics.com/who-we-are</loc>
-        <lastmod>2026-02-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- What We Do -->
-    <url>
-        <loc>https://featherdynamics.com/what-we-do</loc>
-        <lastmod>2026-02-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Contact Us -->
-    <url>
-        <loc>https://featherdynamics.com/contact-us</loc>
-        <lastmod>2026-02-12</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Darpa Lift -->
     <url>
         <loc>https://featherdynamics.com/darpa-lift</loc>
-        <lastmod>2026-02-12</lastmod>
+        <lastmod>2026-03-30</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://featherdynamics.com/news</loc>
+        <lastmod>2026-03-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+
+    <url>
+        <loc>https://featherdynamics.com/contact-us</loc>
+        <lastmod>2026-03-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://featherdynamics.com/news/feather-dynamics-joins-darpa-lift-2026</loc>
+        <lastmod>2026-03-30</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>

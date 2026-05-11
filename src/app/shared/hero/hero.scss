@@ -135,15 +135,57 @@
 }
 
 @keyframes floatDeco {
-    0% {
-        transform: translateY(0);
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+// ── SCROLL INDICATOR ─────────────────────────────────────────────
+.hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeInScroll 1s ease 3.5s both;
+
+    &__label {
+        font-family: var(--font-secondary);
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+        color: rgba(255, 255, 255, 0.45);
     }
 
-    50% {
-        transform: translateY(-8px);
+    &__mouse {
+        width: 22px;
+        height: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
     }
 
-    100% {
-        transform: translateY(0);
+    &__wheel {
+        width: 3px;
+        height: 6px;
+        background: var(--color-accent);
+        border-radius: 2px;
+        animation: scrollWheel 1.6s ease-in-out infinite;
     }
+}
+
+@keyframes scrollWheel {
+    0%   { transform: translateY(0); opacity: 1; }
+    80%  { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes fadeInScroll {
+    from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }

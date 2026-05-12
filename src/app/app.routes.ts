@@ -7,6 +7,7 @@ import { ContactUs } from './pages/contact-us/contact-us';
 import { NewsArticle } from './pages/news-article/news-article';
 import { NotFound } from './pages/not-found/not-found';
 import { Darpa } from './pages/darpa/darpa';
+import { DeltaY4 } from './pages/delta-y4/delta-y4';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'what-we-do', component: What },
     { path: 'contact-us', component: ContactUs },
     { path: 'darpa-lift', component: Darpa },
+    { path: 'delta-y4', component: DeltaY4 },
 
     {
         path: 'privacy-policy',

@@ -1,0 +1,156 @@
+<app-page-header [title]="'Delta Y4 Tactical UAV'" [bgImage]="'/assets/images/uavmodel.jpg'"></app-page-header>
+
+<section class="dy4">
+  <div class="dy4__scroll" #scrollSection>
+    <div class="dy4__stage" #stage>
+
+      <!-- Full-stage 3D canvas -->
+      <app-model-viewer #viewer></app-model-viewer>
+
+      <!-- Background watermark text — GSAP-animated -->
+      <div class="dy4__bg-text" #bgText>DELTA-Y4</div>
+
+      <!-- Panel A: Intro — slides in from right -->
+      <div class="dy4__panel dy4__panel--intro" #panelIntro>
+        <p class="dy4__p-label">[ AREA B CQB UAS ]</p>
+        <h2 class="dy4__p-heading">
+          Engineered for<br /><span class="accent">Close Quarters.</span>
+        </h2>
+        <p class="dy4__p-body">
+          The Delta Y4 is a compact multirotor platform built for squad and team-level
+          Find, Fix, and Finish missions in contested environments — interior recon,
+          hallway and stairwell navigation, trench inspection, and urban overwatch.
+          Optimized for obstacle-dense spaces where speed, resilience, and simplicity matter.
+        </p>
+        <div class="dy4__intro-tags">
+          <span>S2MARTS</span><span>Drone Dominance G2</span><span>Area B RFS</span>
+        </div>
+      </div>
+
+      <!-- Panel B: Specs — slides up from bottom -->
+      <div class="dy4__panel dy4__panel--specs" #panelSpecs>
+        <p class="dy4__p-label">[ TARGET SPECIFICATIONS ]</p>
+        <div class="dy4__specs-grid">
+          @for (spec of specs; track spec.label) {
+            <div class="dy4__spec-card">
+              <span class="dy4__spec-value">{{ spec.value }}</span>
+              <span class="dy4__spec-unit">{{ spec.unit }}</span>
+              <span class="dy4__spec-label">{{ spec.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel C: Features — slides in from left -->
+      <div class="dy4__panel dy4__panel--features" #panelFeatures>
+        <p class="dy4__p-label">[ KEY CAPABILITIES ]</p>
+        <div class="dy4__feat-list">
+          @for (feat of features; track feat.index) {
+            <div class="dy4__feat-row">
+              <span class="dy4__feat-index">{{ feat.index }}</span>
+              <div class="dy4__feat-info">
+                <span class="dy4__feat-title">{{ feat.title }}</span>
+                <span class="dy4__feat-tag">{{ feat.tag }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel D: Origin — fades in center -->
+      <div class="dy4__panel dy4__panel--origin" #panelOrigin>
+        <div class="dy4__origin-rule"></div>
+        <p class="dy4__p-label">[ PRODUCTION & READINESS ]</p>
+        <p class="dy4__p-body dy4__origin-text">
+          NDAA-oriented sourcing. Domestic supplier integration.
+          Advancing toward <span class="accent">TRL 6</span> through integrated subsystem validation
+          and relevant environment testing. Approved for flight testing at
+          <span class="accent">Camp Roberts</span> via the JIFX program in coordination with NPS Monterey.
+        </p>
+        <img class="dy4__origin-badge" src="/assets/decos/madeinusa.png" alt="Made in USA" />
+      </div>
+
+      <!-- HUD — always visible -->
+      <div class="dy4__hud">
+        <span class="dy4__hud-label">[ DELTA Y4 ]</span>
+        <div class="dy4__hud-bar">
+          <div class="dy4__hud-fill" #hudFill></div>
+        </div>
+        <span class="dy4__hud-hint">scroll to explore</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="dy4-summary">
+  <div class="dy4-summary__inner global-container">
+
+    <!-- Mission Overview -->
+    <div class="dy4-summary__mission">
+      <p class="dy4__p-label">[ MISSION OVERVIEW ]</p>
+      <h2 class="dy4__p-heading">Built for the <span class="accent">Last 100 Meters.</span></h2>
+      <p class="dy4__p-body">
+        The Delta Y4 Tactical UAV is a compact multirotor platform engineered for close-quarters
+        Find, Fix, and Finish missions in contested operational environments. The system supports
+        squad and team-level operations requiring rapid reconnaissance, confined-space maneuvering,
+        and degraded-environment performance — including building entry, hallway and stairwell
+        navigation, trench and tunnel inspection, urban overwatch, and short-range denied-area sensing.
+        Developed under the <span class="accent">S2MARTS Drone Dominance G2 RFS</span> aligned with
+        Area B operational requirements.
+      </p>
+    </div>
+
+    <!-- Capability Matrix -->
+    <div class="dy4-summary__section">
+      <p class="dy4__p-label">[ AREA B RFS CAPABILITY ALIGNMENT ]</p>
+      <div class="dy4-summary__matrix">
+        @for (item of capabilityMatrix; track item.requirement) {
+          <div class="dy4-summary__matrix-row">
+            <span class="dy4-summary__matrix-req">{{ item.requirement }}</span>
+            <span class="dy4-summary__matrix-cap">{{ item.capability }}</span>
+            <span class="dy4-summary__matrix-status">✓ Targeted</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Technical Specifications -->
+    <div class="dy4-summary__section">
+      <p class="dy4__p-label">[ TECHNICAL SPECIFICATIONS ]</p>
+      <div class="dy4-summary__specs-table">
+        @for (spec of technicalSpecs; track spec.param) {
+          <div class="dy4-summary__spec-row">
+            <span class="dy4-summary__spec-param">{{ spec.param }}</span>
+            <span class="dy4-summary__spec-val">{{ spec.value }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Production & Readiness -->
+    <div class="dy4-summary__section">
+      <p class="dy4__p-label">[ PRODUCTION & READINESS ]</p>
+      <div class="dy4-summary__production">
+        <div class="dy4-summary__prod-list">
+          @for (item of productionItems; track item) {
+            <div class="dy4-summary__prod-item">
+              <span class="dy4-summary__prod-dot"></span>
+              {{ item }}
+            </div>
+          }
+        </div>
+        <p class="dy4__p-body dy4-summary__prod-note">
+          The Delta Y4 is progressing through integrated subsystem validation and relevant
+          environment testing supporting advancement toward <span class="accent">TRL 6</span>.
+          Feather Dynamics has been approved to conduct flight testing through the
+          <span class="accent">JIFX program at Camp Roberts</span> in coordination with the
+          Naval Postgraduate School in Monterey, California.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<app-cta></app-cta>

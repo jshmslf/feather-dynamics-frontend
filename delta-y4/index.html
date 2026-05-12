@@ -1,0 +1,1530 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Delta Y4 Tactical UAV | Feather Dynamics</title>
+  <base href="/feather-dynamics-frontend/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Montserrat:wght@300;400;500&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
+
+  <!-- meta -->
+  <meta name="title" content="Feather Dynamics">
+  <meta name="description" content="The Delta Y4 is a compact multirotor tactical UAS engineered for CQB Find, Fix, and Finish missions in contested environments. GNSS-denied resilient, contact-tolerant, and squad-portable.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://featherdynamics.com/delta-y4">
+  <meta property="og:title" content="Delta Y4 Tactical UAV | Feather Dynamics">
+  <meta property="og:description" content="The Delta Y4 is a compact multirotor tactical UAS engineered for CQB Find, Fix, and Finish missions in contested environments. GNSS-denied resilient, contact-tolerant, and squad-portable.">
+  <meta property="og:image" content="https://featherdynamics.com/assets/default-og.jpg">
+  <meta name="google-site-verification" content="b5cwCSNsPCiP3nqptAfD0loRgcAmHWSFYW0a5BNWQz8">
+  
+  <!-- X (Twitter) -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://featherdynamics.com/">
+  <meta property="twitter:title" content="Feather Dynamics">
+  <meta property="twitter:description" content="Feather Dynamics has been innovating unmanned vehicle technology for nearly three decades, serving both commercial and defense applications. With a long-standing history of advancing autonomous systems, the company has consistently contributed to shaping the future of next-generation autonomous vehicles through design excellence, technical innovation, and mission-driven development.">
+  <meta property="twitter:image" content="https://featherdynamics.com/assets/fdmetapic.jpg">
+
+  <!-- Google Tag Manager -->
+  <script>( function ( w, d, s, l, i )
+    {
+      w[ l ] = w[ l ] || []; w[ l ].push( {
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      } ); var f = d.getElementsByTagName( s )[ 0 ],
+        j = d.createElement( s ), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore( j, f );
+    } )( window, document, 'script', 'dataLayer', 'GTM-NKCGQGTD' );</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2ZDWTJW6QQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag () { dataLayer.push( arguments ); }
+    gtag( 'js', new Date() );
+
+    gtag( 'config', 'G-2ZDWTJW6QQ' );
+  </script>
+  
+<link rel="stylesheet" href="styles.css"><link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap" as="style"><style ng-app-id="ng">
+.header[_ngcontent-ng-c2275003701] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+  padding: 1.25rem 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+  transform: translateX(0);
+}
+.header.hidden[_ngcontent-ng-c2275003701] {
+  transform: translateY(-100%);
+}
+.header.sticky-on[_ngcontent-ng-c2275003701] {
+  background: var(--color-white);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+.header.sticky-on[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701] {
+  color: var(--color-black);
+}
+.header.sticky-on[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701]   .logo-black[_ngcontent-ng-c2275003701] {
+  display: block;
+}
+.header.sticky-on[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701]   .logo-white[_ngcontent-ng-c2275003701] {
+  display: none;
+}
+.header[_ngcontent-ng-c2275003701]   .header-inner[_ngcontent-ng-c2275003701] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701] {
+  position: relative;
+  z-index: 115;
+}
+.header[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701]   img[_ngcontent-ng-c2275003701] {
+  height: 43px;
+  transition: height 0.3s ease;
+}
+.header[_ngcontent-ng-c2275003701]   .logo-black[_ngcontent-ng-c2275003701] {
+  display: none;
+}
+.header[_ngcontent-ng-c2275003701]   .logo-white[_ngcontent-ng-c2275003701] {
+  display: block;
+}
+.header.menu-open[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701]   .logo-black[_ngcontent-ng-c2275003701] {
+  display: block;
+}
+.header.menu-open[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701]   .logo-white[_ngcontent-ng-c2275003701] {
+  display: none;
+}
+.header[_ngcontent-ng-c2275003701] {
+}
+.header[_ngcontent-ng-c2275003701]   .burger[_ngcontent-ng-c2275003701] {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--color-white);
+  cursor: pointer;
+  z-index: 115;
+  position: relative;
+}
+.header.sticky-on[_ngcontent-ng-c2275003701]   .burger[_ngcontent-ng-c2275003701] {
+  color: var(--color-black);
+}
+.header.menu-open[_ngcontent-ng-c2275003701]   .burger[_ngcontent-ng-c2275003701] {
+  color: var(--color-black);
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701] {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 2.5rem;
+  gap: 1.8rem;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+.header.menu-open[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701] {
+  transform: translateX(0);
+  height: 100vh;
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701] {
+  font-size: 1rem !important;
+  font-family: var(--font-secondary);
+  color: var(--color-black);
+  text-decoration: none;
+  position: relative;
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::before, 
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-weight: 300;
+  color: var(--color-accent);
+  font-size: 1.4em;
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::before {
+  content: "[";
+  left: -1rem;
+  transform: translateY(-50%) translateX(4px);
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::after {
+  content: "]";
+  right: -1rem;
+  transform: translateY(-50%) translateX(-4px);
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]:hover::before, 
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a.active[_ngcontent-ng-c2275003701]::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]:hover::after, 
+.header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a.active[_ngcontent-ng-c2275003701]::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701] {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-secondary);
+  color: var(--color-black);
+  position: relative;
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]::before, 
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]::after {
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-weight: 300;
+  color: var(--color-accent);
+  font-size: 1.4em;
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]::before {
+  content: "[";
+  left: -1rem;
+  transform: translateY(-50%) translateX(4px);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]::after {
+  content: "]";
+  right: -1rem;
+  transform: translateY(-50%) translateX(-4px);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701]:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__item[_ngcontent-ng-c2275003701] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-accent);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701] {
+  font-size: 0.85rem !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::before, 
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::after {
+  display: none;
+}
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown-title[_ngcontent-ng-c2275003701] {
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+.header[_ngcontent-ng-c2275003701]   .nav__dropdown-sub[_ngcontent-ng-c2275003701] {
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-body);
+}
+@media (max-width: 991px) {
+  .header.sticky-on[_ngcontent-ng-c2275003701] {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+@media (min-width: 992px) {
+  .header[_ngcontent-ng-c2275003701] {
+    padding: 1.2rem 0;
+  }
+  .header[_ngcontent-ng-c2275003701]   .burger[_ngcontent-ng-c2275003701] {
+    display: none;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701] {
+    position: static;
+    flex-direction: row;
+    transform: none;
+    background: transparent;
+    gap: 3.75rem;
+    z-index: auto;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701] {
+    font-size: var(--text);
+    color: var(--color-white);
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701] {
+    color: var(--color-white);
+  }
+  .header.sticky-on[_ngcontent-ng-c2275003701]   .nav[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701], 
+   .header.sticky-on[_ngcontent-ng-c2275003701]   .nav__trigger[_ngcontent-ng-c2275003701] {
+    color: var(--color-black);
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__item[_ngcontent-ng-c2275003701] {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__item--has-dropdown[_ngcontent-ng-c2275003701]::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1.2rem;
+    background: transparent;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701] {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    background: var(--accent-background);
+    border: 1px solid var(--accent-tertiary);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 200;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(155, 93, 229, 0.15);
+    color: var(--color-white) !important;
+    font-size: 0.75rem !important;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]:last-child {
+    border-bottom: none;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::before, 
+   .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]::after {
+    display: none;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a[_ngcontent-ng-c2275003701]:hover {
+    background: rgba(155, 93, 229, 0.08);
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown[_ngcontent-ng-c2275003701]   a.active[_ngcontent-ng-c2275003701]   .nav__dropdown-title[_ngcontent-ng-c2275003701] {
+    color: var(--accent-tertiary);
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown-title[_ngcontent-ng-c2275003701] {
+    font-family: var(--font-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__dropdown-sub[_ngcontent-ng-c2275003701] {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .header[_ngcontent-ng-c2275003701]   .nav__item--has-dropdown[_ngcontent-ng-c2275003701]:hover   .nav__dropdown[_ngcontent-ng-c2275003701], 
+   .header[_ngcontent-ng-c2275003701]   .nav__dropdown.open[_ngcontent-ng-c2275003701] {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+  .header[_ngcontent-ng-c2275003701] {
+  }
+  .header[_ngcontent-ng-c2275003701]   .logo[_ngcontent-ng-c2275003701] {
+    z-index: auto;
+  }
+  .header[_ngcontent-ng-c2275003701]   .burger[_ngcontent-ng-c2275003701] {
+    z-index: auto;
+  }
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/header.css.map */</style><style ng-app-id="ng">
+.news-bar[_ngcontent-ng-c2650484838] {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 800;
+  font-family:
+    "Montserrat",
+    "Helvetica Neue",
+    sans-serif;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.news-bar--visible[_ngcontent-ng-c2650484838] {
+  transform: translateY(0);
+}
+.news-bar--hidden[_ngcontent-ng-c2650484838] {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+.news-bar__gradient[_ngcontent-ng-c2650484838] {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      110deg,
+      #0f172a 0%,
+      #1a1f35 20%,
+      #1e2d40 40%,
+      #0f2027 60%,
+      #1a1a2e 80%,
+      #0f172a 100%);
+  background-size: 300% 300%;
+  animation: _ngcontent-ng-c2650484838_gradientShift 8s ease infinite;
+}
+@keyframes _ngcontent-ng-c2650484838_gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.news-bar[_ngcontent-ng-c2650484838]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-accent) 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      var(--color-accent) 70%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: _ngcontent-ng-c2650484838_seam 4s linear infinite;
+  z-index: 2;
+}
+@keyframes _ngcontent-ng-c2650484838_seam {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.news-bar__noise[_ngcontent-ng-c2650484838] {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+.news-bar__inner[_ngcontent-ng-c2650484838] {
+  position: relative;
+  z-index: 3;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .news-bar__inner[_ngcontent-ng-c2650484838] {
+    padding: 18px 48px;
+  }
+}
+@media (min-width: 1024px) {
+  .news-bar__inner[_ngcontent-ng-c2650484838] {
+    padding: 15px 64px;
+  }
+}
+.news-bar__left[_ngcontent-ng-c2650484838] {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  flex: 1;
+}
+.news-bar__tag[_ngcontent-ng-c2650484838] {
+  font-family:
+    "DM Mono",
+    "Courier New",
+    monospace;
+  font-size: 8px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  padding: 3px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.news-bar__text[_ngcontent-ng-c2650484838] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+.news-bar__date[_ngcontent-ng-c2650484838] {
+  font-family:
+    "DM Mono",
+    "Courier New",
+    monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 640px) {
+  .news-bar__date[_ngcontent-ng-c2650484838] {
+    display: block;
+  }
+}
+.news-bar__sep[_ngcontent-ng-c2650484838] {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 640px) {
+  .news-bar__sep[_ngcontent-ng-c2650484838] {
+    display: block;
+  }
+}
+.news-bar__title[_ngcontent-ng-c2650484838] {
+  font-family:
+    "Montserrat",
+    "Helvetica Neue",
+    sans-serif;
+  font-size: var(--text);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.news-bar__actions[_ngcontent-ng-c2650484838] {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.news-bar__cta[_ngcontent-ng-c2650484838] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family:
+    "DM Mono",
+    "Courier New",
+    monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.3s,
+    gap 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s;
+}
+.news-bar__cta[_ngcontent-ng-c2650484838]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+.news-bar__cta[_ngcontent-ng-c2650484838]   span[_ngcontent-ng-c2650484838], 
+.news-bar__cta[_ngcontent-ng-c2650484838]   .news-bar__cta-arrow[_ngcontent-ng-c2650484838], 
+.news-bar__cta[_ngcontent-ng-c2650484838]   .news-bar__cta-text[_ngcontent-ng-c2650484838] {
+  position: relative;
+  z-index: 2;
+}
+.news-bar__cta[_ngcontent-ng-c2650484838]:hover {
+  border-color: var(--color-accent);
+  gap: 16px;
+}
+.news-bar__cta[_ngcontent-ng-c2650484838]:hover::before {
+  transform: translateX(0);
+}
+.news-bar__cta-arrow[_ngcontent-ng-c2650484838] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.news-bar__cta[_ngcontent-ng-c2650484838]:hover   .news-bar__cta-arrow[_ngcontent-ng-c2650484838] {
+  transform: translateX(4px);
+}
+.news-bar__close[_ngcontent-ng-c2650484838] {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.25s;
+}
+.news-bar__close[_ngcontent-ng-c2650484838]:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.news-bar__close[_ngcontent-ng-c2650484838]:hover   .news-bar__close-line[_ngcontent-ng-c2650484838]:first-child {
+  transform: rotate(45deg) translate(3.5px, 3.5px);
+}
+.news-bar__close[_ngcontent-ng-c2650484838]:hover   .news-bar__close-line[_ngcontent-ng-c2650484838]:last-child {
+  transform: rotate(-45deg) translate(3.5px, -3.5px);
+}
+.news-bar__close-line[_ngcontent-ng-c2650484838] {
+  display: block;
+  width: 14px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/news-bar.css.map */</style><style ng-app-id="ng">
+[_nghost-ng-c4232937653] {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+}
+.scroll-top[_ngcontent-ng-c4232937653] {
+  width: 3.25rem;
+  height: 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secondary);
+  font-size: var(--text);
+  font-weight: 400;
+  background: var(--accent-background);
+  border: 2px solid var(--color-accent);
+  color: var(--color-white);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    background 0.3s ease;
+}
+.scroll-top.is-visible[_ngcontent-ng-c4232937653] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (hover: hover) {
+  .scroll-top[_ngcontent-ng-c4232937653]:hover {
+    transform: translateY(-6px);
+    background: var(--accent-background);
+  }
+}
+.scroll-top[_ngcontent-ng-c4232937653]:active {
+  transform: translateY(-2px);
+}
+@media (min-width: 768px) {
+  [_nghost-ng-c4232937653] {
+    bottom: 2rem;
+    right: 2rem;
+  }
+  .scroll-top[_ngcontent-ng-c4232937653] {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: var(--text-xl);
+  }
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/scroll-top.css.map */</style><style ng-app-id="ng">
+.footer[_ngcontent-ng-c4062380650] {
+  width: 100%;
+  background: var(--color-black);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+.footer[_ngcontent-ng-c4062380650]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+.footer[_ngcontent-ng-c4062380650]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 120% 60% at 50% 0%,
+      var(--color-black) 30%,
+      transparent 100%);
+  z-index: 1;
+}
+.footer[_ngcontent-ng-c4062380650]    > *[_ngcontent-ng-c4062380650] {
+  position: relative;
+  z-index: 2;
+}
+.footer[_ngcontent-ng-c4062380650]   a[_ngcontent-ng-c4062380650] {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.footer[_ngcontent-ng-c4062380650]   a[_ngcontent-ng-c4062380650]:hover {
+  opacity: 0.6;
+}
+.footer[_ngcontent-ng-c4062380650]   .title[_ngcontent-ng-c4062380650] {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.9;
+  padding-bottom: 10px;
+  position: relative;
+}
+.footer[_ngcontent-ng-c4062380650]   .title[_ngcontent-ng-c4062380650]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.footer[_ngcontent-ng-c4062380650] {
+}
+.footer__container[_ngcontent-ng-c4062380650] {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 60px 24px;
+}
+.footer__group[_ngcontent-ng-c4062380650] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__group--logo[_ngcontent-ng-c4062380650]   img[_ngcontent-ng-c4062380650] {
+  width: 160px;
+  max-width: 100%;
+}
+.footer__group--info[_ngcontent-ng-c4062380650]   p[_ngcontent-ng-c4062380650] {
+  margin: 0;
+}
+.footer__group--links[_ngcontent-ng-c4062380650] {
+  gap: 10px;
+}
+.footer__usa[_ngcontent-ng-c4062380650] {
+  margin-top: 8px;
+  width: 120px;
+  opacity: 0.9;
+}
+.footer[_ngcontent-ng-c4062380650] {
+}
+.footer__bottom[_ngcontent-ng-c4062380650] {
+  width: 100%;
+}
+.footer__bottom-inner[_ngcontent-ng-c4062380650] {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer__legal[_ngcontent-ng-c4062380650] {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.footer__legal[_ngcontent-ng-c4062380650]   a[_ngcontent-ng-c4062380650] {
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  .footer__container[_ngcontent-ng-c4062380650] {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 100px 60px;
+    gap: 80px;
+  }
+  .footer__group[_ngcontent-ng-c4062380650] {
+    flex: unset;
+  }
+  .footer__group--logo[_ngcontent-ng-c4062380650] {
+    flex: 0 0 220px;
+  }
+  .footer__group--info[_ngcontent-ng-c4062380650] {
+    flex: 0 0 280px;
+  }
+  .footer__group--links[_ngcontent-ng-c4062380650] {
+    flex: 0 0 220px;
+  }
+  .footer[_ngcontent-ng-c4062380650] {
+  }
+  .footer__usa[_ngcontent-ng-c4062380650] {
+    margin-top: 16px;
+  }
+  .footer__bottom-inner[_ngcontent-ng-c4062380650] {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 60px;
+  }
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/footer.css.map */</style><link rel="canonical" href="https://featherdynamics.com/delta-y4"><meta name="keywords" content="Delta Y4, tactical UAV, CQB UAS, close quarters drone, GNSS denied, Feather Dynamics, Area B RFS, Drone Dominance, S2MARTS, indoor drone, tactical reconnaissance"><meta name="robots" content="index, follow"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Delta Y4 Tactical UAV | Feather Dynamics"><meta name="twitter:description" content="The Delta Y4 is a compact multirotor tactical UAS engineered for CQB Find, Fix, and Finish missions in contested environments. GNSS-denied resilient, contact-tolerant, and squad-portable."><meta name="twitter:image" content="https://featherdynamics.com/assets/default-og.jpg"><style ng-app-id="ng">
+.dy4[_ngcontent-ng-c1971717266] {
+  background: var(--color-black);
+}
+.dy4__scroll[_ngcontent-ng-c1971717266] {
+  height: 400vh;
+  position: relative;
+}
+.dy4__stage[_ngcontent-ng-c1971717266] {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--color-black);
+  background-image: url(/assets/decos/aerial-deco-back-2.png);
+  background-size: cover;
+  background-position: center;
+}
+.dy4__stage[_ngcontent-ng-c1971717266]   app-model-viewer[_ngcontent-ng-c1971717266] {
+  position: absolute;
+  inset: 0;
+}
+.dy4__panel[_ngcontent-ng-c1971717266] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.dy4__panel--intro[_ngcontent-ng-c1971717266] {
+  right: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(400px, 38vw);
+}
+@media (max-width: 768px) {
+  .dy4__panel--intro[_ngcontent-ng-c1971717266] {
+    right: 5%;
+    width: min(260px, 55vw);
+    top: 55%;
+  }
+}
+.dy4__panel--specs[_ngcontent-ng-c1971717266] {
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(920px, 96vw);
+  text-align: center;
+}
+.dy4__panel--features[_ngcontent-ng-c1971717266] {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(400px, 40vw);
+}
+@media (max-width: 768px) {
+  .dy4__panel--features[_ngcontent-ng-c1971717266] {
+    left: 5%;
+    width: min(240px, 52vw);
+    top: 15%;
+    transform: none;
+  }
+}
+.dy4__panel--origin[_ngcontent-ng-c1971717266] {
+  left: 52%;
+  top: 50%;
+  text-align: left;
+  width: min(420px, 40vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: rgba(4, 8, 16, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.75rem 2rem;
+  border-radius: 2px;
+}
+@media (max-width: 768px) {
+  .dy4__panel--origin[_ngcontent-ng-c1971717266] {
+    left: 5%;
+    width: min(260px, 55vw);
+    top: 12%;
+  }
+}
+.dy4__panel--origin[_ngcontent-ng-c1971717266]   .dy4__p-body[_ngcontent-ng-c1971717266] {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.82rem, 1vw, 0.94rem);
+  line-height: 2;
+}
+.dy4__p-label[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+.dy4__p-heading[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.dy4__p-heading[_ngcontent-ng-c1971717266]   .accent[_ngcontent-ng-c1971717266] {
+  color: var(--color-accent);
+}
+.dy4__p-body[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.85;
+  font-weight: 300;
+}
+.dy4__p-body[_ngcontent-ng-c1971717266]   .accent[_ngcontent-ng-c1971717266] {
+  color: var(--color-white);
+}
+.dy4__intro-tags[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+}
+.dy4__intro-tags[_ngcontent-ng-c1971717266]   span[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+}
+.dy4__specs-grid[_ngcontent-ng-c1971717266] {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  margin-top: 1rem;
+}
+@media (max-width: 768px) {
+  .dy4__specs-grid[_ngcontent-ng-c1971717266] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.dy4__spec-card[_ngcontent-ng-c1971717266] {
+  background: rgba(5, 10, 18, 0.75);
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.dy4__spec-value[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.dy4__spec-unit[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-highlight);
+  text-transform: uppercase;
+}
+.dy4__spec-label[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.22);
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+.dy4__feat-list[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.dy4__feat-row[_ngcontent-ng-c1971717266] {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.dy4__feat-index[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+.dy4__feat-info[_ngcontent-ng-c1971717266] {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.dy4__feat-title[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: clamp(0.9rem, 1.35vw, 1.05rem);
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: 0.01em;
+}
+.dy4__feat-tag[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-highlight);
+  border: 1px solid rgba(0, 180, 216, 0.28);
+  background: rgba(0, 180, 216, 0.06);
+  padding: 0.2rem 0.5rem;
+}
+.dy4__origin-rule[_ngcontent-ng-c1971717266] {
+  width: 2rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+.dy4__origin-text[_ngcontent-ng-c1971717266] {
+  max-width: 420px;
+}
+.dy4__origin-badge[_ngcontent-ng-c1971717266] {
+  height: 44px;
+  opacity: 0.6;
+}
+.dy4__hud[_ngcontent-ng-c1971717266] {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 3;
+  pointer-events: none;
+}
+.dy4__hud-label[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--color-accent);
+}
+.dy4__hud-bar[_ngcontent-ng-c1971717266] {
+  width: 120px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.dy4__hud-fill[_ngcontent-ng-c1971717266] {
+  width: 100%;
+  height: 100%;
+  background: var(--accent-highlight);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.dy4__hud-hint[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.2);
+  animation: _ngcontent-ng-c1971717266_blink 2.5s ease-in-out infinite;
+}
+@keyframes _ngcontent-ng-c1971717266_blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+.dy4__bg-text[_ngcontent-ng-c1971717266] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-secondary);
+  font-size: clamp(5.5rem, 17vw, 17rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.055);
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  z-index: 1;
+}
+.dy4-summary[_ngcontent-ng-c1971717266] {
+  background: var(--color-black);
+  padding: 6rem 0 7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.dy4-summary__inner[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+.dy4-summary__mission[_ngcontent-ng-c1971717266] {
+  max-width: 740px;
+}
+.dy4-summary__mission[_ngcontent-ng-c1971717266]   .dy4__p-body[_ngcontent-ng-c1971717266] {
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  color: rgba(255, 255, 255, 0.58);
+}
+.dy4-summary__section[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.dy4-summary__matrix[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.dy4-summary__matrix-row[_ngcontent-ng-c1971717266] {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  align-items: center;
+}
+.dy4-summary__matrix-row[_ngcontent-ng-c1971717266]:last-child {
+  border-bottom: none;
+}
+.dy4-summary__matrix-row[_ngcontent-ng-c1971717266]:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+@media (max-width: 768px) {
+  .dy4-summary__matrix-row[_ngcontent-ng-c1971717266] {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+.dy4-summary__matrix-req[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: 0.04em;
+}
+.dy4-summary__matrix-cap[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.5;
+}
+.dy4-summary__matrix-status[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.dy4-summary__specs-table[_ngcontent-ng-c1971717266] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 640px) {
+  .dy4-summary__specs-table[_ngcontent-ng-c1971717266] {
+    grid-template-columns: 1fr;
+  }
+}
+.dy4-summary__spec-row[_ngcontent-ng-c1971717266] {
+  background: rgba(5, 10, 18, 0.8);
+  padding: 0.7rem 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.dy4-summary__spec-param[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.dy4-summary__spec-val[_ngcontent-ng-c1971717266] {
+  font-family: var(--font-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-white);
+  text-align: right;
+}
+.dy4-summary__production[_ngcontent-ng-c1971717266] {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .dy4-summary__production[_ngcontent-ng-c1971717266] {
+    grid-template-columns: 1fr;
+  }
+}
+.dy4-summary__prod-list[_ngcontent-ng-c1971717266] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 1rem;
+}
+.dy4-summary__prod-item[_ngcontent-ng-c1971717266] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-secondary);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.02em;
+}
+.dy4-summary__prod-dot[_ngcontent-ng-c1971717266] {
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dy4-summary__prod-note[_ngcontent-ng-c1971717266] {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 2;
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/delta-y4.css.map */</style><style ng-app-id="ng">
+.page-header[_ngcontent-ng-c2953353632] {
+  width: 100%;
+  min-height: 375px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-header[_ngcontent-ng-c2953353632]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  z-index: 0;
+}
+.page-header[_ngcontent-ng-c2953353632]   .overlay[_ngcontent-ng-c2953353632] {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.432);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.page-header[_ngcontent-ng-c2953353632]   .title-row[_ngcontent-ng-c2953353632] {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+.page-header[_ngcontent-ng-c2953353632]   .bracket[_ngcontent-ng-c2953353632] {
+  color: var(--accent-highlight);
+  font-weight: 500;
+  font-size: clamp(4rem, 9vw, 7rem);
+  margin-bottom: 0.2em;
+}
+.page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632] {
+  text-align: center;
+  padding: 1rem 2rem;
+}
+.page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632]   .title[_ngcontent-ng-c2953353632] {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+.page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632]   .breadcrumbs[_ngcontent-ng-c2953353632] {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+  color: white;
+  flex-wrap: wrap;
+}
+.page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632]   .breadcrumbs[_ngcontent-ng-c2953353632]   span[_ngcontent-ng-c2953353632]:not(:last-child) {
+  margin-right: 0.25rem;
+}
+@media (max-width: 767px) {
+  .page-header[_ngcontent-ng-c2953353632] {
+    min-height: 180px;
+  }
+  .page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632]   .title[_ngcontent-ng-c2953353632] {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  .page-header[_ngcontent-ng-c2953353632]   .content[_ngcontent-ng-c2953353632]   .breadcrumbs[_ngcontent-ng-c2953353632] {
+    font-size: 0.85rem;
+  }
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/page-header.css.map */</style><style ng-app-id="ng">
+[_nghost-ng-c3365427152] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.model-canvas[_ngcontent-ng-c3365427152] {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.dbg[_ngcontent-ng-c3365427152] {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(5, 10, 18, 0.92);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  padding: 12px 14px;
+  width: 300px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #ccc;
+  z-index: 99;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.dbg__title[_ngcontent-ng-c3365427152] {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #00b4d8;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.dbg__row[_ngcontent-ng-c3365427152] {
+  display: grid;
+  grid-template-columns: 36px 1fr 58px 32px;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+.dbg__label[_ngcontent-ng-c3365427152] {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+}
+.dbg__deg[_ngcontent-ng-c3365427152] {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  text-align: right;
+}
+.dbg__row[_ngcontent-ng-c3365427152]   input[type=range][_ngcontent-ng-c3365427152] {
+  accent-color: #0440b2;
+  cursor: pointer;
+  width: 100%;
+}
+.dbg__num[_ngcontent-ng-c3365427152] {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: inherit;
+  font-size: 10px;
+  padding: 2px 4px;
+  width: 100%;
+  text-align: right;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.dbg__num[_ngcontent-ng-c3365427152]:focus {
+  border-color: #0440b2;
+}
+.dbg__num[_ngcontent-ng-c3365427152]::-webkit-inner-spin-button, 
+.dbg__num[_ngcontent-ng-c3365427152]::-webkit-outer-spin-button {
+  opacity: 0.4;
+}
+.dbg__copy[_ngcontent-ng-c3365427152] {
+  margin-top: 8px;
+  width: 100%;
+  background: rgba(4, 64, 178, 0.25);
+  border: 1px solid rgba(4, 64, 178, 0.5);
+  color: #fff;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 0;
+  cursor: pointer;
+}
+.dbg__copy[_ngcontent-ng-c3365427152]:hover {
+  background: rgba(4, 64, 178, 0.45);
+}
+.dbg__copied[_ngcontent-ng-c3365427152] {
+  color: #00c896;
+  font-size: 10px;
+  margin-top: 4px;
+  text-align: center;
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/model-viewer.css.map */</style><style ng-app-id="ng">
+.cta[_ngcontent-ng-c30849836] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 60px 24px;
+  background-image: url(/assets/images/landscape-pov.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.cta__overlay[_ngcontent-ng-c30849836] {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 10, 18, 0) 15%,
+      rgb(5, 10, 18) 66%);
+  z-index: 0;
+}
+.cta__content[_ngcontent-ng-c30849836] {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cta__subtitle[_ngcontent-ng-c30849836] {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+.cta__title[_ngcontent-ng-c30849836] {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0;
+  line-height: 1.2;
+}
+.cta__button[_ngcontent-ng-c30849836] {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  align-self: center;
+  cursor: pointer;
+}
+.cta__button[_ngcontent-ng-c30849836]:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+@media (min-width: 992px) {
+  .cta[_ngcontent-ng-c30849836] {
+    padding: 100px 60px;
+  }
+  .cta__subtitle[_ngcontent-ng-c30849836] {
+    font-size: 1.3rem;
+  }
+  .cta__title[_ngcontent-ng-c30849836] {
+    font-size: 3rem;
+  }
+  .cta__button[_ngcontent-ng-c30849836] {
+    font-size: 1.1rem;
+    padding: 16px 36px;
+  }
+}
+/*# sourceMappingURL=/feather-dynamics-frontend/cta.css.map */</style><script type="application/ld+json" data-id="default">{"@context":"https://schema.org","@type":"Product","name":"Delta Y4","description":"Next-generation unmanned aerial vehicle by Feather Dynamics.","brand":{"@type":"Organization","name":"Feather Dynamics","url":"https://featherdynamics.com"},"url":"https://featherdynamics.com/delta-y4"}</script><script type="application/ld+json" data-id="breadcrumb">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://featherdynamics.com"},{"@type":"ListItem","position":2,"name":"Home","item":"https://featherdynamics.com/delta-y4"}]}</script></head>
+<body><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script><script>window.__jsaction_bootstrap(document.body,"ng",["click"],[]);</script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKCGQGTD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <app-root ng-version="21.2.10" ngh="6" ng-server-context="ssg"><app-header _nghost-ng-c2275003701="" ngh="0"><header _ngcontent-ng-c2275003701="" class="header"><div _ngcontent-ng-c2275003701="" class="global-container header-inner"><div _ngcontent-ng-c2275003701="" class="logo"><a _ngcontent-ng-c2275003701="" href="/"><img _ngcontent-ng-c2275003701="" src="/assets/logo-text-black.png" alt="Feather Dynamics" class="logo-black"><img _ngcontent-ng-c2275003701="" src="/assets/logo-text-white.png" alt="Feather Dynamics" class="logo-white"></a></div><button _ngcontent-ng-c2275003701="" aria-label="Toggle navigation" class="burger" jsaction="click:;"><i _ngcontent-ng-c2275003701="" class="fa-solid fa-bars"></i></button><nav _ngcontent-ng-c2275003701="" class="nav"><div _ngcontent-ng-c2275003701="" class="nav__item nav__item--has-dropdown"><button _ngcontent-ng-c2275003701="" class="nav__trigger" jsaction="click:;">NEWS</button><div _ngcontent-ng-c2275003701="" class="nav__dropdown"><a _ngcontent-ng-c2275003701="" routerlink="/news" routerlinkactive="active" href="/feather-dynamics-frontend/news" class="" jsaction="click:;"><span _ngcontent-ng-c2275003701="" class="nav__dropdown-title">All News</span><span _ngcontent-ng-c2275003701="" class="nav__dropdown-sub">Latest articles &amp; updates</span></a><a _ngcontent-ng-c2275003701="" routerlink="/darpa-lift" routerlinkactive="active" href="/feather-dynamics-frontend/darpa-lift" class="" jsaction="click:;"><span _ngcontent-ng-c2275003701="" class="nav__dropdown-title">DARPA LIFT</span><span _ngcontent-ng-c2275003701="" class="nav__dropdown-sub">Challenge progress &amp; timeline</span></a><a _ngcontent-ng-c2275003701="" routerlink="/delta-y4" routerlinkactive="active" href="/feather-dynamics-frontend/delta-y4" class="active" jsaction="click:;"><span _ngcontent-ng-c2275003701="" class="nav__dropdown-title">Delta Y4</span><span _ngcontent-ng-c2275003701="" class="nav__dropdown-sub">Next-gen aerial platform</span></a></div></div><a _ngcontent-ng-c2275003701="" routerlink="/who-we-are" routerlinkactive="active" href="/feather-dynamics-frontend/who-we-are" class="" jsaction="click:;">WHO WE ARE</a><a _ngcontent-ng-c2275003701="" routerlink="/what-we-do" routerlinkactive="active" href="/feather-dynamics-frontend/what-we-do" class="" jsaction="click:;">WHAT WE DO</a><a _ngcontent-ng-c2275003701="" routerlink="/contact-us" routerlinkactive="active" href="/feather-dynamics-frontend/contact-us" class="" jsaction="click:;">CONTACT US</a></nav></div></header></app-header><app-news-bar _nghost-ng-c2650484838="" ngh="1"><!--container--></app-news-bar><router-outlet></router-outlet><app-delta-y4 _nghost-ng-c1971717266="" ngh="5"><app-page-header _ngcontent-ng-c1971717266="" _nghost-ng-c2953353632="" ngh="2"><section _ngcontent-ng-c2953353632="" class="page-header" style="background-image: url(/assets/images/uavmodel.jpg);"><div _ngcontent-ng-c2953353632="" class="overlay"><div _ngcontent-ng-c2953353632="" class="title-row"><app-reveal _ngcontent-ng-c2953353632="" style="visibility: hidden; display: block;" ngh="0"><span _ngcontent-ng-c2953353632="" class="bracket">[ </span></app-reveal><div _ngcontent-ng-c2953353632="" class="content"><app-reveal _ngcontent-ng-c2953353632="" style="visibility: hidden; display: block;" ngh="0"><h1 _ngcontent-ng-c2953353632="" class="title">Delta Y4 Tactical UAV</h1></app-reveal></div><app-reveal _ngcontent-ng-c2953353632="" style="visibility: hidden; display: block;" ngh="0"><span _ngcontent-ng-c2953353632="" class="bracket"> ]</span></app-reveal></div></div></section></app-page-header><section _ngcontent-ng-c1971717266="" class="dy4"><div _ngcontent-ng-c1971717266="" class="dy4__scroll"><div _ngcontent-ng-c1971717266="" class="dy4__stage"><app-model-viewer _ngcontent-ng-c1971717266="" _nghost-ng-c3365427152="" ngh="3"><canvas _ngcontent-ng-c3365427152="" class="model-canvas"></canvas><!--container--></app-model-viewer><div _ngcontent-ng-c1971717266="" class="dy4__bg-text">DELTA-Y4</div><div _ngcontent-ng-c1971717266="" class="dy4__panel dy4__panel--intro"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ AREA B CQB UAS ]</p><h2 _ngcontent-ng-c1971717266="" class="dy4__p-heading"> Engineered for<br _ngcontent-ng-c1971717266=""><span _ngcontent-ng-c1971717266="" class="accent">Close Quarters.</span></h2><p _ngcontent-ng-c1971717266="" class="dy4__p-body"> The Delta Y4 is a compact multirotor platform built for squad and team-level Find, Fix, and Finish missions in contested environments — interior recon, hallway and stairwell navigation, trench inspection, and urban overwatch. Optimized for obstacle-dense spaces where speed, resilience, and simplicity matter. </p><div _ngcontent-ng-c1971717266="" class="dy4__intro-tags"><span _ngcontent-ng-c1971717266="">S2MARTS</span><span _ngcontent-ng-c1971717266="">Drone Dominance G2</span><span _ngcontent-ng-c1971717266="">Area B RFS</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__panel dy4__panel--specs"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ TARGET SPECIFICATIONS ]</p><div _ngcontent-ng-c1971717266="" class="dy4__specs-grid"><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">~16</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit">min</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Endurance</span></div><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">25–35</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit">mph</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Dash Speed</span></div><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">≥0.5</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit">kg</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Payload Cap.</span></div><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">18×18×4</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit">in</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Footprint</span></div><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">~$3,400</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit"><!--ngetn--></span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Unit Cost</span></div><div _ngcontent-ng-c1971717266="" class="dy4__spec-card"><span _ngcontent-ng-c1971717266="" class="dy4__spec-value">TRL</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-unit">6</span><span _ngcontent-ng-c1971717266="" class="dy4__spec-label">Readiness</span></div><!--container--></div></div><div _ngcontent-ng-c1971717266="" class="dy4__panel dy4__panel--features"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ KEY CAPABILITIES ]</p><div _ngcontent-ng-c1971717266="" class="dy4__feat-list"><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">01</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">Contact-Tolerant Airframe</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">CQB Design</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">02</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">GNSS-Denied Navigation</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">Resilience</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">03</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">Dual-Domain Agility</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">Indoor/Outdoor</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">04</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">Near-360° Sensor Coverage</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">Situational Awr</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">05</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">Squad-Portable Form Factor</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">Mobility</span></div></div><div _ngcontent-ng-c1971717266="" class="dy4__feat-row"><span _ngcontent-ng-c1971717266="" class="dy4__feat-index">06</span><div _ngcontent-ng-c1971717266="" class="dy4__feat-info"><span _ngcontent-ng-c1971717266="" class="dy4__feat-title">Modular Payload Interface</span><span _ngcontent-ng-c1971717266="" class="dy4__feat-tag">EO / IR / ISR</span></div></div><!--container--></div></div><div _ngcontent-ng-c1971717266="" class="dy4__panel dy4__panel--origin"><div _ngcontent-ng-c1971717266="" class="dy4__origin-rule"></div><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ PRODUCTION &amp; READINESS ]</p><p _ngcontent-ng-c1971717266="" class="dy4__p-body dy4__origin-text"> NDAA-oriented sourcing. Domestic supplier integration. Advancing toward <span _ngcontent-ng-c1971717266="" class="accent">TRL 6</span> through integrated subsystem validation and relevant environment testing. Approved for flight testing at <span _ngcontent-ng-c1971717266="" class="accent">Camp Roberts</span> via the JIFX program in coordination with NPS Monterey. </p><img _ngcontent-ng-c1971717266="" src="/assets/decos/madeinusa.png" alt="Made in USA" class="dy4__origin-badge"></div><div _ngcontent-ng-c1971717266="" class="dy4__hud"><span _ngcontent-ng-c1971717266="" class="dy4__hud-label">[ DELTA Y4 ]</span><div _ngcontent-ng-c1971717266="" class="dy4__hud-bar"><div _ngcontent-ng-c1971717266="" class="dy4__hud-fill"></div></div><span _ngcontent-ng-c1971717266="" class="dy4__hud-hint">scroll to explore</span></div></div></div></section><section _ngcontent-ng-c1971717266="" class="dy4-summary"><div _ngcontent-ng-c1971717266="" class="dy4-summary__inner global-container"><div _ngcontent-ng-c1971717266="" class="dy4-summary__mission"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ MISSION OVERVIEW ]</p><h2 _ngcontent-ng-c1971717266="" class="dy4__p-heading">Built for the <span _ngcontent-ng-c1971717266="" class="accent">Last 100 Meters.</span></h2><p _ngcontent-ng-c1971717266="" class="dy4__p-body"> The Delta Y4 Tactical UAV is a compact multirotor platform engineered for close-quarters Find, Fix, and Finish missions in contested operational environments. The system supports squad and team-level operations requiring rapid reconnaissance, confined-space maneuvering, and degraded-environment performance — including building entry, hallway and stairwell navigation, trench and tunnel inspection, urban overwatch, and short-range denied-area sensing. Developed under the <span _ngcontent-ng-c1971717266="" class="accent">S2MARTS Drone Dominance G2 RFS</span> aligned with Area B operational requirements. </p></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__section"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ AREA B RFS CAPABILITY ALIGNMENT ]</p><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix"><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">CQB Find, Fix &amp; Finish</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">Optimized for controlled indoor and outdoor maneuvering</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">Mission Range &lt; 2 km</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">Practical radius 0.5–1.5 km; max operational range under 2 km</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">Indoor + Outdoor Use</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">Low speed controllability with rapid dash capability</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">Squad / Team Packable</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">~18 × 18 × 4 in portable form factor</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">Dirty EM Spectrum Ops</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">Inertial and optical flow navigation primary</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">GNSS Denial Resilient</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">GNSS optional with inertial fallback navigation</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-req">Payload ≥ 0.5 kg</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-cap">Payload target 0.5–0.6 kg (1.1–1.3 lb)</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__matrix-status">✓ Targeted</span></div><!--container--></div></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__section"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ TECHNICAL SPECIFICATIONS ]</p><div _ngcontent-ng-c1971717266="" class="dy4-summary__specs-table"><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Configuration</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Delta Y4 Multirotor</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Dimensions (L × W × H)</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~18 × 18 × 4 in</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Main Rotors</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Dual 10 in counter-rotating coaxial</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Outer Propulsion</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Dual 4 in pusher rotors</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Airframe</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Contact-tolerant wrapped perimeter geometry</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Empty Weight</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~2.8–3.6 lb (1.27–1.63 kg)</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Battery Weight</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~1.0–1.5 lb (0.45–0.68 kg)</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Payload Capacity</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">≥ 0.5 kg (1.1–1.5 lb target)</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Max Takeoff Weight</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~5.0–6.5 lb</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Endurance (No Payload)</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~15–20 min</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Endurance (Payload)</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Up to ~16 min</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Mission Radius</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~0.5–1.5 km  |  RFS &lt; 2 km</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Dash Speed</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~25–35 mph</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Indoor Tactical Speed</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~3–12 mph</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Control Modes</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Manual Assisted / Stabilized / Semi-Autonomous</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Navigation</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">GNSS Optional / Inertial / Optical Flow / Visual Ref.</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Sensor Coverage</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Forward + rear housings — near 360°</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Lighting</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">Day / Low Light / Night capable</span></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__spec-row"><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-param">Cost Target</span><span _ngcontent-ng-c1971717266="" class="dy4-summary__spec-val">~$3,400 excl. payloads &amp; effects</span></div><!--container--></div></div><div _ngcontent-ng-c1971717266="" class="dy4-summary__section"><p _ngcontent-ng-c1971717266="" class="dy4__p-label">[ PRODUCTION &amp; READINESS ]</p><div _ngcontent-ng-c1971717266="" class="dy4-summary__production"><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-list"><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> NDAA-oriented component sourcing </div><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> Domestic supplier integration </div><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> Vertically integrated manufacturing expansion </div><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> Low rate production scalability </div><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> Modular subsystem architecture for rapid field maintenance </div><div _ngcontent-ng-c1971717266="" class="dy4-summary__prod-item"><span _ngcontent-ng-c1971717266="" class="dy4-summary__prod-dot"></span> Production-representative prototype maturation </div><!--container--></div><p _ngcontent-ng-c1971717266="" class="dy4__p-body dy4-summary__prod-note"> The Delta Y4 is progressing through integrated subsystem validation and relevant environment testing supporting advancement toward <span _ngcontent-ng-c1971717266="" class="accent">TRL 6</span>. Feather Dynamics has been approved to conduct flight testing through the <span _ngcontent-ng-c1971717266="" class="accent">JIFX program at Camp Roberts</span> in coordination with the Naval Postgraduate School in Monterey, California. </p></div></div></div></section><app-cta _ngcontent-ng-c1971717266="" _nghost-ng-c30849836="" ngh="4"><section _ngcontent-ng-c30849836="" class="cta"><div _ngcontent-ng-c30849836="" class="cta__overlay"></div><div _ngcontent-ng-c30849836="" class="cta__content"><app-reveal _ngcontent-ng-c30849836="" style="visibility: hidden; display: block;" ngh="0"><h2 _ngcontent-ng-c30849836="" class="cta__title">What's Your Mission?</h2><a _ngcontent-ng-c30849836="" routerlink="/contact-us" class="cta__button" href="/feather-dynamics-frontend/contact-us" jsaction="click:;">Contact Us</a></app-reveal></div></section></app-cta></app-delta-y4><!--container--><app-scroll-top _nghost-ng-c4232937653="" ngh="0"><button _ngcontent-ng-c4232937653="" aria-label="Scroll to top" class="scroll-top" jsaction="click:;"> ↑
+</button></app-scroll-top><app-footer _nghost-ng-c4062380650="" ngh="0"><footer _ngcontent-ng-c4062380650="" class="footer"><div _ngcontent-ng-c4062380650="" class="footer__container"><div _ngcontent-ng-c4062380650="" class="footer__group footer__group--logo"><img _ngcontent-ng-c4062380650="" src="/assets/logo-text-white.png" alt="Feather Dynamics Logo"></div><div _ngcontent-ng-c4062380650="" class="footer__group footer__group--info"><span _ngcontent-ng-c4062380650="" class="title">INFO</span><p _ngcontent-ng-c4062380650="">Monterey, CA</p><p _ngcontent-ng-c4062380650="">Santa Barbara, CA</p><p _ngcontent-ng-c4062380650="">Austin, TX</p><a _ngcontent-ng-c4062380650="" href="mailto:info@featherdynamics.com"> info@featherdynamics.com </a></div><div _ngcontent-ng-c4062380650="" class="footer__group footer__group--links"><span _ngcontent-ng-c4062380650="" class="title">LINKS</span><a _ngcontent-ng-c4062380650="" routerlink="/what-we-do" href="/feather-dynamics-frontend/what-we-do" jsaction="click:;">What We Do</a><a _ngcontent-ng-c4062380650="" routerlink="/contact-us" href="/feather-dynamics-frontend/contact-us" jsaction="click:;">Contact Us</a><a _ngcontent-ng-c4062380650="" href="https://www.linkedin.com/company/featherdynamics/" target="_blank" rel="noopener"> LinkedIn </a></div><div _ngcontent-ng-c4062380650=""><img _ngcontent-ng-c4062380650="" src="/assets/decos/madeinusa.png" alt="Made in USA" class="footer__usa"></div></div><div _ngcontent-ng-c4062380650="" class="footer__bottom"><div _ngcontent-ng-c4062380650="" class="footer__bottom-inner"><div _ngcontent-ng-c4062380650="" class="footer__copyright"> Copyright © 2026 Feather Dynamics - All Rights Reserved. </div><div _ngcontent-ng-c4062380650="" class="footer__legal"><a _ngcontent-ng-c4062380650="" routerlink="/privacy-policy" href="/feather-dynamics-frontend/privacy-policy" jsaction="click:;">Privacy Policy</a><span _ngcontent-ng-c4062380650="">|</span><a _ngcontent-ng-c4062380650="" routerlink="/terms-and-conditions" href="/feather-dynamics-frontend/terms-and-conditions" jsaction="click:;">Terms &amp; Conditions</a></div></div></div></footer></app-footer></app-root>
+<link rel="modulepreload" href="chunk-HKBT3BQG.js"><link rel="modulepreload" href="chunk-I676EX5N.js"><link rel="modulepreload" href="chunk-JSI5HNZN.js"><link rel="modulepreload" href="chunk-GOMI4DH3.js"><script src="main.js" type="module"></script>
+
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"t":{"0":"t0"},"c":{"0":[]}},{"n":{"4":"3f","8":"7f","11":"10f"}},{"t":{"2":"t3"},"c":{"2":[]}},{"n":{"4":"3f"}},{"t":{"35":"t4","42":"t5","84":"t6","90":"t7","97":"t8"},"c":{"35":[{"i":"t4","r":1,"x":6}],"42":[{"i":"t5","r":1,"x":6}],"84":[{"i":"t6","r":1,"x":7}],"90":[{"i":"t7","r":1,"x":19}],"97":[{"i":"t8","r":1,"x":6}]}},{"c":{"2":[{"i":"c1971717266","r":1}]}}]}</script></body></html>

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/scroll-reveal/scroll-reveal.scss"],
+  "sourcesContent": [".scroll-reveal {\r\n    margin: 4rem 1.5rem;\r\n}\r\n\r\n.scroll-reveal-text {\r\n    font-size: clamp(1.6rem, 4vw, 2.4rem);\r\n    line-height: 1.7;\r\n    letter-spacing: -0.01em;\r\n}\r\n\r\n.word {\r\n    display: inline-block;\r\n}"],
+  "mappings": ";AAAA,CAAA;AACI,UAAA,KAAA;;AAGJ,CAAA;AACI,aAAA,MAAA,MAAA,EAAA,GAAA,EAAA;AACA,eAAA;AACA,kBAAA;;AAGJ,CAAA;AACI,WAAA;;",
+  "names": []
+}

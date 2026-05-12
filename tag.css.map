@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/tag/tag.scss"],
+  "sourcesContent": [":host {\r\n    font-family: var(--font-secondary);\r\n}\r\n\r\n.tag {\r\n    overflow: hidden;\r\n    padding-top: 10px;\r\n}"],
+  "mappings": ";AAAA;AACI,eAAA,IAAA;;AAGJ,CAAA;AACI,YAAA;AACA,eAAA;;",
+  "names": []
+}

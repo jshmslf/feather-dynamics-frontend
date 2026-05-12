@@ -46,8 +46,14 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('panelOrigin')   panelOriginRef!:    ElementRef<HTMLElement>;
   @ViewChild('hudFill')       hudFillRef!:        ElementRef<HTMLElement>;
   @ViewChild('bgText')        bgTextRef!:         ElementRef<HTMLElement>;
+  private scrollProgress = 0;
+  // timeline positions (0–5) centered in each panel's visibility window
+  // Phase 4 has duration 2 (tl 3–5) for extended Production & Readiness scroll
+  private readonly snapPoints = [0, 0.6, 1.6, 2.5, 5.0];
 
   private gsapInstance: typeof import('gsap').gsap | null = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private timeline: any = null;
   private scrollTriggers: import('gsap/ScrollTrigger').ScrollTrigger[] = [];
 
   private onMouseMove = (e: MouseEvent) => {
@@ -57,62 +63,52 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   };
 
   specs: Spec[] = [
-    { label: 'Endurance',      value: '~16',     unit: 'min'  },
-    { label: 'Dash Speed',     value: '25–35',   unit: 'mph'  },
-    { label: 'Payload Cap.',   value: '≥0.5',    unit: 'kg'   },
-    { label: 'Footprint',      value: '18×18×4', unit: 'in'   },
-    { label: 'Unit Cost',      value: '~$3,400', unit: ''     },
-    { label: 'Readiness',      value: 'TRL',     unit: '6'    },
+    { label: 'Endurance',    value: '~16',     unit: 'min' },
+    { label: 'Dash Speed',   value: '25–35',   unit: 'mph' },
+    { label: 'Payload Cap.', value: '≥0.5',    unit: 'kg'  },
+    { label: 'Footprint',    value: '18×18×4', unit: 'in'  },
+    { label: 'Readiness',    value: 'TRL',     unit: '6'   },
   ];
 
-  capabilityMatrix = [
-    { requirement: 'CQB Find, Fix & Finish',    capability: 'Optimized for controlled indoor and outdoor maneuvering'           },
-    { requirement: 'Mission Range < 2 km',       capability: 'Practical radius 0.5–1.5 km; max operational range under 2 km'    },
-    { requirement: 'Indoor + Outdoor Use',       capability: 'Low speed controllability with rapid dash capability'              },
-    { requirement: 'Squad / Team Packable',      capability: '~18 × 18 × 4 in portable form factor'                            },
-    { requirement: 'Dirty EM Spectrum Ops',      capability: 'Inertial and optical flow navigation primary'                     },
-    { requirement: 'GNSS Denial Resilient',      capability: 'GNSS optional with inertial fallback navigation'                  },
-    { requirement: 'Payload ≥ 0.5 kg',           capability: 'Payload target 0.5–0.6 kg (1.1–1.3 lb)'                          },
-  ];
-
-  technicalSpecs = [
-    { param: 'Configuration',          value: 'Delta Y4 Multirotor'                        },
-    { param: 'Dimensions (L × W × H)', value: '~18 × 18 × 4 in'                            },
-    { param: 'Main Rotors',            value: 'Dual 10 in counter-rotating coaxial'         },
-    { param: 'Outer Propulsion',       value: 'Dual 4 in pusher rotors'                    },
-    { param: 'Airframe',               value: 'Contact-tolerant wrapped perimeter geometry' },
-    { param: 'Empty Weight',           value: '~2.8–3.6 lb (1.27–1.63 kg)'                 },
-    { param: 'Battery Weight',         value: '~1.0–1.5 lb (0.45–0.68 kg)'                 },
-    { param: 'Payload Capacity',       value: '≥ 0.5 kg (1.1–1.5 lb target)'               },
-    { param: 'Max Takeoff Weight',     value: '~5.0–6.5 lb'                                 },
-    { param: 'Endurance (No Payload)', value: '~15–20 min'                                  },
-    { param: 'Endurance (Payload)',    value: 'Up to ~16 min'                               },
-    { param: 'Mission Radius',         value: '~0.5–1.5 km  |  RFS < 2 km'                 },
-    { param: 'Dash Speed',             value: '~25–35 mph'                                  },
-    { param: 'Indoor Tactical Speed',  value: '~3–12 mph'                                   },
-    { param: 'Control Modes',          value: 'Manual Assisted / Stabilized / Semi-Autonomous' },
-    { param: 'Navigation',             value: 'GNSS Optional / Inertial / Optical Flow / Visual Ref.' },
-    { param: 'Sensor Coverage',        value: 'Forward + rear housings — near 360°'         },
-    { param: 'Lighting',               value: 'Day / Low Light / Night capable'             },
-    { param: 'Cost Target',            value: '~$3,400 excl. payloads & effects'            },
+  platformHighlights = [
+    {
+      icon: '◈',
+      title: 'Contact-Tolerant',
+      body: 'Wrapped airframe geometry protects all propulsion units, supporting controlled maneuvering in confined and obstacle-dense environments.',
+    },
+    {
+      icon: '◎',
+      title: 'Navigation Resilient',
+      body: 'Designed to operate in GPS-contested and electronically degraded environments with inertial fallback navigation.',
+    },
+    {
+      icon: '▸',
+      title: 'Squad-Portable',
+      body: 'Compact form factor designed for rapid deployment and transport by small teams without dedicated ground support.',
+    },
+    {
+      icon: '⬡',
+      title: 'Modular Payload',
+      body: 'Interchangeable payload interface supports EO, IR, and ISR sensor configurations adaptable to mission requirements.',
+    },
   ];
 
   productionItems = [
     'NDAA-oriented component sourcing',
     'Domestic supplier integration',
-    'Vertically integrated manufacturing expansion',
+    'Vertically integrated manufacturing',
     'Low rate production scalability',
-    'Modular subsystem architecture for rapid field maintenance',
+    'Modular subsystem architecture',
     'Production-representative prototype maturation',
   ];
 
   features: Feature[] = [
-    { index: '01', title: 'Contact-Tolerant Airframe', tag: 'CQB Design'      },
-    { index: '02', title: 'GNSS-Denied Navigation',    tag: 'Resilience'      },
-    { index: '03', title: 'Dual-Domain Agility',       tag: 'Indoor/Outdoor'  },
-    { index: '04', title: 'Near-360° Sensor Coverage', tag: 'Situational Awr' },
-    { index: '05', title: 'Squad-Portable Form Factor', tag: 'Mobility'       },
-    { index: '06', title: 'Modular Payload Interface', tag: 'EO / IR / ISR'   },
+    { index: '01', title: 'Contact-Tolerant Airframe',        tag: 'Tactical'       },
+    { index: '02', title: 'Degraded-Environment Navigation',   tag: 'Nav Resilient'  },
+    { index: '03', title: 'Dual-Domain Agility',               tag: 'Indoor/Outdoor' },
+    { index: '04', title: 'Near-360° Sensor Coverage',         tag: 'Awareness'      },
+    { index: '05', title: 'Squad-Portable Form Factor',        tag: 'Mobility'       },
+    { index: '06', title: 'Modular Payload Interface',         tag: 'EO / IR / ISR'  },
   ];
 
   constructor(private seo: SeoService) {}
@@ -120,8 +116,8 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.seo.updateSeo({
       title: 'Delta Y4 Tactical UAV | Feather Dynamics',
-      description: 'The Delta Y4 is a compact multirotor tactical UAS engineered for CQB Find, Fix, and Finish missions in contested environments. GNSS-denied resilient, contact-tolerant, and squad-portable.',
-      keywords: 'Delta Y4, tactical UAV, CQB UAS, close quarters drone, GNSS denied, Feather Dynamics, Area B RFS, Drone Dominance, S2MARTS, indoor drone, tactical reconnaissance',
+      description: 'The Delta Y4 is a compact multirotor UAS engineered for indoor and outdoor tactical reconnaissance in obstacle-dense and GPS-contested environments. Contact-tolerant, squad-portable, and modular.',
+      keywords: 'Delta Y4, tactical UAV, multirotor UAS, indoor drone, contact-tolerant, Feather Dynamics, defense UAS, NDAA compliant, modular payload drone',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
@@ -148,10 +144,43 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  onNavNext() {
+    if (!this.isBrowser) return;
+    const next = this.snapPoints.find(p => p > this.scrollProgress + 0.05);
+    if (next !== undefined) {
+      this.smoothSnapTo(next);
+    } else {
+      document.querySelector('.dy4-summary')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  onNavPrev() {
+    if (!this.isBrowser) return;
+    const prev = [...this.snapPoints].reverse().find(p => p < this.scrollProgress - 0.05);
+    if (prev !== undefined) {
+      this.smoothSnapTo(prev);
+    }
+  }
+
+  private smoothSnapTo(tlPos: number) {
+    if (!this.gsapInstance) return;
+    const sectionEl = this.scrollSectionRef.nativeElement;
+    // Trigger spans (500vh − 100vh) = 4 × vh over 5 tl units → tlPos × 0.8 × vh
+    const sectionTop = sectionEl.getBoundingClientRect().top + window.scrollY;
+    const scrollTarget = sectionTop + tlPos * 0.8 * window.innerHeight;
+    this.gsapInstance.to(window, {
+      scrollTo: { y: scrollTarget, autoKill: false },
+      duration: 0.8,
+      ease: 'power2.inOut',
+      overwrite: true,
+    });
+  }
+
   private async initGsapTimeline() {
-    const { gsap }          = await import('gsap');
-    const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-    gsap.registerPlugin(ScrollTrigger);
+    const { gsap }            = await import('gsap');
+    const { ScrollTrigger }   = await import('gsap/ScrollTrigger');
+    const { ScrollToPlugin }  = await import('gsap/ScrollToPlugin');
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     this.gsapInstance = gsap;
 
     const scroll    = this.scrollSectionRef.nativeElement;
@@ -166,54 +195,58 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
 
     // Set initial panel positions for slide-in effect
     gsap.set(intro,    { x: 80,  opacity: 0 });
-    gsap.set(specs,    { y: 60,  opacity: 0 });
+    gsap.set(specs,    { y: 60,  xPercent: -50, opacity: 0 });
     gsap.set(features, { x: -80, opacity: 0 });
     gsap.set(origin,   { x: 60,  yPercent: -50, opacity: 0 });
     gsap.set(hudFill,  { scaleX: 0, transformOrigin: 'left center' });
     gsap.set(bgText,   { x: 0, opacity: 1 });
 
     // ── Main scroll-scrubbed timeline ──────────────────────────────────────
-    const tl = gsap.timeline({
+    this.timeline = gsap.timeline({
       scrollTrigger: {
         trigger: scroll,
         pin: stage,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1.2,
+        scrub: 0.5,
+        snap: {
+          snapTo: [0, 0.14, 0.33, 0.53, 1],
+          duration: { min: 0.3, max: 0.6 },
+          delay: 0.05,
+          ease: 'power2.inOut',
+        },
         onUpdate: (self) => {
           gsap.set(hudFill, { scaleX: self.progress });
+          this.scrollProgress = self.progress * 5;
         },
       },
     });
 
     // ── Background text — slides with scroll phases ────────────────────────
-    tl.to(bgText, { x: -140, opacity: 0.25, duration: 1 }, 0)
+    this.timeline.to(bgText, { x: -140, opacity: 0.25, duration: 1 }, 0)
       .to(bgText, { x:   80, opacity: 0.18, duration: 1 }, 1)
       .to(bgText, { x:  200, opacity: 0.12, duration: 1 }, 2)
       .to(bgText, { x:    0, opacity: 0.65, duration: 0.7 }, 3.3);
 
-    // ── Phase 1 (0–1): P1→P2  model swings left · Intro slides in ──────────
-    // P2: rx=-0.99 ry=0 rz=1.26 px=-43 py=10 scale=1.0 camZ=220
-    tl.to(state, { positionX: -43, positionY: 10, rotationX: -0.99, rotationY: 0, rotationZ: 1.26, scaleValue: 1.0,  cameraZ: 220, duration: 1 }, 0)
-      .to(intro, { x: 0, opacity: 1, duration: 0.4 }, 0.15)
-      .to(intro, { opacity: 0, x: -30, duration: 0.3 }, 0.7);
+    // ── Phase 1 (0–1): model swings · Intro visible 0.3–0.7 · snap at 0.5 ───
+    this.timeline.to(state, { positionX: -43, positionY: 10, rotationX: -0.99, rotationY: 0, rotationZ: 1.26, scaleValue: 1.0, cameraZ: 220, duration: 1 }, 0)
+      .to(intro, { x: 0, opacity: 1, duration: 0.2 }, 0.1)
+      .to(intro, { opacity: 0, x: -30, duration: 0.2 }, 0.7);
 
-    // ── Phase 2 (1–2): P2→P3  model centers & scales up · Specs slide up ───
-    // P3: rx=-1.12 ry=0 rz=0 px=0 py=20 scale=1.13 camZ=220
-    tl.to(state, { positionX: 0,   positionY: 20, rotationX: -1.12, rotationY: 0,     rotationZ: 0,    scaleValue: 1.13, cameraZ: 220, duration: 1 }, 1)
-      .to(specs, { y: 0, opacity: 1, duration: 0.4 }, 1.2)
-      .to(specs, { opacity: 0, y: -20, duration: 0.3 }, 1.7);
+    // ── Phase 2 (1–2): model centers · Specs visible 1.3–1.7 · snap at 1.5 ─
+    this.timeline.to(state, { positionX: 0, positionY: 20, rotationX: -1.12, rotationY: 0, rotationZ: 0, scaleValue: 1.13, cameraZ: 220, duration: 1 }, 1)
+      .to(specs, { y: 0, opacity: 1, duration: 0.2 }, 1.1)
+      .to(specs, { opacity: 0, y: -20, duration: 0.2 }, 1.7);
 
-    // ── Phase 3 (2–3): P3→P4  model swings right · Features slide in ───────
-    // P4: rx=-0.43 ry=-0.07 rz=-1.57 px=30 py=10 scale=0.94 camZ=210
-    tl.to(state, { positionX: 30,  positionY: 10, rotationX: -0.43, rotationY: -0.07, rotationZ: -1.57, scaleValue: 0.94, cameraZ: 210, duration: 1 }, 2)
-      .to(features, { x: 0, opacity: 1, duration: 0.4 }, 2.2)
-      .to(features, { opacity: 0, x: 40, duration: 0.3 }, 2.7);
+    // ── Phase 3 (2–3): model swings right · Features visible 2.3–2.7 · snap at 2.5
+    this.timeline.to(state, { positionX: 30, positionY: 10, rotationX: -0.43, rotationY: -0.07, rotationZ: -1.57, scaleValue: 0.94, cameraZ: 210, duration: 1 }, 2)
+      .to(features, { x: 0, opacity: 1, duration: 0.2 }, 2.1)
+      .to(features, { opacity: 0, x: 40, duration: 0.2 }, 2.7);
 
-    // ── Phase 4 (3–4): P4→P5  model swings left · Origin slides in from right ─
-    // P5: rx=-1.0 ry=0.15 rz=1.57 px=-38 py=20 scale=0.91 camZ=210
-    tl.to(state, { positionX: -48, positionY: 10, rotationX: -1.0,  rotationY: 0.15,  rotationZ: 1.57,  scaleValue: 0.91, cameraZ: 210, duration: 1 }, 3)
-      .to(origin, { x: 0, opacity: 1, duration: 0.5 }, 3.3);
+    // ── Phase 4 (3–5): model settles slowly · Origin visible 3.3+ · snap at 4.0
+    // Duration 2 so Production & Readiness gets extended scroll space (500vh total)
+    this.timeline.to(state, { positionX: -48, positionY: 10, rotationX: -1.0, rotationY: 0.15, rotationZ: 1.57, scaleValue: 0.91, cameraZ: 210, duration: 2 }, 3)
+      .to(origin, { x: 0, opacity: 1, duration: 0.2 }, 3.1);
 
     this.scrollTriggers.push(ScrollTrigger.getAll().at(-1)!);
   }
@@ -238,16 +271,16 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
       });
     });
 
-    // Stagger capability matrix rows
-    gsap.from('.dy4-summary__matrix-row', {
-      y: 24, opacity: 0, duration: 0.5, stagger: 0.07, ease,
-      scrollTrigger: { trigger: '.dy4-summary__matrix', start: 'top 88%' },
+    // Stagger platform highlight cards
+    gsap.from('.dy4-summary__card', {
+      y: 24, opacity: 0, duration: 0.5, stagger: 0.1, ease,
+      scrollTrigger: { trigger: '.dy4-summary__grid', start: 'top 88%' },
     });
 
-    // Stagger spec rows
-    gsap.from('.dy4-summary__spec-row', {
-      y: 18, opacity: 0, duration: 0.4, stagger: 0.035, ease,
-      scrollTrigger: { trigger: '.dy4-summary__specs-table', start: 'top 88%' },
+    // Stagger stat values
+    gsap.from('.dy4-summary__stat', {
+      y: 20, opacity: 0, duration: 0.5, stagger: 0.12, ease,
+      scrollTrigger: { trigger: '.dy4-summary__stats', start: 'top 88%' },
     });
 
     // Stagger production bullet items

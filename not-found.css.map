@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/not-found/not-found.scss"],
-  "sourcesContent": [".not-found {\r\n    min-height: 100dvh;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding: 1.5rem;\r\n\r\n    background: #000;\r\n    color: #fff;\r\n\r\n    &__content {\r\n        text-align: center;\r\n        max-width: 420px;\r\n        width: 100%;\r\n    }\r\n\r\n    h1 {\r\n        font-size: var(--text-2xl); // 4rem\r\n        line-height: 1;\r\n        margin-bottom: 0.75rem;\r\n        font-weight: 400;\r\n        color: #fff;\r\n    }\r\n\r\n    p {\r\n        font-size: var(--text); // 1.25rem\r\n        opacity: 0.75;\r\n        margin-bottom: 2rem;\r\n        color: #fff;\r\n    }\r\n\r\n    &__link {\r\n        font-size: var(--text);\r\n        text-decoration: none;\r\n        color: #fff;\r\n        cursor: pointer;\r\n\r\n        border: 1px solid rgba(255, 255, 255, 0.35);\r\n        padding: 0.75rem 1.75rem;\r\n        display: inline-block;\r\n        background: transparent;\r\n    }\r\n}"],
-  "mappings": ";AAAA,CAAA;AACI,cAAA;AACA,WAAA;AACA,eAAA;AACA,mBAAA;AACA,WAAA;AAEA,cAAA;AACA,SAAA;;AAEA,CAAA;AACI,cAAA;AACA,aAAA;AACA,SAAA;;AAGJ,CAhBJ,UAgBI;AACI,aAAA,IAAA;AACA,eAAA;AACA,iBAAA;AACA,eAAA;AACA,SAAA;;AAGJ,CAxBJ,UAwBI;AACI,aAAA,IAAA;AACA,WAAA;AACA,iBAAA;AACA,SAAA;;AAGJ,CAAA;AACI,aAAA,IAAA;AACA,mBAAA;AACA,SAAA;AACA,UAAA;AAEA,UAAA,IAAA,MAAA,KAAA,GAAA,EAAA,GAAA,EAAA,GAAA,EAAA;AACA,WAAA,QAAA;AACA,WAAA;AACA,cAAA;;",
-  "names": []
-}

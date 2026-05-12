@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/shared/blur-text/blur-text.scss"],
-  "sourcesContent": [".blur-text {\r\n    font-weight: 600; \r\n    color: #ffffff;\r\n    font-family: var(--font-secondary);\r\n\r\n    span {\r\n        display: inline-block;\r\n        will-change: transform, filter, opacity;\r\n        opacity: 0;\r\n    }\r\n\r\n    &.accent span {\r\n        color: var(--color-accent);\r\n    }\r\n}"],
-  "mappings": ";AAAA,CAAA;AACI,eAAA;AACA,SAAA;AACA,eAAA,IAAA;;AAEA,CALJ,UAKI;AACI,WAAA;AACA;IAAA,SAAA;IAAA,MAAA;IAAA;AACA,WAAA;;AAGJ,CAXJ,SAWI,CAAA,OAAA;AACI,SAAA,IAAA;;",
-  "names": []
-}

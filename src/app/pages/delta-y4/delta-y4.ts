@@ -63,11 +63,10 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   };
 
   specs: Spec[] = [
-    { label: 'Endurance',    value: '~16',     unit: 'min' },
+    { label: 'Endurance',    value: '~20',     unit: 'min' },
     { label: 'Dash Speed',   value: '25–35',   unit: 'mph' },
-    { label: 'Payload Cap.', value: '≥0.5',    unit: 'kg'  },
+    { label: 'Payload Cap.', value: '≥1',    unit: 'kg'  },
     { label: 'Footprint',    value: '18×18×4', unit: 'in'  },
-    { label: 'Readiness',    value: 'TRL',     unit: '6'   },
   ];
 
   platformHighlights = [
@@ -125,7 +124,7 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
       name: 'Delta Y4',
       description: 'Next-generation unmanned aerial vehicle by Feather Dynamics.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
-      url: 'https://featherdynamics.com/delta-y4',
+      url: 'https://featherdynamics.com/products/delta-y4',
     });
     this.seo.generateBreadcrumbs();
   }

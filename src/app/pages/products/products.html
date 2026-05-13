@@ -1,0 +1,45 @@
+<app-page-header [title]="'Our Products'" [bgImage]="'/assets/images/uavmodel.jpg'"></app-page-header>
+
+<section class="prod">
+  <div class="prod__inner global-container">
+
+    <div class="prod__intro">
+      <p class="prod__p-label">[ UAV PLATFORMS ]</p>
+      <h2 class="prod__heading">
+        Defense-Grade Platforms<br /><span class="accent">Built for the Field.</span>
+      </h2>
+      <p class="prod__p-body">
+        Two purpose-built unmanned aerial systems engineered for tactical reconnaissance,
+        autonomous ISR, and squad-level operations in the most demanding environments.
+        NDAA-oriented. Domestically sourced. Combat-proven in design.
+      </p>
+    </div>
+
+    <div class="prod__grid">
+      @for (product of products; track product.name) {
+        <a class="prod__card" [routerLink]="product.route">
+          <app-model-viewer [modelPath]="product.modelPath"></app-model-viewer>
+          <div class="prod__card-overlay"></div>
+          <div class="prod__card-body">
+            <p class="prod__p-label">{{ product.label }}</p>
+            <h2 class="prod__card-name">{{ product.name }}</h2>
+            <p class="prod__card-tagline">{{ product.tagline }}</p>
+            <p class="prod__card-desc">{{ product.body }}</p>
+            <div class="prod__card-tags">
+              @for (tag of product.tags; track tag) {
+                <span class="prod__tag">{{ tag }}</span>
+              }
+            </div>
+            <span class="prod__card-cta">
+              Explore Platform
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+        </a>
+      }
+    </div>
+
+  </div>
+</section>
+
+<app-cta></app-cta>

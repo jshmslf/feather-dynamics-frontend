@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  Input,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
@@ -174,6 +175,8 @@ export class ModelViewer implements OnInit, OnDestroy {
     cameraZ:    220,
   };
 
+  @Input() modelPath = '/assets/DeltaV3_BodyM_ASSM.stl';
+
   /** Set to a truthy object to show the debug panel. null = production mode. */
   debug: { rx: number; ry: number; rz: number; px: number; py: number; scale: number; camZ: number } | null = null;
 
@@ -268,7 +271,7 @@ camera.z   = ${this.debug.camZ};`;
     this.scene.add(rim);
 
     const loader = new STLLoader();
-    loader.load('/assets/DeltaV3_BodyM_ASSM.stl', (geometry) => {
+    loader.load(this.modelPath, (geometry) => {
       geometry.computeVertexNormals();
       geometry.center();
 

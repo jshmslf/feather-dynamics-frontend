@@ -1,0 +1,154 @@
+<app-page-header [title]="'PathFinder Scout UAV'" [bgImage]="'/assets/images/uavmodel.jpg'"></app-page-header>
+
+<section class="pf">
+  <div class="pf__scroll" #scrollSection>
+    <div class="pf__stage" #stage>
+
+      <!-- Full-stage 3D canvas -->
+      <app-model-viewer #viewer modelPath="/assets/DeltaSuicide_v2_3_ASSEM.stl"></app-model-viewer>
+
+      <!-- Background watermark text -->
+      <div class="pf__bg-text" #bgText>PATHFINDER</div>
+
+      <!-- Panel 1: Intro — slides in from right -->
+      <div class="pf__panel pf__panel--intro" #panelIntro>
+        <p class="pf__p-label">[ EXPENDABLE FIXED WING SCOUT UAV ]</p>
+        <h2 class="pf__p-heading">
+          Scout Ahead.<br /><span class="accent">Strike with Certainty.</span>
+        </h2>
+        <p class="pf__p-body">
+          PathFinder flies ahead of mission aircraft in GNSS-denied and electronically
+          contested environments, delivering current route intelligence before
+          platforms commit to their terminal engagement.
+        </p>
+        <div class="pf__intro-tags">
+          <span>Defense Program</span><span>NDAA-Compliant</span><span>Made in USA</span>
+        </div>
+      </div>
+
+      <!-- Panel 2: Specs — slides up from bottom -->
+      <div class="pf__panel pf__panel--specs" #panelSpecs>
+        <p class="pf__p-label">[ TARGET SPECIFICATIONS ]</p>
+        <div class="pf__specs-grid">
+          @for (spec of specs; track spec.label) {
+            <div class="pf__spec-card">
+              <span class="pf__spec-value">{{ spec.value }}</span>
+              <span class="pf__spec-unit">{{ spec.unit }}</span>
+              <span class="pf__spec-label">{{ spec.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel 3: Capabilities — slides in from left -->
+      <div class="pf__panel pf__panel--caps" #panelCaps>
+        <p class="pf__p-label">[ KEY CAPABILITIES ]</p>
+        <div class="pf__feat-list">
+          @for (feat of features; track feat.index) {
+            <div class="pf__feat-row">
+              <span class="pf__feat-index">{{ feat.index }}</span>
+              <div class="pf__feat-info">
+                <span class="pf__feat-title">{{ feat.title }}</span>
+                <span class="pf__feat-tag">{{ feat.tag }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel 4: Readiness — slides in from right-center -->
+      <div class="pf__panel pf__panel--ready" #panelReady>
+        <div class="pf__ready-rule"></div>
+        <p class="pf__p-label">[ PRODUCTION & READINESS ]</p>
+        <p class="pf__p-body pf__ready-text">
+          Five-phase development roadmap from airframe validation through attritable
+          production. NDAA-oriented domestic sourcing. <span class="accent">$50,000</span>
+          target unit cost designed for loss-tolerant operational deployment.
+        </p>
+        <img class="pf__ready-badge" src="/assets/decos/madeinusa.png" alt="Made in USA" />
+      </div>
+
+      <!-- Phase nav chevrons -->
+      <div class="pf__nav-btns">
+        <button class="pf__nav-btn" (click)="onNavPrev()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="pf__nav-btn" (click)="onNavNext()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- HUD -->
+      <div class="pf__hud">
+        <span class="pf__hud-label">[ PATHFINDER ]</span>
+        <div class="pf__hud-bar">
+          <div class="pf__hud-fill" #hudFill></div>
+        </div>
+        <span class="pf__hud-hint">scroll to explore</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="pf-summary">
+  <div class="pf-summary__inner global-container">
+
+    <!-- Mission Overview -->
+    <div class="pf-summary__mission">
+      <p class="pf__p-label">[ PLATFORM OVERVIEW ]</p>
+      <h2 class="pf__p-heading">Forward Scout for the <span class="accent">Contested Edge.</span></h2>
+      <p class="pf__p-body">
+        PathFinder is an expendable fixed wing scout UAV designed to enter contested
+        environments ahead of mission aircraft, collecting current route intelligence
+        and delivering compact mission updates before platforms commit to their
+        terminal engagement. Built with <span class="accent">NDAA-oriented</span>
+        domestic sourcing and an attritable cost model that makes the mission
+        more valuable than the platform.
+      </p>
+      <div class="pf-summary__stats">
+        <div class="pf-summary__stat">
+          <span class="pf-summary__stat-val">100 kts</span>
+          <span class="pf-summary__stat-lbl">Cruise Speed</span>
+        </div>
+        <div class="pf-summary__stat">
+          <span class="pf-summary__stat-val">550 nm</span>
+          <span class="pf-summary__stat-lbl">Range</span>
+        </div>
+        <div class="pf-summary__stat">
+          <span class="pf-summary__stat-val">$50K</span>
+          <span class="pf-summary__stat-lbl">Unit Cost</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Highlights -->
+    <div class="pf-summary__section">
+      <p class="pf__p-label">[ PLATFORM HIGHLIGHTS ]</p>
+      <div class="pf-summary__grid">
+        @for (h of platformHighlights; track h.title) {
+          <div class="pf-summary__card">
+            <h3 class="pf-summary__card-title">{{ h.title }}</h3>
+            <p class="pf-summary__card-body">{{ h.body }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Production Readiness -->
+    <div class="pf-summary__section">
+      <p class="pf__p-label">[ DEVELOPMENT ROADMAP ]</p>
+      <div class="pf-summary__prod-list">
+        @for (item of productionItems; track item) {
+          <div class="pf-summary__prod-item">
+            <span class="pf-summary__prod-dot"></span>
+            {{ item }}
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<app-cta></app-cta>

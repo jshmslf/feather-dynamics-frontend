@@ -61,6 +61,11 @@
   // transform managed entirely by GSAP (xPercent: -50)
   width: min(920px, 96vw);
   text-align: center;
+
+  @media (max-width: 768px) {
+    bottom: 14%;
+    width: min(360px, 94vw);
+  }
 }
 
 // ── FEATURES panel — left side, vertically centered ───────────────────────
@@ -98,8 +103,10 @@
 
   @media (max-width: 768px) {
     left: 5%;
-    width: min(260px, 55vw);
-    top: 12%;
+    right: 5%;
+    width: auto;
+    max-width: min(300px, 90vw);
+    top: 45%;
   }
 }
 
@@ -161,14 +168,14 @@
 // ── SPECS GRID ────────────────────────────────────────────────────────────
 .dy4__specs-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.07);
   margin-top: 1rem;
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -345,12 +352,16 @@
   background: var(--color-black);
   padding: 6rem 0 7rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  @media (max-width: 768px) { padding: 3rem 0 4rem; }
 }
 
 .dy4-summary__inner {
   display: flex;
   flex-direction: column;
   gap: 4.5rem;
+
+  @media (max-width: 768px) { gap: 2.5rem; }
 }
 
 .dy4-summary__mission {

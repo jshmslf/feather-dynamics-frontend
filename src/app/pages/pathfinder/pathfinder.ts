@@ -123,7 +123,7 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
       name: 'PathFinder',
       description: 'Autonomous long-range UAV platform by Feather Dynamics.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
-      url: 'https://featherdynamics.com/products/pathfinder',
+      url: 'https://featherdynamics.com/platforms/pathfinder',
     });
     this.seo.generateBreadcrumbs();
   }

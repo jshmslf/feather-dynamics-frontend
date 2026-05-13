@@ -124,7 +124,7 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
       name: 'Delta Y4',
       description: 'Next-generation unmanned aerial vehicle by Feather Dynamics.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
-      url: 'https://featherdynamics.com/products/delta-y4',
+      url: 'https://featherdynamics.com/platforms/delta-y4',
     });
     this.seo.generateBreadcrumbs();
   }

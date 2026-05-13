@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'contact-us', component: ContactUs },
     { path: 'darpa-lift', component: Darpa },
     {
-        path: 'products',
+        path: 'platforms',
         children: [
             { path: '',           component: Products   },
             { path: 'delta-y4',  component: DeltaY4   },

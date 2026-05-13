@@ -49,8 +49,8 @@ export class Products implements OnInit, AfterViewInit {
       name: 'Delta Y4',
       label: '[ TACTICAL MULTIROTOR UAS ]',
       tagline: 'Engineered for Contested Spaces.',
-      body: 'A compact multirotor platform built for squad and team-level tactical reconnaissance in obstacle-dense and GPS-contested environments.',
-      route: '/products/delta-y4',
+      body: 'Squad-portable multirotor for tactical reconnaissance in obstacle-dense and GPS-contested environments.',
+      route: '/platforms/delta-y4',
       modelPath: '/assets/DeltaV3_BodyM_ASSM.stl',
       displayState: { positionX: 0, positionY: 5, rotationX: -0.99, rotationY: 0.2, rotationZ: 1.26, scaleValue: 1.4, cameraZ: 180 },
       tags: ['Defense Program', 'NDAA-Compliant', 'Made in USA'],
@@ -59,8 +59,8 @@ export class Products implements OnInit, AfterViewInit {
       name: 'PathFinder',
       label: '[ EXPENDABLE FIXED WING SCOUT UAV ]',
       tagline: 'Scout Ahead. Strike with Certainty.',
-      body: 'An expendable fixed wing scout UAV that flies ahead of mission aircraft in GNSS-denied environments — delivering current route intelligence before platforms commit to terminal engagement.',
-      route: '/products/pathfinder',
+      body: 'Expendable fixed wing scout UAV for forward reconnaissance in GNSS-denied and electronically contested environments.',
+      route: '/platforms/pathfinder',
       modelPath: '/assets/DeltaSuicide_v2_3_ASSEM.stl',
       displayState: { positionX: 0, positionY: 10, rotationX: -1.21, rotationY: 0.2, rotationZ: -1.58, scaleValue: 1.6, cameraZ: 180 },
       tags: ['Defense Program', 'NDAA-Compliant', 'Made in USA'],
@@ -73,14 +73,14 @@ export class Products implements OnInit, AfterViewInit {
     this.seo.updateSeo({
       title: 'Products | Feather Dynamics',
       description: 'Feather Dynamics UAV platforms — Delta Y4 tactical multirotor UAS and PathFinder autonomous ISR drone. NDAA-compliant, Made in USA defense systems.',
-      keywords: 'Feather Dynamics products, Delta Y4, PathFinder, tactical UAV, autonomous drone, defense UAS, NDAA compliant',
+      keywords: 'Feather Dynamics platforms, Delta Y4, PathFinder, tactical UAV, autonomous drone, defense UAS, NDAA compliant',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: 'Products',
       description: 'Feather Dynamics UAV product lineup.',
-      url: 'https://featherdynamics.com/products',
+      url: 'https://featherdynamics.com/platforms',
     });
     this.seo.generateBreadcrumbs();
   }

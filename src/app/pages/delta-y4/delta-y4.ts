@@ -93,7 +93,7 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   productionItems = [
-    'NDAA-oriented component sourcing',
+    'NDAA-compliant component sourcing',
     'Domestic supplier integration',
     'Vertically integrated manufacturing',
     'Low rate production scalability',

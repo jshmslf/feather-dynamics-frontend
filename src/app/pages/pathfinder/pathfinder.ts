@@ -96,7 +96,7 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
     { index: '02', title: 'GNSS-Denied Operation',      tag: 'Navigation'  },
     { index: '03', title: 'Expendable Design',          tag: 'Attritable'  },
     { index: '04', title: 'Modular Payload Bay',        tag: 'MOSA'        },
-    { index: '05', title: 'Autonomous Operation',       tag: 'Autonomy'    },
+    { index: '05', title: 'Autonomous Operation and Countermeasure Defensive System',       tag: 'AI Autonomy Operation'    },
     { index: '06', title: 'Multi-Link Communications',  tag: 'Resilient'   },
   ];
 

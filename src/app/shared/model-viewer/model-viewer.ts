@@ -240,6 +240,8 @@ camera.z   = ${this.debug.camZ};`;
   private async initScene() {
     const THREE = await import('three');
     const { STLLoader } = await import('three/examples/jsm/loaders/STLLoader.js');
+    const { mergeVertices } = await import('three/examples/jsm/utils/BufferGeometryUtils.js');
+    const { RoomEnvironment } = await import('three/examples/jsm/environments/RoomEnvironment.js');
 
     const canvas = this.canvasRef.nativeElement;
     const w = canvas.clientWidth || 800;
@@ -270,8 +272,14 @@ camera.z   = ${this.debug.camZ};`;
     rim.position.set(0, -60, -100);
     this.scene.add(rim);
 
+    // Neutral env map so MeshStandardMaterial picks up ambient reflections
+    const pmrem = new THREE.PMREMGenerator(this.renderer!);
+    this.scene!.environment = pmrem.fromScene(new RoomEnvironment()).texture;
+    pmrem.dispose();
+
     const loader = new STLLoader();
     loader.load(this.modelPath, (geometry) => {
+      geometry = mergeVertices(geometry);  // weld coincident STL vertices for smooth normals
       geometry.computeVertexNormals();
       geometry.center();
 
@@ -281,11 +289,11 @@ camera.z   = ${this.debug.camZ};`;
       const maxDim = Math.max(size.x, size.y, size.z);
       this.baseScale = 120 / maxDim;
 
-      const material = new THREE.MeshPhongMaterial({
+      const material = new THREE.MeshStandardMaterial({
         color: 0xb0b8c4,
-        specular: 0xffffff,
-        shininess: 160,
-        emissive: 0x111318,
+        roughness: 0.3,
+        metalness: 0.55,
+        envMapIntensity: 0.6,
       });
 
       this.model = new THREE.Mesh(geometry, material);

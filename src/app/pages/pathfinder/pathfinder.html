@@ -61,9 +61,8 @@
         <div class="pf__ready-rule"></div>
         <p class="pf__p-label">[ PRODUCTION & READINESS ]</p>
         <p class="pf__p-body pf__ready-text">
-          Five-phase development roadmap from airframe validation through attritable
-          production. NDAA-oriented domestic sourcing. <span class="accent">$50,000</span>
-          target unit cost designed for loss-tolerant operational deployment.
+          NDAA-oriented domestic sourcing and an attritable design built for
+          loss-tolerant operational deployment without recovery planning burden.
         </p>
         <img class="pf__ready-badge" src="/assets/decos/madeinusa.png" alt="Made in USA" />
       </div>
@@ -115,10 +114,6 @@
           <span class="pf-summary__stat-val">550 nm</span>
           <span class="pf-summary__stat-lbl">Range</span>
         </div>
-        <div class="pf-summary__stat">
-          <span class="pf-summary__stat-val">$50K</span>
-          <span class="pf-summary__stat-lbl">Unit Cost</span>
-        </div>
       </div>
     </div>
 
@@ -130,19 +125,6 @@
           <div class="pf-summary__card">
             <h3 class="pf-summary__card-title">{{ h.title }}</h3>
             <p class="pf-summary__card-body">{{ h.body }}</p>
-          </div>
-        }
-      </div>
-    </div>
-
-    <!-- Production Readiness -->
-    <div class="pf-summary__section">
-      <p class="pf__p-label">[ DEVELOPMENT ROADMAP ]</p>
-      <div class="pf-summary__prod-list">
-        @for (item of productionItems; track item) {
-          <div class="pf-summary__prod-item">
-            <span class="pf-summary__prod-dot"></span>
-            {{ item }}
           </div>
         }
       </div>

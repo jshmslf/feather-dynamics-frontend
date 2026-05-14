@@ -65,8 +65,8 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   specs: Spec[] = [
     { label: 'Endurance',    value: '~20',     unit: 'min' },
     { label: 'Dash Speed',   value: '25–35',   unit: 'mph' },
-    { label: 'Payload Cap.', value: '≥1',    unit: 'kg'  },
-    { label: 'Footprint',    value: '18×18×4', unit: 'in'  },
+    { label: 'Payload Cap.', value: '~1',    unit: 'kg'  },
+    { label: 'Footprint',    value: '14.5×14.75×4', unit: 'in'  },
   ];
 
   platformHighlights = [

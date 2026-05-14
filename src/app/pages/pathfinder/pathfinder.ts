@@ -63,10 +63,9 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
   };
 
   specs: Spec[] = [
-    { label: 'Cruise Speed', value: '100',  unit: 'kts'       },
-    { label: 'Range',        value: '550',  unit: 'nm'        },
-    { label: 'Payload',      value: '80',   unit: 'lbs'       },
-    { label: 'Unit Cost',    value: '$50K', unit: 'attritable'},
+    { label: 'Cruise Speed', value: '100', unit: 'kts' },
+    { label: 'Range',        value: '550', unit: 'nm'  },
+    { label: 'Payload',      value: '80',  unit: 'lbs' },
   ];
 
   platformHighlights = [
@@ -82,22 +81,14 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       icon: '▸',
-      title: 'Attritable Cost',
-      body: '$50,000 target unit cost enables loss-tolerant operational deployment without recovery planning burden.',
+      title: 'Attritable Design',
+      body: 'Expendable airframe enables loss-tolerant operational deployment without recovery planning burden.',
     },
     {
       icon: '⬡',
       title: 'Modular Payload',
       body: 'MOSA-compliant payload bay supports rapid integration of sensors and effectors without airframe modification.',
     },
-  ];
-
-  productionItems = [
-    'Phase 1: Airframe & Basic Reconnaissance',
-    'Phase 2: Sensor & Data Package',
-    'Phase 3: GNSS-Denied Operation',
-    'Phase 4: Scout-to-Aircraft Integration',
-    'Phase 5: Attritable Production Variant',
   ];
 
   features: Feature[] = [
@@ -114,7 +105,7 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.seo.updateSeo({
       title: 'PathFinder Scout UAV | Feather Dynamics',
-      description: 'PathFinder is an expendable fixed wing scout UAV engineered for forward mission scouting in GNSS-denied and electronically contested environments. 100 knots, 550 nm range, $50K unit cost.',
+      description: 'PathFinder is an expendable fixed wing scout UAV engineered for forward mission scouting in GNSS-denied and electronically contested environments. 100 knots, 550 nm range.',
       keywords: 'PathFinder, expendable UAV, scout UAV, fixed wing drone, GNSS-denied, forward ISR, attritable, Feather Dynamics, defense UAS, NDAA compliant',
     });
     this.seo.setJsonLd({

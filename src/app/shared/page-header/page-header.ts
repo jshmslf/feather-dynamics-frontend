@@ -12,7 +12,8 @@ import { RevealComponent } from "../reveal/reveal";
 })
 export class PageHeader {
   @Input() bgImage = '';
-  @Input() title = ''; // manual title input
+  @Input() title = '';
+  @Input() classification?: string;
   breadcrumbs: string[] = [];
 
   private isBrowser: boolean;

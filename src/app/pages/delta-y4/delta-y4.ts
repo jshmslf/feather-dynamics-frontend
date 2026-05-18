@@ -63,10 +63,10 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   };
 
   specs: Spec[] = [
-    { label: 'Endurance',    value: '~20',     unit: 'min' },
+    { label: 'Endurance',    value: '20',     unit: 'min' },
     { label: 'Dash Speed',   value: '25–35',   unit: 'mph' },
-    { label: 'Payload Cap.', value: '~1',    unit: 'kg'  },
-    { label: 'Footprint',    value: '14.5×14.75×4', unit: 'in'  },
+    { label: 'Payload Cap.', value: '2.5',    unit: 'lbs'  },
+    { label: 'Footprint',    value: '14.5 × 14.75 × 4', unit: 'in'  },
   ];
 
   platformHighlights = [
@@ -103,9 +103,9 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
 
   features: Feature[] = [
     { index: '01', title: 'Contact-Tolerant Airframe',        tag: 'Tactical'       },
-    { index: '02', title: 'Degraded-Environment Navigation',   tag: 'Nav Resilient'  },
+    { index: '02', title: 'Denied Environment Nav',   tag: 'Nav Resilient'  },
     { index: '03', title: 'Dual-Domain Agility',               tag: 'Indoor/Outdoor' },
-    { index: '04', title: 'Near-360° Sensor Coverage',         tag: 'Awareness'      },
+    { index: '04', title: 'Spherical Situational Awareness',         tag: 'Awareness'      },
     { index: '05', title: 'Squad-Portable Form Factor',        tag: 'Mobility'       },
     { index: '06', title: 'Modular Payload Interface',         tag: 'EO / IR / ISR'  },
   ];

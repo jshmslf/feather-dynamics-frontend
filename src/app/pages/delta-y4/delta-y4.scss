@@ -59,7 +59,7 @@
   bottom: 7%;
   left: 50%;
   // transform managed entirely by GSAP (xPercent: -50)
-  width: min(920px, 96vw);
+  width: min(1100px, 96vw);
   text-align: center;
 
   @media (max-width: 768px) {
@@ -195,6 +195,7 @@
   color: var(--color-white);
   letter-spacing: -0.02em;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .dy4__spec-unit {

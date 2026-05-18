@@ -71,16 +71,24 @@ export class Products implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.seo.updateSeo({
-      title: 'Products | Feather Dynamics',
-      description: 'Feather Dynamics UAV platforms — Delta Y4 tactical multirotor UAS and PathFinder autonomous ISR drone. NDAA-compliant, Made in USA defense systems.',
-      keywords: 'Feather Dynamics platforms, Delta Y4, PathFinder, tactical UAV, autonomous drone, defense UAS, NDAA compliant',
+      title: 'Platforms | Feather Dynamics',
+      description: 'Feather Dynamics UAV platforms — Delta Y4 tactical ISR multirotor and PathFinder expendable scout UAV. NDAA-compliant, Blue UAS Select, Made in USA defense systems.',
+      keywords: 'Feather Dynamics platforms, Delta Y4, PathFinder, tactical UAV, scout UAV, expendable drone, multirotor UAS, defense UAS, NDAA compliant, Blue UAS Select, ISR platform, squad portable drone, GNSS-denied, made in USA',
+      image: 'https://featherdynamics.com/assets/fdmetapic.jpg',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Products',
-      description: 'Feather Dynamics UAV product lineup.',
+      name: 'Feather Dynamics UAV Platforms',
+      description: 'Defense-grade UAV platforms engineered for tactical reconnaissance and autonomous ISR.',
       url: 'https://featherdynamics.com/platforms',
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Delta Y4', url: 'https://featherdynamics.com/platforms/delta-y4', description: 'Squad-portable tactical ISR multirotor for contested environments.' } },
+          { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'PathFinder', url: 'https://featherdynamics.com/platforms/pathfinder', description: 'Expendable fixed wing scout UAV for GNSS-denied forward reconnaissance.' } },
+        ],
+      },
     });
     this.seo.generateBreadcrumbs();
   }

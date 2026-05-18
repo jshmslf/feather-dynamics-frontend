@@ -105,16 +105,24 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.seo.updateSeo({
       title: 'PathFinder Scout UAV | Feather Dynamics',
-      description: 'PathFinder is an expendable fixed wing scout UAV engineered for forward mission scouting in GNSS-denied and electronically contested environments. 100 knots, 550 nm range.',
-      keywords: 'PathFinder, expendable UAV, scout UAV, fixed wing drone, GNSS-denied, forward ISR, attritable, Feather Dynamics, defense UAS, NDAA compliant',
+      description: 'PathFinder is an expendable fixed wing scout UAV for forward reconnaissance in GNSS-denied and electronically contested environments. 100 knots, 550 nm range, NDAA-compliant.',
+      keywords: 'PathFinder, expendable UAV, scout UAV, fixed wing drone, GNSS-denied, forward ISR, attritable UAV, contested environment drone, Feather Dynamics, defense UAS, NDAA compliant, made in USA, Class Group 2, long range drone, 550nm range',
+      image: 'https://featherdynamics.com/assets/fdmetapic.jpg',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: 'PathFinder',
-      description: 'Autonomous long-range UAV platform by Feather Dynamics.',
+      description: 'Expendable fixed wing scout UAV engineered for forward reconnaissance in GNSS-denied and electronically contested environments. 100 kts cruise, 550 nm range.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
       url: 'https://featherdynamics.com/platforms/pathfinder',
+      category: 'Unmanned Aerial Vehicle',
+      additionalProperty: [
+        { '@type': 'PropertyValue', name: 'Classification', value: 'Class - Group 2' },
+        { '@type': 'PropertyValue', name: 'Compliance', value: 'NDAA-Compliant' },
+        { '@type': 'PropertyValue', name: 'Range', value: '550 nm' },
+        { '@type': 'PropertyValue', name: 'Cruise Speed', value: '100 kts' },
+      ],
     });
     this.seo.generateBreadcrumbs();
   }

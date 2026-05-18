@@ -116,16 +116,22 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.seo.updateSeo({
       title: 'Delta Y4 Tactical UAV | Feather Dynamics',
-      description: 'The Delta Y4 is a compact multirotor UAS engineered for indoor and outdoor tactical reconnaissance in obstacle-dense and GPS-contested environments. Contact-tolerant, squad-portable, and modular.',
-      keywords: 'Delta Y4, tactical UAV, multirotor UAS, indoor drone, contact-tolerant, Feather Dynamics, defense UAS, NDAA compliant, modular payload drone',
+      description: 'The Delta Y4 is a compact tactical ISR multirotor engineered for indoor and outdoor reconnaissance in obstacle-dense and GPS-contested environments. Contact-tolerant, squad-portable, Blue UAS Select.',
+      keywords: 'Delta Y4, tactical UAV, multirotor UAS, indoor drone, contact-tolerant, squad portable, tactical ISR, Blue UAS Select, NDAA compliant, GPS denied, obstacle dense, modular payload drone, Feather Dynamics, defense UAS, CQB drone, Class Level 1',
+      image: 'https://featherdynamics.com/assets/fdmetapic.jpg',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: 'Delta Y4',
-      description: 'Next-generation unmanned aerial vehicle by Feather Dynamics.',
+      description: 'Squad-portable tactical ISR multirotor for contested and GPS-denied environments. Contact-tolerant airframe, modular payload interface, Blue UAS Select.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
       url: 'https://featherdynamics.com/platforms/delta-y4',
+      category: 'Unmanned Aerial Vehicle',
+      additionalProperty: [
+        { '@type': 'PropertyValue', name: 'Classification', value: 'Class - Level 1' },
+        { '@type': 'PropertyValue', name: 'Compliance', value: 'NDAA-Compliant, Blue UAS Select' },
+      ],
     });
     this.seo.generateBreadcrumbs();
   }

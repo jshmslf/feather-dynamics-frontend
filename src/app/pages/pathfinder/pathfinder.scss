@@ -274,9 +274,24 @@
   max-width: 420px;
 }
 
-.pf__ready-badge {
+.pf__badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+
+  &--summary {
+    margin-top: 1.5rem;
+  }
+}
+
+.pf__badge {
   height: 44px;
-  opacity: 0.6;
+  width: auto;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+
+  &:hover { opacity: 1; }
 }
 
 // ── HUD ──────────────────────────────────────────────────────────────────

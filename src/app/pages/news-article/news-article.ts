@@ -43,7 +43,8 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const slug   = this.route.snapshot.paramMap.get('slug') ?? '';
+    const slug     = this.route.snapshot.paramMap.get('slug') ?? '';
+    const category = this.route.snapshot.paramMap.get('category') ?? '';
     this.article = this.newsService.getBySlug(slug);
 
     if (this.article) {
@@ -77,8 +78,8 @@ export class NewsArticle implements OnInit, AfterViewInit, OnDestroy {
           }
         },
         'mainEntityOfPage': {
-          '@type': '@id',
-          '@id':   `https://featherdynamics.com/news/${slug}`
+          '@type': 'WebPage',
+          '@id':   `https://featherdynamics.com/news/${category}/${slug}`
         }
       });
       

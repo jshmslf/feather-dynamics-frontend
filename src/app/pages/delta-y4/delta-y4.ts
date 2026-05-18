@@ -83,12 +83,12 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
     {
       icon: '▸',
       title: 'Squad-Portable',
-      body: 'Compact form factor designed for rapid deployment and transport by small teams without dedicated ground support.',
+      body: 'Compact form factor designed for rapid deployment and transport with minimal logistical footprint and no dedicated ground support requirements.',
     },
     {
       icon: '⬡',
       title: 'Modular Payload',
-      body: 'Interchangeable payload interface supports EO, IR, and ISR sensor configurations adaptable to mission requirements.',
+      body: 'Interchangeable payload and munition interface supports EO, IR, ISR, and mission configurable payload architectures adaptable to operational requirements.',
     },
   ];
 

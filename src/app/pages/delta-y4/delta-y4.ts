@@ -108,6 +108,7 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
     { index: '04', title: 'Spherical Situational Awareness',         tag: 'Awareness'      },
     { index: '05', title: 'Squad-Portable Form Factor',        tag: 'Mobility'       },
     { index: '06', title: 'Modular Payload Interface',         tag: 'EO / IR / ISR'  },
+    { index: '07', title: 'All Weather Capable',         tag: 'Condition Resilient'  },
   ];
 
   constructor(private seo: SeoService) {}

@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
   template: `
     <canvas #canvas class="model-canvas"></canvas>
+    <div class="model-skeleton" [class.model-skeleton--out]="!isLoading">
+      <div class="model-skeleton__ring"></div>
+      <span class="model-skeleton__label">[ LOADING MODEL ]</span>
+    </div>
 
     <!-- DEBUG PANEL — remove when done tuning -->
     <div class="dbg" *ngIf="debug">
@@ -88,6 +92,36 @@ import { FormsModule } from '@angular/forms';
   styles: [`
     :host { display: block; width: 100%; height: 100%; position: relative; }
     .model-canvas { width: 100%; height: 100%; display: block; }
+    .model-skeleton {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background: rgb(5, 10, 20);
+      transition: opacity 0.7s ease;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .model-skeleton--out { opacity: 0; }
+    .model-skeleton__ring {
+      width: 56px;
+      height: 56px;
+      border: 1.5px solid rgba(0, 180, 216, 0.18);
+      border-top-color: rgba(0, 180, 216, 0.85);
+      border-radius: 50%;
+      animation: sk-spin 1s linear infinite;
+    }
+    .model-skeleton__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: rgba(0, 180, 216, 0.5);
+      text-transform: uppercase;
+    }
+    @keyframes sk-spin { to { transform: rotate(360deg); } }
 
     .dbg {
       position: absolute;
@@ -181,6 +215,7 @@ export class ModelViewer implements OnInit, OnDestroy {
   debug: { rx: number; ry: number; rz: number; px: number; py: number; scale: number; camZ: number } | null = null;
 
   copied = false;
+  isLoading = true;
 
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
@@ -298,6 +333,7 @@ camera.z   = ${this.debug.camZ};`;
 
       this.model = new THREE.Mesh(geometry, material);
       this.scene!.add(this.model);
+      this.isLoading = false;
 
       // Sync debug panel to initial values
       if (this.debug) {

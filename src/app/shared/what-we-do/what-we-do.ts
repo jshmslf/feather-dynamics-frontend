@@ -38,19 +38,19 @@ export class WhatWeDo implements AfterViewInit {
       number: '02',
       title: 'Transport & Mobility',
       // image: '/assets/images/ril_photo1.jpg'
-      image: '/assets/drones/uav_1.png'
+      image: '/assets/drones/fd_drone_4.png'
     },
     {
       number: '03',
       title: 'Payloads & Integrated',
       // image: '/assets/images/ril_p4.jpg'
-      image: '/assets/drones/fd_drone_1.png'
+      image: '/assets/drones/fd_drone_7.png'
     },
     {
       number: '04',
       title: 'Research & Development',
       // image: '/assets/images/4.jpg'
-      image: '/assets/drones/fd_drone_3.png'
+      image: '/assets/drones/fd_drone_6.png'
     }
   ];
 

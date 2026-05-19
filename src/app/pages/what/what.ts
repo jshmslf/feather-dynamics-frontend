@@ -51,7 +51,7 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       category: 'Aerial Systems',
       title: 'Defence & Security Platforms',
       tag: 'Patented Technology',
-      image: '/assets/images/uavmodel.jpg',
+      image: '/assets/drones/fd_drone_2.png',
       body: `Feather Dynamics' Defense & Security Platforms comprise a family of advanced aerial UAVs engineered to support the evolving operational needs of the United States Department of War and its allied partners. Made in the USA, these systems are built on patented technologies and developed under strict standards, delivering durability, survivability, and reliability in contested and austere environments. Each platform features a modular airframe architecture, enabling rapid configuration for intelligence, surveillance, reconnaissance and tactical support missions. AI-enabled autonomy enhances intelligent flight performance, target tracking, and mission execution, while advanced secure communications and onboard processing deliver superior situational awareness in real time.`
     },
     {
@@ -59,7 +59,7 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       category: 'Logistics & Transport',
       title: 'Cargo & Mobility Platform',
       tag: 'Commercial · Defense · Unmanned',
-      image: '/assets/images/ril_photo1.jpg',
+      image: '/assets/drones/uav_1.png',
       body: `Feather Dynamics' Cargo & Mobility Platforms are unmanned aerial systems designed to support reliable cargo transport and operational mobility across both commercial and defense applications. Designed and manufactured in the United States, these platforms are built to perform consistently in demanding, time-sensitive environments. The aircraft feature a cargo-first, modular airframe that enables efficient transport of equipment, supplies, and specialized payloads over short- and medium-range distances. AI-driven autonomy supports precise navigation, autonomous flight operations, and adaptive route planning, allowing transport and resupply missions to be carried out with reduced operator involvement.`
     },
     {
@@ -67,7 +67,7 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       category: 'Mission Systems',
       title: 'Payloads & Integrated Systems',
       tag: 'EO/IR · Sensor Fusion · Modular',
-      image: '/assets/images/ril_p4.jpg',
+      image: '/assets/drones/fd_drone_1.png',
       body: `Feather Dynamics' Payloads & Integrated Systems portfolio delivers a range of mission-focused subsystems designed to enhance UAV capability, effectiveness, and situational awareness across defense and security operations. Core offerings include advanced electro-optical and infrared surveillance systems, gyro-stabilized weapons turret assemblies, and other modular mission payloads deployed on unmanned aircraft for intelligence, surveillance, reconnaissance, and force protection roles. AI-enabled sensor fusion supports real-time data analysis, target tracking, and operator decision support, while stabilized mounting ensures consistent performance during dynamic flight conditions.`
     },
     {
@@ -75,7 +75,7 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       category: 'Innovation',
       title: 'Research & Development Capabilities',
       tag: 'Next-Gen · Licensing · Procurement',
-      image: '/assets/images/4.jpg',
+      image: '/assets/drones/fd_drone_3.png',
       body: `Feather Dynamics' Research & Development division delivers cutting-edge technical research and innovation for defense, security, and commercial applications. Focused on exploring advanced UAV technologies, autonomous systems, sensor integration, and mission-specific solutions, this team drives the creation of next-generation mission critical technologies. Many R&D initiatives are designed to transition seamlessly into commercial products, offering customers access through direct procurement or licensing agreements. By combining deep technical expertise with practical operational insight, Feather Dynamics' R&D efforts accelerate the development of innovative, scalable, and mission-ready solutions.`
     }
   ];

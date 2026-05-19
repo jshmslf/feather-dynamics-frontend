@@ -31,22 +31,26 @@ export class WhatWeDo implements AfterViewInit {
     {
       number: '01',
       title: 'Defence & Security',
-      image: '/assets/images/uavmodel.jpg'
+      image: '/assets/drones/fd_drone_2.png'
+      // image: '/assets/images/uavmodel.jpg'
     },
     {
       number: '02',
       title: 'Transport & Mobility',
-      image: '/assets/images/ril_photo1.jpg'
+      // image: '/assets/images/ril_photo1.jpg'
+      image: '/assets/drones/uav_1.png'
     },
     {
       number: '03',
       title: 'Payloads & Integrated',
-      image: '/assets/images/ril_p4.jpg'
+      // image: '/assets/images/ril_p4.jpg'
+      image: '/assets/drones/fd_drone_1.png'
     },
     {
       number: '04',
       title: 'Research & Development',
-      image: '/assets/images/4.jpg'
+      // image: '/assets/images/4.jpg'
+      image: '/assets/drones/fd_drone_3.png'
     }
   ];
 

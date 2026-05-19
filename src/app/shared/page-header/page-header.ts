@@ -14,6 +14,7 @@ export class PageHeader {
   @Input() bgImage = '';
   @Input() title = '';
   @Input() classification?: string;
+  @Input() titleStyle: { [key: string]: string } = {};
   breadcrumbs: string[] = [];
 
   private isBrowser: boolean;

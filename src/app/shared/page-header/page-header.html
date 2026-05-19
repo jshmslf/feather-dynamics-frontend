@@ -6,13 +6,12 @@
             </app-reveal>
             <div class="content">
                 <app-reveal [blur]="true">
-                    <h1 class="title">{{ title }}</h1>
+                    <h1 class="title" [ngStyle]="titleStyle">{{ title }}</h1>
                 </app-reveal>
                 @if (classification) {
                     <div class="classification">{{ classification }}</div>
                 }
             </div>
-
             <app-reveal [blur]="true">
                 <span class="bracket"> ]</span>
             </app-reveal>

@@ -140,6 +140,24 @@ app-model-viewer {
   max-width: 340px;
 }
 
+// ── BADGES ────────────────────────────────────────────────────────────────
+.prod__card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.prod__card-badge {
+  height: 36px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover { opacity: 1; }
+}
+
 // ── CTA LINK ──────────────────────────────────────────────────────────────
 .prod__card-cta {
   display: inline-flex;

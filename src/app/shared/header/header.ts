@@ -22,6 +22,7 @@ export class Header {
   isHidden = false;
   isMenuOpen = false;
   isNewsOpen = false;
+  isSolutionsOpen = false;
 
   private isBrowser: boolean;
   private lastScrollY = 0;
@@ -46,11 +47,19 @@ export class Header {
     const target = event.target as HTMLElement;
     if (!target.closest('.nav__item--has-dropdown')) {
       this.isNewsOpen = false;
+      this.isSolutionsOpen = false;
     }
+  }
+
+  toggleSolutions(event: MouseEvent) {
+    event.preventDefault();
+    this.isNewsOpen = false;
+    this.isSolutionsOpen = !this.isSolutionsOpen;
   }
 
   toggleNews(event: MouseEvent) {
     event.preventDefault();
+    this.isSolutionsOpen = false;
     this.isNewsOpen = !this.isNewsOpen;
   }
 
@@ -61,5 +70,6 @@ export class Header {
   closeMenu() {
     this.isMenuOpen = false;
     this.isNewsOpen = false;
+    this.isSolutionsOpen = false;
   }
 }

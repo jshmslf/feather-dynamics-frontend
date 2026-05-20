@@ -126,7 +126,7 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
       name: 'Delta Y4',
       description: 'Squad-portable tactical ISR multirotor for contested and GPS-denied environments. Contact-tolerant airframe, modular payload interface, Blue UAS Select.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
-      url: 'https://featherdynamics.com/platforms/delta-y4',
+      url: 'https://featherdynamics.com/solutions/delta-y4',
       category: 'Unmanned Aerial Vehicle',
       additionalProperty: [
         { '@type': 'PropertyValue', name: 'Classification', value: 'Class - Level 1' },

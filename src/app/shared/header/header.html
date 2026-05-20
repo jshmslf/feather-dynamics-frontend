@@ -19,6 +19,7 @@
 
         <!-- Navigation -->
         <nav class="nav">
+            <!-- News -->
             <div class="nav__item nav__item--has-dropdown">
                 <button class="nav__trigger" (click)="toggleNews($event)">NEWS</button>
                 <div class="nav__dropdown" [class.open]="isNewsOpen">
@@ -30,16 +31,28 @@
                         <span class="nav__dropdown-title">DARPA LIFT</span>
                         <span class="nav__dropdown-sub">Challenge progress & timeline</span>
                     </a>
-                    <a routerLink="/platforms/delta-y4" routerLinkActive="active" (click)="closeMenu()">
-                        <span class="nav__dropdown-title">Delta Y4</span>
-                        <span class="nav__dropdown-sub">Next-gen aerial platform</span>
+                </div>
+            </div>
+            
+            <!-- Solutions -->
+            <div class="nav__item nav__item--has-dropdown">
+                <button class="nav__trigger" (click)="toggleSolutions($event)">SOLUTIONS</button>
+                <div class="nav__dropdown" [class.open]="isSolutionsOpen">
+                    <a routerLink="/solutions" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">
+                        <span class="nav__dropdown-title">All Solutions</span>
+                        <span class="nav__dropdown-sub">Full product lineup</span>
                     </a>
-                    <a routerLink="/platforms/pathfinder" routerLinkActive="active" (click)="closeMenu()">
+                    <a routerLink="/solutions/delta-y4" routerLinkActive="active" (click)="closeMenu()">
+                        <span class="nav__dropdown-title">Delta Y4</span>
+                        <span class="nav__dropdown-sub">Tactical ISR multirotor</span>
+                    </a>
+                    <a routerLink="/solutions/pathfinder" routerLinkActive="active" (click)="closeMenu()">
                         <span class="nav__dropdown-title">PathFinder</span>
-                        <span class="nav__dropdown-sub">Autonomous long-range ISR</span>
+                        <span class="nav__dropdown-sub">Expendable fixed-wing scout</span>
                     </a>
                 </div>
             </div>
+            
             <a routerLink="/who-we-are" routerLinkActive="active" (click)="closeMenu()">WHO WE ARE</a>
             <a routerLink="/what-we-do" routerLinkActive="active" (click)="closeMenu()">WHAT WE DO</a>
             <a routerLink="/contact-us" routerLinkActive="active" (click)="closeMenu()">CONTACT US</a>

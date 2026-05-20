@@ -115,7 +115,7 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
       name: 'PathFinder',
       description: 'Expendable fixed wing scout UAV engineered for forward reconnaissance in GNSS-denied and electronically contested environments. 100 kts cruise, 550 nm range.',
       brand: { '@type': 'Organization', name: 'Feather Dynamics', url: 'https://featherdynamics.com' },
-      url: 'https://featherdynamics.com/platforms/pathfinder',
+      url: 'https://featherdynamics.com/solutions/pathfinder',
       category: 'Unmanned Aerial Vehicle',
       additionalProperty: [
         { '@type': 'PropertyValue', name: 'Classification', value: 'Class - Group 2' },

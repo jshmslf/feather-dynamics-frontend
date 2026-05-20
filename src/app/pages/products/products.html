@@ -1,12 +1,12 @@
-<app-page-header [title]="'Our Products'" [bgImage]="'/assets/images/uavmodel.jpg'"></app-page-header>
+<app-page-header [title]="'Our Solutions'" [bgImage]="'/assets/images/uavmodel.jpg'" [titleStyle]="{'margin-top': '14px' }"></app-page-header>
 
 <section class="prod">
   <div class="prod__inner global-container">
 
     <div class="prod__intro">
-      <p class="prod__p-label">[ UAV PLATFORMS ]</p>
+      <p class="prod__p-label">[ UAV SOLUTIONS ]</p>
       <h2 class="prod__heading">
-        Defense-Grade Platforms<br /><span class="accent">Built for the Field.</span>
+        Defense-Grade Solutions<br /><span class="accent">Built for the Field.</span>
       </h2>
       <p class="prod__p-body">
         Two purpose-built unmanned aerial systems for tactical reconnaissance and autonomous ISR.
@@ -24,8 +24,13 @@
             <h2 class="prod__card-name">{{ product.name }}</h2>
             <p class="prod__card-tagline">{{ product.tagline }}</p>
             <p class="prod__card-desc">{{ product.body }}</p>
+            <div class="prod__card-badges">
+              @for (badge of product.badges; track badge) {
+                <img class="prod__card-badge" [src]="badge" alt="" />
+              }
+            </div>
             <span class="prod__card-cta">
-              Explore Platform
+              Explore Solution
               <i class="fa-solid fa-arrow-right"></i>
             </span>
           </div>

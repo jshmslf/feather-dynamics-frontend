@@ -29,6 +29,7 @@ interface Product {
   modelPath: string;
   displayState: DisplayState;
   tags: string[];
+  badges: string[];
 }
 
 @Component({
@@ -50,20 +51,29 @@ export class Products implements OnInit, AfterViewInit {
       label: '[ TACTICAL ISR PLATFORM ]',
       tagline: 'Engineered for Contested Spaces.',
       body: 'Squad-portable multirotor for tactical reconnaissance in obstacle-dense and GPS-contested environments.',
-      route: '/platforms/delta-y4',
+      route: '/solutions/delta-y4',
       modelPath: '/assets/DeltaV3_BodyM_ASSM.stl',
       displayState: { positionX: 0, positionY: 5, rotationX: -0.99, rotationY: 0.2, rotationZ: 1.26, scaleValue: 1.4, cameraZ: 180 },
       tags: ['Drone Dominance Program', 'Blue UAS Select', 'NDAA-Compliant', 'Made in USA'],
+      badges: [
+        '/assets/badges/Blue UAS.png',
+        '/assets/badges/NDAA Compliance.png',
+        '/assets/badges/made-in-usa.png',
+      ],
     },
     {
       name: 'PathFinder',
       label: '[ EXPENDABLE SCOUT UAV ]',
       tagline: 'Scout Ahead. Strike with Certainty.',
       body: 'Expendable fixed wing scout UAV for forward reconnaissance in GNSS-denied and electronically contested environments.',
-      route: '/platforms/pathfinder',
+      route: '/solutions/pathfinder',
       modelPath: '/assets/DeltaSuicide_v2_3_ASSEM.stl',
       displayState: { positionX: 0, positionY: 10, rotationX: -1.21, rotationY: 0.2, rotationZ: -1.58, scaleValue: 1.6, cameraZ: 180 },
       tags: ['Drone Dominance Program', 'NDAA-Compliant', 'Made in USA'],
+      badges: [
+        '/assets/badges/NDAA Compliance.png',
+        '/assets/badges/made-in-usa.png',
+      ],
     },
   ];
 
@@ -71,22 +81,22 @@ export class Products implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.seo.updateSeo({
-      title: 'Platforms | Feather Dynamics',
-      description: 'Feather Dynamics UAV platforms — Delta Y4 tactical ISR multirotor and PathFinder expendable scout UAV. NDAA-compliant, Blue UAS Select, Made in USA defense systems.',
-      keywords: 'Feather Dynamics platforms, Delta Y4, PathFinder, tactical UAV, scout UAV, expendable drone, multirotor UAS, defense UAS, NDAA compliant, Blue UAS Select, ISR platform, squad portable drone, GNSS-denied, made in USA',
+      title: 'Solutions | Feather Dynamics',
+      description: 'Feather Dynamics UAV solutions — Delta Y4 tactical ISR multirotor and PathFinder expendable scout UAV. NDAA-compliant, Blue UAS Select, Made in USA defense systems.',
+      keywords: 'Feather Dynamics solutions, Delta Y4, PathFinder, tactical UAV, scout UAV, expendable drone, multirotor UAS, defense UAS, NDAA compliant, Blue UAS Select, ISR platform, squad portable drone, GNSS-denied, made in USA',
       image: 'https://featherdynamics.com/assets/fdmetapic.jpg',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Feather Dynamics UAV Platforms',
-      description: 'Defense-grade UAV platforms engineered for tactical reconnaissance and autonomous ISR.',
-      url: 'https://featherdynamics.com/platforms',
+      name: 'Feather Dynamics UAV Solutions',
+      description: 'Defense-grade UAV solutions engineered for tactical reconnaissance and autonomous ISR.',
+      url: 'https://featherdynamics.com/solutions',
       mainEntity: {
         '@type': 'ItemList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Delta Y4', url: 'https://featherdynamics.com/platforms/delta-y4', description: 'Squad-portable tactical ISR multirotor for contested environments.' } },
-          { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'PathFinder', url: 'https://featherdynamics.com/platforms/pathfinder', description: 'Expendable fixed wing scout UAV for GNSS-denied forward reconnaissance.' } },
+          { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Delta Y4', url: 'https://featherdynamics.com/solutions/delta-y4', description: 'Squad-portable tactical ISR multirotor for contested environments.' } },
+          { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'PathFinder', url: 'https://featherdynamics.com/solutions/pathfinder', description: 'Expendable fixed wing scout UAV for GNSS-denied forward reconnaissance.' } },
         ],
       },
     });

@@ -46,7 +46,7 @@
         <div class="dy4__feat-list">
           @for (feat of features; track feat.index) {
             <div class="dy4__feat-row">
-              <span class="dy4__feat-index">{{ feat.index }}</span>
+              <lucide-icon [img]="feat.index === '01' ? Shield : feat.index === '02' ? WifiOff : feat.index === '03' ? Wind : feat.index === '04' ? Eye : feat.index === '05' ? Package : feat.index === '06' ? Layers : CloudRain" [size]="32" class="dy4__feat-icon"></lucide-icon>
               <div class="dy4__feat-info">
                 <span class="dy4__feat-title">{{ feat.title }}</span>
                 <span class="dy4__feat-tag">{{ feat.tag }}</span>

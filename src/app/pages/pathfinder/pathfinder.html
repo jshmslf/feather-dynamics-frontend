@@ -46,7 +46,7 @@
         <div class="pf__feat-list">
           @for (feat of features; track feat.index) {
             <div class="pf__feat-row">
-              <span class="pf__feat-index">{{ feat.index }}</span>
+              <lucide-icon [img]="feat.index === '01' ? Radar : feat.index === '02' ? WifiOff : feat.index === '03' ? Zap : feat.index === '04' ? Box : feat.index === '05' ? BrainCircuit : Radio" [size]="32" class="pf__feat-icon"></lucide-icon>
               <div class="pf__feat-info">
                 <span class="pf__feat-title">{{ feat.title }}</span>
                 <span class="pf__feat-tag">{{ feat.tag }}</span>

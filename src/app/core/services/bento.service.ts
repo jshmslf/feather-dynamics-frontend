@@ -49,7 +49,7 @@ return [
             },
             {
                 src: '/assets/images/ril_photo6.JPG',
-                title: 'Heavy-List Petrol Aerial Imagery',
+                title: 'Heavy-Lift Petrol Aerial Imagery',
             },
             {
                 src: '/assets/images/ril_p2.jpg',
@@ -63,10 +63,6 @@ return [
                 src: '/assets/images/ril_p8.JPG',
                 title: 'UAV Petrol Configuration',
             },
-            // {
-            //     src: '/assets/images/fd_ceo.jpg',
-            //     title: 'Air Force and Space Day 2018',
-            // },
             {
                 src: '/assets/images/ril_p14.png',
                 title: 'DARPA Grand Challenge Guide',

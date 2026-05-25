@@ -13,6 +13,7 @@ import { PageHeader } from '../../shared/page-header/page-header';
 import { Cta } from '../../shared/cta/cta';
 import { ModelViewer } from '../../shared/model-viewer/model-viewer';
 import { SeoService } from '../../core/services/seo.service';
+import { LucideAngularModule, Radar, WifiOff, Zap, Box, BrainCircuit, Radio } from 'lucide-angular';
 
 interface Spec {
   label: string;
@@ -24,18 +25,21 @@ interface Feature {
   index: string;
   title: string;
   tag: string;
+  icon: string;
 }
 
 @Component({
   selector: 'app-pathfinder',
   standalone: true,
-  imports: [CommonModule, PageHeader, Cta, ModelViewer],
+  imports: [CommonModule, PageHeader, Cta, ModelViewer, LucideAngularModule],
   templateUrl: './pathfinder.html',
   styleUrl: './pathfinder.scss',
 })
 export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
+
+  private seo = inject(SeoService);
 
   @ViewChild('scrollSection') scrollSectionRef!: ElementRef<HTMLElement>;
   @ViewChild('stage')         stageRef!:         ElementRef<HTMLElement>;
@@ -91,16 +95,23 @@ export class PathFinder implements OnInit, AfterViewInit, OnDestroy {
     },
   ];
 
+  readonly Radar = Radar;
+  readonly WifiOff = WifiOff;
+  readonly Zap = Zap;
+  readonly Box = Box;
+  readonly BrainCircuit = BrainCircuit;
+  readonly Radio = Radio;
+
   features: Feature[] = [
-    { index: '01', title: 'Forward Mission Scouting',   tag: 'Scout'       },
-    { index: '02', title: 'GNSS-Denied Operation',      tag: 'Navigation'  },
-    { index: '03', title: 'Expendable Design',          tag: 'Attritable'  },
-    { index: '04', title: 'Modular Payload Bay',        tag: 'MOSA'        },
-    { index: '05', title: 'Autonomous Operation and Countermeasure Defensive System',       tag: 'AI Autonomy Operation'    },
-    { index: '06', title: 'Multi-Link Communications',  tag: 'Resilient'   },
+    { index: '01', title: 'Forward Mission Scouting',   tag: 'Scout',      icon: 'Radar'        },
+    { index: '02', title: 'GNSS-Denied Operation',      tag: 'Navigation', icon: 'WifiOff'      },
+    { index: '03', title: 'Expendable Design',          tag: 'Attritable', icon: 'Zap'          },
+    { index: '04', title: 'Modular Payload Bay',        tag: 'MOSA',       icon: 'Box'          },
+    { index: '05', title: 'Autonomous Operation and Countermeasure Defensive System', tag: 'AI Autonomy Operation', icon: 'BrainCircuit' },
+    { index: '06', title: 'Multi-Link Communications',  tag: 'Resilient',  icon: 'Radio'        },
   ];
 
-  constructor(private seo: SeoService) {}
+  constructor() {}
 
   ngOnInit() {
     this.seo.updateSeo({

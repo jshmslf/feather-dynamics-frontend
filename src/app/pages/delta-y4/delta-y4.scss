@@ -232,12 +232,12 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.dy4__feat-index {
-  font-family: var(--font-secondary);
-  font-size: var(--text);
-  color: rgba(255, 255, 255, 0.15);
-  letter-spacing: 0.1em;
+.dy4__feat-icon {
+  color: var(--accent-highlight);
   flex-shrink: 0;
+  opacity: 0.8;
+  width: 32px !important;
+  height: 32px !important;
 }
 
 .dy4__feat-info {

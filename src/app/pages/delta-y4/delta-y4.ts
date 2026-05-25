@@ -13,6 +13,7 @@ import { PageHeader } from '../../shared/page-header/page-header';
 import { Cta } from '../../shared/cta/cta';
 import { ModelViewer } from '../../shared/model-viewer/model-viewer';
 import { SeoService } from '../../core/services/seo.service';
+import { LucideAngularModule, Shield, WifiOff, Wind, Eye, Package, Layers, CloudRain } from 'lucide-angular';
 
 interface Spec {
   label: string;
@@ -24,18 +25,21 @@ interface Feature {
   index: string;
   title: string;
   tag: string;
+  icon: string;
 }
 
 @Component({
   selector: 'app-delta-y4',
   standalone: true,
-  imports: [CommonModule, PageHeader, Cta, ModelViewer],
+  imports: [CommonModule, PageHeader, Cta, ModelViewer, LucideAngularModule],
   templateUrl: './delta-y4.html',
   styleUrl: './delta-y4.scss',
 })
 export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
+
+  private seo = inject(SeoService);
 
   @ViewChild('scrollSection') scrollSectionRef!: ElementRef<HTMLElement>;
   @ViewChild('stage')         stageRef!:         ElementRef<HTMLElement>;
@@ -101,17 +105,25 @@ export class DeltaY4 implements OnInit, AfterViewInit, OnDestroy {
     'Production-representative prototype maturation',
   ];
 
+  readonly Shield = Shield;
+  readonly WifiOff = WifiOff;
+  readonly Wind = Wind;
+  readonly Eye = Eye;
+  readonly Package = Package;
+  readonly Layers = Layers;
+  readonly CloudRain = CloudRain;
+
   features: Feature[] = [
-    { index: '01', title: 'Contact-Tolerant Airframe',        tag: 'Tactical'       },
-    { index: '02', title: 'Denied Environment Nav',   tag: 'Nav Resilient'  },
-    { index: '03', title: 'Dual-Domain Agility',               tag: 'Indoor/Outdoor' },
-    { index: '04', title: 'Spherical Situational Awareness',         tag: 'Awareness'      },
-    { index: '05', title: 'Squad-Portable Form Factor',        tag: 'Mobility'       },
-    { index: '06', title: 'Modular Payload Interface',         tag: 'EO / IR / ISR'  },
-    { index: '07', title: 'All Weather Capable',         tag: 'Condition Resilient'  },
+    { index: '01', title: 'Contact-Tolerant Airframe',        tag: 'Tactical',           icon: 'Shield'    },
+    { index: '02', title: 'Denied Environment Nav',           tag: 'Nav Resilient',      icon: 'WifiOff'   },
+    { index: '03', title: 'Dual-Domain Agility',              tag: 'Indoor/Outdoor',     icon: 'Wind'      },
+    { index: '04', title: 'Spherical Situational Awareness',  tag: 'Awareness',          icon: 'Eye'       },
+    { index: '05', title: 'Squad-Portable Form Factor',       tag: 'Mobility',           icon: 'Package'   },
+    { index: '06', title: 'Modular Payload Interface',        tag: 'EO / IR / ISR',      icon: 'Layers'    },
+    { index: '07', title: 'All Weather Capable',              tag: 'Condition Resilient', icon: 'CloudRain' },
   ];
 
-  constructor(private seo: SeoService) {}
+  constructor() {}
 
   ngOnInit() {
     this.seo.updateSeo({

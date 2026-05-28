@@ -227,9 +227,18 @@ export class ModelViewer implements OnInit, OnDestroy {
   private baseScale = 1;
   private animationId = 0;
   private resizeObserver?: ResizeObserver;
+  private onKeyDown = (e: KeyboardEvent) => {
+    if (e.key !== '`') return;
+    this.debug = this.debug ? null : {
+      rx: this.animState.rotationX, ry: this.animState.rotationY, rz: this.animState.rotationZ,
+      px: this.animState.positionX, py: this.animState.positionY,
+      scale: this.animState.scaleValue, camZ: this.animState.cameraZ,
+    };
+  };
 
   async ngOnInit() {
     if (!this.isBrowser) return;
+    window.addEventListener('keydown', this.onKeyDown);
     await this.initScene();
     this.startLoop();
   }
@@ -239,6 +248,7 @@ export class ModelViewer implements OnInit, OnDestroy {
     cancelAnimationFrame(this.animationId);
     this.resizeObserver?.disconnect();
     this.renderer?.dispose();
+    window.removeEventListener('keydown', this.onKeyDown);
   }
 
   deg(rad: number) {

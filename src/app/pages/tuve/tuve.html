@@ -1,0 +1,147 @@
+<app-page-header [title]="'Tuve Strike UAS'" [bgImage]="'/assets/drones/fd_tuve.png'" [classification]="'OWA Loitering Munition'"></app-page-header>
+
+<section class="tuve">
+  <div class="tuve__scroll" #scrollSection>
+    <div class="tuve__stage" #stage>
+
+      <app-model-viewer #viewer [modelPath]="'/assets/Tuve_V1_ASSEM.stl'"></app-model-viewer>
+
+      <div class="tuve__bg-text" #bgText>TUVE</div>
+
+      <!-- Panel A: Intro -->
+      <div class="tuve__panel tuve__panel--intro" #panelIntro>
+        <p class="tuve__p-label">[ LONG RANGE STRIKE PLATFORM ]</p>
+        <h2 class="tuve__p-heading">
+          Precision Strike<br /><span class="accent">at the Edge.</span>
+        </h2>
+        <p class="tuve__p-body">
+          Vertically launched, electrically propelled OWA loitering munition for
+          precision strike at 5 to 20 km in GNSS and RF-denied environments.
+        </p>
+        <div class="tuve__intro-tags">
+          <span>Drone Dominance Program</span><span>NDAA-Compliant</span><span>Made in USA</span>
+        </div>
+      </div>
+
+      <!-- Panel B: Specs -->
+      <div class="tuve__panel tuve__panel--specs" #panelSpecs>
+        <p class="tuve__p-label">[ TARGET SPECIFICATIONS ]</p>
+        <div class="tuve__specs-grid">
+          @for (spec of specs; track spec.label) {
+            <div class="tuve__spec-card">
+              <span class="tuve__spec-value">{{ spec.value }}</span>
+              <span class="tuve__spec-unit">{{ spec.unit }}</span>
+              <span class="tuve__spec-label">{{ spec.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel C: Features -->
+      <div class="tuve__panel tuve__panel--features" #panelFeatures>
+        <p class="tuve__p-label">[ KEY CAPABILITIES ]</p>
+        <div class="tuve__feat-list">
+          @for (feat of features; track feat.index) {
+            <div class="tuve__feat-row">
+              <lucide-icon
+                [img]="feat.index === '01' ? Rocket : feat.index === '02' ? Zap : feat.index === '03' ? Eye : feat.index === '04' ? BrainCircuit : feat.index === '05' ? Crosshair : Radio"
+                [size]="32"
+                class="tuve__feat-icon">
+              </lucide-icon>
+              <div class="tuve__feat-info">
+                <span class="tuve__feat-title">{{ feat.title }}</span>
+                <span class="tuve__feat-tag">{{ feat.tag }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Panel D: Production & Readiness -->
+      <div class="tuve__panel tuve__panel--origin" #panelOrigin>
+        <div class="tuve__origin-rule"></div>
+        <p class="tuve__p-label">[ PRODUCTION & READINESS ]</p>
+        <p class="tuve__p-body tuve__origin-text">
+          CR Systems dual-axis contra-rotating motor is U.S.-manufactured and fully NDAA-compliant.
+          Active production facility in Marina, CA supports DDP Phase II delivery timelines with
+          domestic supply chain compliance across all system components.
+        </p>
+        <div class="tuve__badge-row">
+          <img class="tuve__badge" src="/assets/badges/made-in-usa.png" alt="Made in USA" />
+          <img class="tuve__badge" src="/assets/badges/NDAA Compliance.png" alt="NDAA Compliant" />
+        </div>
+      </div>
+
+      <!-- Nav chevrons -->
+      <div class="tuve__nav-btns">
+        <button class="tuve__nav-btn" (click)="onNavPrev()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="tuve__nav-btn" (click)="onNavNext()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- HUD -->
+      <div class="tuve__hud">
+        <span class="tuve__hud-label">[ TUVE ]</span>
+        <div class="tuve__hud-bar">
+          <div class="tuve__hud-fill" #hudFill></div>
+        </div>
+        <span class="tuve__hud-hint">scroll to explore</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="tuve-summary">
+  <div class="tuve-summary__inner global-container">
+
+    <!-- Mission Overview -->
+    <div class="tuve-summary__mission">
+      <p class="tuve__p-label">[ PLATFORM OVERVIEW ]</p>
+      <h2 class="tuve__p-heading">Strike at Range.<br /><span class="accent">Without Dependence.</span></h2>
+      <p class="tuve__p-body">
+        The Tuve is a vertically-launched, electrically propelled one-way attack loitering munition.
+        Powered by a patented CR Systems dual-axis contra-rotating motor and guided by a dual EO/IR seeker
+        with an onboard AI autonomy stack, it finds, fixes, and finishes targets at 5 to 20 km with minimal
+        operator input in fully GNSS and RF-denied conditions.
+      </p>
+      <div class="tuve-summary__stats">
+        <div class="tuve-summary__stat">
+          <span class="tuve-summary__stat-val">5–20 km</span>
+          <span class="tuve-summary__stat-lbl">Range</span>
+        </div>
+        <div class="tuve-summary__stat">
+          <span class="tuve-summary__stat-val">45 min</span>
+          <span class="tuve-summary__stat-lbl">Endurance</span>
+        </div>
+        <div class="tuve-summary__stat">
+          <span class="tuve-summary__stat-val">2.5 kg</span>
+          <span class="tuve-summary__stat-lbl">Payload</span>
+        </div>
+      </div>
+      <div class="tuve__badge-row tuve__badge-row--summary">
+        <img class="tuve__badge" src="/assets/badges/made-in-usa.png" alt="Made in USA" />
+        <img class="tuve__badge" src="/assets/badges/NDAA Compliance.png" alt="NDAA Compliant" />
+      </div>
+    </div>
+
+    <!-- Platform Highlights -->
+    <div class="tuve-summary__section">
+      <p class="tuve__p-label">[ PLATFORM HIGHLIGHTS ]</p>
+      <div class="tuve-summary__grid">
+        @for (h of platformHighlights; track h.title) {
+          <div class="tuve-summary__card">
+            <h3 class="tuve-summary__card-title">{{ h.title }}</h3>
+            <p class="tuve-summary__card-body">{{ h.body }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<app-cta></app-cta>

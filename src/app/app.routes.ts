@@ -9,6 +9,7 @@ import { NotFound } from './pages/not-found/not-found';
 import { Darpa } from './pages/darpa/darpa';
 import { DeltaY4 } from './pages/delta-y4/delta-y4';
 import { PathFinder } from './pages/pathfinder/pathfinder';
+import { Tuve } from './pages/tuve/tuve';
 import { Products } from './pages/products/products';
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
             { path: '',           component: Products   },
             { path: 'delta-y4',  component: DeltaY4   },
             { path: 'pathfinder', component: PathFinder },
+            { path: 'tuve',      component: Tuve       },
         ],
     },
 

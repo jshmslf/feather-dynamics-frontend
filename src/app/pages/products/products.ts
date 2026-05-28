@@ -75,6 +75,20 @@ export class Products implements OnInit, AfterViewInit {
         '/assets/badges/made-in-usa.png',
       ],
     },
+    {
+      name: 'Tuve',
+      label: '[ LONG RANGE STRIKE PLATFORM ]',
+      tagline: 'Precision Strike at the Edge.',
+      body: 'Vertically-launched electrically propelled OWA loitering munition for precision strike at 5 to 20 km in GNSS and RF-denied environments.',
+      route: '/solutions/tuve',
+      modelPath: '/assets/Tuve_V1_ASSEM.stl',
+      displayState: { positionX: 0, positionY: 6, rotationX: 0.11, rotationY: -0.33, rotationZ: 0.46, scaleValue: 1.17, cameraZ: 195 },
+      tags: ['Drone Dominance Program', 'NDAA-Compliant', 'Made in USA'],
+      badges: [
+        '/assets/badges/NDAA Compliance.png',
+        '/assets/badges/made-in-usa.png',
+      ],
+    },
   ];
 
   constructor(private seo: SeoService) {}
@@ -97,6 +111,7 @@ export class Products implements OnInit, AfterViewInit {
         itemListElement: [
           { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Delta Y4', url: 'https://featherdynamics.com/solutions/delta-y4', description: 'Squad-portable tactical ISR multirotor for contested environments.' } },
           { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'PathFinder', url: 'https://featherdynamics.com/solutions/pathfinder', description: 'Expendable fixed wing scout UAV for GNSS-denied forward reconnaissance.' } },
+          { '@type': 'ListItem', position: 3, item: { '@type': 'Product', name: 'Tuve', url: 'https://featherdynamics.com/solutions/tuve', description: 'Vertically-launched OWA loitering munition for precision strike at 5 to 20 km in GNSS and RF-denied environments.' } },
         ],
       },
     });

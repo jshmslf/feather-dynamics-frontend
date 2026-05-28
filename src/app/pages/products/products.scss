@@ -51,8 +51,12 @@
 // ── PRODUCT GRID ──────────────────────────────────────────────────────────
 .prod__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -87,6 +91,18 @@ app-model-viewer {
   right: -10%;
   bottom: -5%;
   left: 30%;
+}
+
+.prod__card-eyebrow {
+  position: absolute;
+  top: 1.75rem;
+  left: 2.25rem;
+  z-index: 2;
+  font-family: var(--font-secondary);
+  font-size: var(--text);
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin: 0;
 }
 
 .prod__card-overlay {

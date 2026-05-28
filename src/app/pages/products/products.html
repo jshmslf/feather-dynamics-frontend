@@ -19,8 +19,8 @@
         <a class="prod__card" [routerLink]="product.route">
           <app-model-viewer [modelPath]="product.modelPath"></app-model-viewer>
           <div class="prod__card-overlay"></div>
+          <p class="prod__card-eyebrow">{{ product.label }}</p>
           <div class="prod__card-body">
-            <p class="prod__p-label">{{ product.label }}</p>
             <h2 class="prod__card-name">{{ product.name }}</h2>
             <p class="prod__card-tagline">{{ product.tagline }}</p>
             <p class="prod__card-desc">{{ product.body }}</p>

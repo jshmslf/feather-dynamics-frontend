@@ -31,7 +31,7 @@ export class WhatWeDo implements AfterViewInit {
     {
       number: '01',
       title: 'Defence & Security',
-      image: '/assets/drones/fd_drone_2.png'
+      image: '/assets/drones/fd_drone_2-1.png'
       // image: '/assets/images/uavmodel.jpg'
     },
     {

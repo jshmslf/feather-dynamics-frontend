@@ -51,7 +51,7 @@ export class What implements OnInit, OnDestroy, AfterViewInit {
       category: 'Aerial Systems',
       title: 'Defence & Security Platforms',
       tag: 'Patented Technology',
-      image: '/assets/drones/fd_drone_2.png',
+      image: '/assets/drones/fd_drone_2-1.png',
       body: `Feather Dynamics' Defense & Security Platforms comprise a family of advanced aerial UAVs engineered to support the evolving operational needs of the United States Department of War and its allied partners. Made in the USA, these systems are built on patented technologies and developed under strict standards, delivering durability, survivability, and reliability in contested and austere environments. Each platform features a modular airframe architecture, enabling rapid configuration for intelligence, surveillance, reconnaissance and tactical support missions. AI-enabled autonomy enhances intelligent flight performance, target tracking, and mission execution, while advanced secure communications and onboard processing deliver superior situational awareness in real time.`
     },
     {

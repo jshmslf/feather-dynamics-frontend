@@ -53,7 +53,7 @@ export class Products implements OnInit, AfterViewInit {
       body: 'Squad-portable multirotor for tactical reconnaissance in obstacle-dense and GPS-contested environments.',
       route: '/solutions/delta-y4',
       modelPath: '/assets/DeltaV3_BodyM_ASSM.stl',
-      displayState: { positionX: 0, positionY: 5, rotationX: -0.99, rotationY: 0.2, rotationZ: 1.26, scaleValue: 1.4, cameraZ: 180 },
+      displayState: { positionX: 0, positionY: 5, rotationX: -0.99, rotationY: 0.2, rotationZ: 1.26, scaleValue: 0.85, cameraZ: 180 },
       tags: ['Drone Dominance Program', 'Blue UAS Select', 'NDAA-Compliant', 'Made in USA'],
       badges: [
         '/assets/badges/Blue UAS.png',
@@ -68,7 +68,7 @@ export class Products implements OnInit, AfterViewInit {
       body: 'Expendable fixed wing scout UAV for forward reconnaissance in GNSS-denied and electronically contested environments.',
       route: '/solutions/pathfinder',
       modelPath: '/assets/DeltaSuicide_v2_3_ASSEM.stl',
-      displayState: { positionX: 0, positionY: 10, rotationX: -1.21, rotationY: 0.2, rotationZ: -1.58, scaleValue: 1.6, cameraZ: 180 },
+      displayState: { positionX: 0, positionY: 10, rotationX: -1.21, rotationY: 0.2, rotationZ: -1.58, scaleValue: 0.90, cameraZ: 180 },
       tags: ['Drone Dominance Program', 'NDAA-Compliant', 'Made in USA'],
       badges: [
         '/assets/badges/NDAA Compliance.png',
@@ -82,7 +82,7 @@ export class Products implements OnInit, AfterViewInit {
       body: 'Vertically-launched electrically propelled OWA loitering munition for precision strike at 5 to 20 km in GNSS and RF-denied environments.',
       route: '/solutions/tuve',
       modelPath: '/assets/Tuve_V1_ASSEM.stl',
-      displayState: { positionX: 0, positionY: 6, rotationX: 0.11, rotationY: -0.33, rotationZ: 0.46, scaleValue: 1.17, cameraZ: 195 },
+      displayState: { positionX: 0, positionY: 6, rotationX: 0.11, rotationY: -0.33, rotationZ: 0.46, scaleValue: 0.75, cameraZ: 195 },
       tags: ['Drone Dominance Program', 'NDAA-Compliant', 'Made in USA'],
       badges: [
         '/assets/badges/NDAA Compliance.png',
